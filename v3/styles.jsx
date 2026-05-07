@@ -147,9 +147,10 @@ const V3GlobalStyle = () => (
     .v3-hero-cta-btns { display: contents; }
 
     @media (max-width: 900px) {
-      .v3-nav { margin: 8px 8px 0; padding: 6px 8px 6px 14px; gap: 8px; grid-template-columns: auto 1fr auto; }
+      .v3-nav { margin: 8px 8px 0; padding: 6px 8px 6px 14px; gap: 8px; grid-template-columns: 1fr auto; }
       .v3-nav-logo { font-size: 18px; }
       .v3-nav-mid { display: none; }
+      .v3-nav-right { justify-content: flex-end; margin-left: auto; }
       .v3-nav-right > .v3-btn-ghost { display: none; }
       .v3-nav-right > .v3-btn-primary,
       .v3-nav-right > .v3-btn-light { display: none; }
@@ -801,10 +802,22 @@ const V3GlobalStyle = () => (
     @media (max-width: 900px) { .v3-hero-overlay { display: none !important; } }
     .v3-mobile .v3-hero-overlay { display: none !important; }
 
-    /* Hamburger button: nascosto su desktop, visibile su mobile (via .v3-mobile o @media) */
-    .v3-nav-burger { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border-radius: 50%; background: var(--c-accent); border: 1px solid var(--c-accent); cursor: pointer; transition: all .25s; box-shadow: 0 6px 18px -6px rgba(var(--c-accent-rgb),0.55); }
+    /* Hamburger button: visibile in TUTTE le condizioni mobile, !important
+       per evitare override da regole successive nel template. */
+    .v3-nav-burger {
+      display: none;
+      align-items: center; justify-content: center;
+      width: 44px; height: 44px; padding: 0; border-radius: 50%;
+      background: var(--c-accent); border: 1px solid var(--c-accent);
+      cursor: pointer; transition: all .25s;
+      box-shadow: 0 6px 18px -6px rgba(var(--c-accent-rgb),0.55);
+    }
     .v3-nav-burger:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -6px rgba(var(--c-accent-rgb),0.7); }
-    .v3-nav-burger svg { width: 20px; height: 20px; stroke: var(--c-dark); stroke-width: 2.2; }
+    .v3-nav-burger svg { width: 22px; height: 22px; stroke: var(--c-dark); stroke-width: 2.2; }
+    @media (max-width: 900px) {
+      .v3-nav-burger { display: inline-flex !important; }
+    }
+    .v3-mobile .v3-nav-burger { display: inline-flex !important; }
 
     /* Servizi dropdown nella nav */
     .v3-nav-svc { position: relative; }
@@ -1210,11 +1223,11 @@ const V3GlobalStyle = () => (
     }
     @media (max-width: 720px) {
       .sb-blast {
-        width: min(220px, 56vw, calc((100vh - 240px) * 0.563));
+        width: min(290px, 72vw, calc((100vh - 220px) * 0.563));
       }
     }
     .v3-mobile .sb-blast {
-      width: min(220px, 56vw, calc((100vh - 240px) * 0.563));
+      width: min(280px, 70vw, calc((100vh - 220px) * 0.563));
     }
     .sb-blast .sb-core, .sb-shard {
       position:absolute; inset:0;
@@ -1371,14 +1384,14 @@ const V3GlobalStyle = () => (
       .sb-hud-r .lg small { font-size: 11px; }
       .sb-hud .row, .sb-hud > div:first-child { line-height: 1.4; }
       .sb-chip {
-        padding: 5px 10px 5px 5px; gap: 7px;
-        max-width: 130px;
+        padding: 6px 12px 6px 6px; gap: 9px;
+        max-width: 165px;
       }
-      .sb-sym { width: 26px; height: 26px; font-size: 12px; border-radius: 7px; }
-      .sb-sym.sm { font-size: 11px; }
-      .sb-name { font-size: 8.5px; letter-spacing: .12em; }
-      .sb-val { font-size: 13px; }
-      .sb-meta { gap: 2px; }
+      .sb-sym { width: 32px; height: 32px; font-size: 14px; border-radius: 9px; }
+      .sb-sym.sm { font-size: 13px; }
+      .sb-name { font-size: 9.5px; letter-spacing: .14em; }
+      .sb-val { font-size: 15px; }
+      .sb-meta { gap: 3px; }
     }
     /* Forced mobile mode (PhoneFrame) — same as media query */
     .v3-mobile .sb-hud, .v3-mobile .sb-hud-r { font-size: 8.5px; }
@@ -1387,12 +1400,12 @@ const V3GlobalStyle = () => (
     .v3-mobile .sb-hud-r .lg { font-size: 28px; }
     .v3-mobile .sb-hud-r .lg small { font-size: 11px; }
     .v3-mobile .sb-hud .ph b { font-size: 22px; }
-    .v3-mobile .sb-chip { padding: 5px 10px 5px 5px; gap: 7px; max-width: 130px; }
-    .v3-mobile .sb-sym { width: 26px; height: 26px; font-size: 12px; border-radius: 7px; }
-    .v3-mobile .sb-sym.sm { font-size: 11px; }
-    .v3-mobile .sb-name { font-size: 8.5px; letter-spacing: .12em; white-space: nowrap; }
-    .v3-mobile .sb-val { font-size: 13px; white-space: nowrap; }
-    .v3-mobile .sb-meta { gap: 2px; }
+    .v3-mobile .sb-chip { padding: 6px 12px 6px 6px; gap: 9px; max-width: 165px; }
+    .v3-mobile .sb-sym { width: 32px; height: 32px; font-size: 14px; border-radius: 9px; }
+    .v3-mobile .sb-sym.sm { font-size: 13px; }
+    .v3-mobile .sb-name { font-size: 9.5px; letter-spacing: .14em; white-space: nowrap; }
+    .v3-mobile .sb-val { font-size: 15px; white-space: nowrap; }
+    .v3-mobile .sb-meta { gap: 3px; }
     .v3-mobile .sb-caption { bottom: 28px; }
     .v3-mobile .sb-cap-frame { height: 96px; }
     .v3-mobile .sb-ttl { font-size: clamp(18px, 5vw, 24px); }
@@ -1933,11 +1946,11 @@ const V3GlobalStyle = () => (
 
     @media (max-width: 720px) {
       .sat-stage { height: 500vh; }
-      /* Field box e icone abbassati di altri ~6vh per dare spazio all'HUD
-         (top:80px) che altrimenti si sovrappone al satellite/parcella */
-      .sat-field { left: 4%; right: 4%; top: 24%; bottom: 38%; }
-      .sat-icon { width: 44px; height: 44px; top: 12%; }
-      .sat-beam { top: calc(12% + 44px); bottom: 38%; }
+      /* Field box e icone ulteriormente abbassati per dare spazio all'HUD
+         (top:80px) e mostrare scritte/satellite intere */
+      .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
+      .sat-icon { width: 44px; height: 44px; top: 18%; }
+      .sat-beam { top: calc(18% + 44px); bottom: 32%; }
       .sat-hud, .sat-hud-r { top: 80px; font-size: 10px; }
       .sat-hud { left: 14px; } .sat-hud-r { right: 14px; }
       .sat-hud-r .lg { font-size: 22px; }
@@ -1956,10 +1969,10 @@ const V3GlobalStyle = () => (
     }
     .v3-mobile .sat-stage { height: 500vh; }
     .v3-mobile .sat-ticks { display: none; }
-    .v3-mobile .sat-field { left: 4%; right: 4%; top: 24%; bottom: 38%; }
-    .v3-mobile .sat-icon { width: 44px; height: 44px; top: 12%; }
-    .v3-mobile .sat-beam { top: calc(12% + 44px); bottom: 38%; }
-    .v3-mobile .sat-caption { top: 64%; bottom: auto; padding: 0 16px;
+    .v3-mobile .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
+    .v3-mobile .sat-icon { width: 44px; height: 44px; top: 18%; }
+    .v3-mobile .sat-beam { top: calc(18% + 44px); bottom: 32%; }
+    .v3-mobile .sat-caption { top: 72%; bottom: auto; padding: 0 16px;
       transform: translateX(-50%); }
     .v3-mobile .sat-cap-frame { min-height: 78px; }
     .v3-mobile .sat-rail { bottom: 16px; width: min(220px, 70vw); }

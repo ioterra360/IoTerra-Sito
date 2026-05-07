@@ -80,10 +80,10 @@ const SoilBlastHero = () => {
   // chipScale serve a portare i 6 chip più vicini al centro su viewport stretti
   // così che non sforino lo schermo. flyScale fa lo stesso per i frammenti
   // delle zolle e per le dust particles.
-  const scale = Math.max(0.40, Math.min(1, (vw - 320) / 880));
+  const scale = Math.max(0.45, Math.min(1, (vw - 320) / 880));
   const isNarrow = vw < 900;
-  const chipScale = Math.max(0.30, Math.min(1, (vw - 360) / 840));
-  const flyScale  = Math.max(0.25, Math.min(1, (vw - 360) / 840));
+  const chipScale = Math.max(0.42, Math.min(1, (vw - 360) / 700));
+  const flyScale  = Math.max(0.32, Math.min(1, (vw - 360) / 700));
 
   // 6 chip parametri ancorati a posizioni compatte intorno alla pianta.
   // Valori scientifici plausibili per suolo agricolo mediterraneo.

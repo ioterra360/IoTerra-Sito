@@ -9,35 +9,15 @@ const RD_IMG = {
 
 const PageRicerca = () => (
   <>
-    <section className="v3-section" style={{paddingBottom:24}}>
-      <div className="v3-section-narrow">
+    <section className="v3-page-hero">
+      <div className="v3-page-hero-bg" style={{backgroundImage:`url(${RD_IMG.vertical})`}}/>
+      <div className="v3-page-hero-content">
         <Reveal>
-          <div className="v3-tag" style={{marginBottom:16}}>SERVIZIO 05</div>
+          <div className="v3-tag" style={{marginBottom:16}}>SERVIZIO 05 · VERTICAL FARMING · IOTERRA LAB</div>
           <h1 className="v3-h1">Ricerca<br/>& <em>Sviluppo.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.6,color:'var(--c-onDark-muted)',marginTop:32,maxWidth:820}}>
+          <p>
             Lavoriamo a fianco delle aziende agricole per studiare nuove soluzioni: prove di campo, sperimentazioni in laboratorio, analisi dati e sviluppo di prodotti e protocolli innovativi.
           </p>
-        </Reveal>
-      </div>
-    </section>
-
-    {/* HERO IMAGE STRIP — Vertical farming */}
-    <section className="v3-section" style={{paddingTop:24,paddingBottom:24}}>
-      <div className="v3-section-narrow">
-        <Reveal>
-          <div className="v3-rd-strip">
-            <img src={RD_IMG.vertical} alt="Vertical farming — coltivazione idroponica controllata"/>
-            <div className="v3-rd-strip-grad"/>
-            <div className="v3-rd-strip-meta">
-              <div>
-                <div className="kicker">● VERTICAL FARMING · IOTERRA LAB</div>
-                <div className="ttl">Vertical farming.<br/>Spazio ottimizzato, dati continui.</div>
-              </div>
-              <div className="badge">
-                T° · UR% · pH · EC · PAR · DLI<br/>monitorati 24/7
-              </div>
-            </div>
-          </div>
         </Reveal>
       </div>
     </section>
