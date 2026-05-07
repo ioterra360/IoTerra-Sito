@@ -63,7 +63,7 @@ const PlantScanHero = () => {
     { id:'fusto',   x:50, y:34, side:'l', chipY:34,
       sym:'Ø',    name:'FUSTO',          val:'4.2',  unit:'mm' },
     { id:'foglia2', x:40, y:52, side:'r', chipY:52,
-      sym:'AREA', name:'AREA FOGLIA',    val:'120',  unit:'cm²' },
+      sym:'LAI',  name:'INDICE FOGLIARE', val:'3.4',  unit:'m²/m²' },
     { id:'vasetto', x:50, y:74, side:'l', chipY:74,
       sym:'EC',   name:'NUTRIENTI',      val:'1.6',  unit:'mS/cm' },
     { id:'radici',  x:50, y:90, side:'r', chipY:90,

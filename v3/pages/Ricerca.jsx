@@ -25,7 +25,7 @@ const PageRicerca = () => (
         <Reveal>
           <div className="v3-card" style={{padding:48}}>
             <p style={{fontSize:18,lineHeight:1.7,margin:0,maxWidth:920,fontFamily:'var(--font-display)',fontWeight:300,color:'var(--c-onDark)'}}>
-              Affianchiamo aziende, consorzi e centri di ricerca in progetti di innovazione: dalla definizione delle ipotesi al disegno sperimentale, dalla raccolta dati all'analisi statistica fino alla scrittura del report finale. <em style={{color:'var(--c-accent)',fontStyle:'italic'}}>Metodo scientifico applicato al campo.</em>
+              Affianchiamo aziende, consorzi e centri di ricerca in progetti di innovazione: dalla definizione delle ipotesi al progetto sperimentale, dalla raccolta dati all'analisi statistica fino alla scrittura del report finale. <em style={{color:'var(--c-accent)',fontStyle:'italic'}}>Metodo scientifico applicato al campo.</em>
             </p>
           </div>
         </Reveal>
