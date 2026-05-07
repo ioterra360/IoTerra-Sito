@@ -387,7 +387,10 @@ const V3GlobalStyle = () => (
       font-family: var(--font-display); font-weight: 300;
       font-size: 36px; letter-spacing: -0.02em;
       white-space: nowrap;
+      color: inherit; text-decoration: none;
+      transition: opacity .18s ease;
     }
+    .v3-call-strip a.phone:hover { opacity: 0.7; }
     @media (max-width: 900px) {
       .v3-call-strip { grid-template-columns: 1fr; padding: 32px 24px; margin: 0 12px 12px; border-radius: 20px; }
       .v3-call-strip .right { align-items: flex-start; }

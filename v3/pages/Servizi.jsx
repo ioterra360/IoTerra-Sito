@@ -52,7 +52,7 @@ const PageServizi = () => (
         <p>Contattaci per una consulenza iniziale gratuita. Insieme costruiamo il percorso più adatto alla tua azienda.</p>
       </div>
       <div className="right">
-        <div className="phone">+39 366 539 3733</div>
+        <a href="tel:+393665393733" className="phone">+39 366 539 3733</a>
         <a href="#/contatti" className="v3-btn v3-btn-light">Parla con noi →</a>
       </div>
     </section>

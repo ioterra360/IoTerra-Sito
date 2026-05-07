@@ -111,7 +111,7 @@ const PageAnalisiSuolo = () => (
         <p>Chiama ora per programmare il campionamento e ottenere un'analisi completa del suolo, con risultati chiari e una relazione agronomica.</p>
       </div>
       <div className="right">
-        <div className="phone">+39 366 539 3733</div>
+        <a href="tel:+393665393733" className="phone">+39 366 539 3733</a>
         <a href="tel:+393665393733" className="v3-btn v3-btn-light">Chiama ora →</a>
       </div>
     </section>

@@ -173,7 +173,7 @@ const PageRicerca = () => (
         <p>Ti aiutiamo a trasformarla in un protocollo di ricerca rigoroso, con dati e risultati misurabili.</p>
       </div>
       <div className="right">
-        <div className="phone">+39 366 539 3733</div>
+        <a href="tel:+393665393733" className="phone">+39 366 539 3733</a>
         <a href="tel:+393665393733" className="v3-btn v3-btn-light">Chiama ora →</a>
       </div>
     </section>

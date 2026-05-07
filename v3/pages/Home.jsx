@@ -289,7 +289,7 @@ const PageHome = () => (
         <p>La prima consulenza è gratuita: analizziamo le esigenze della tua azienda e costruiamo insieme la strategia agronomica più adatta.</p>
       </div>
       <div className="right">
-        <div className="phone">+39 366 539 3733</div>
+        <a href="tel:+393665393733" className="phone">+39 366 539 3733</a>
         <a href="#/contatti" className="v3-btn v3-btn-light">Inizia ora →</a>
       </div>
     </section>
