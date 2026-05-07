@@ -1,0 +1,29 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Dependency caches (none used now, but safe to ignore)
+node_modules/
+.cache/
+
+# Local design source bundle + uploads (do not publish to GitHub)
+ioterra/
+File/
+_import/
+qr-preview.png
+File/
+_share_*
+
+# Build artefacts (none today)
+dist/
+build/

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>IoTerra — Studio agronomico in Sardegna · Analisi suolo, consulenza, agricoltura di precisione</title>
+<meta name="description" content="IoTerra è uno studio agronomico in Sardegna. Analisi del suolo, consulenza agronomica (PAC, CSR, bandi), servizi digitali per aziende agricole, agricoltura di precisione con sensori IoT, satelliti e il software IoTerra360."/>
+<meta name="theme-color" content="#082e25"/>
+<meta name="author" content="IoTerra"/>
+<link rel="canonical" href="https://www.ioterra.it/"/>
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="IoTerra — Studio agronomico in Sardegna"/>
+<meta property="og:description" content="Coltiviamo il futuro analizzando il presente. Analisi del suolo, consulenza, marketing digitale e agricoltura di precisione."/>
+<meta property="og:url" content="https://www.ioterra.it/"/>
+<meta property="og:image" content="https://www.ioterra.it/assets/logo-ioterra.svg"/>
+<meta property="og:locale" content="it_IT"/>
+<meta name="twitter:card" content="summary_large_image"/>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/logo-ioterra.svg"/>
+<link rel="apple-touch-icon" href="assets/logo-ioterra.svg"/>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..700;1,9..144,200..700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+  html, body { background: #082e25; }
+  #root:empty::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: #082e25 radial-gradient(circle at 50% 40%, rgba(168,214,58,0.06), transparent 60%);
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "IoTerra",
+  "alternateName": "IoTerra · Servizi Agronomici",
+  "description": "Studio agronomico in Sardegna. Analisi del suolo, consulenza agronomica, servizi digitali e agricoltura di precisione.",
+  "url": "https://www.ioterra.it/",
+  "telephone": "+39 366 539 3733",
+  "email": "ioterraservizi@gmail.com",
+  "address": { "@type": "PostalAddress", "addressRegion": "Sardegna", "addressCountry": "IT" },
+  "vatID": "IT03034130900",
+  "sameAs": [
+    "https://www.instagram.com/ioterra_360/"
+  ]
+}
+</script>
+
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React 18 production -->
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<!-- Babel for in-browser JSX -->
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+
+<!-- Shared design system + components — ?v= forza il cache-busting tra build -->
+<script type="text/babel" src="v3/styles.jsx?v=26"></script>
+<script type="text/babel" src="v3/icons.jsx?v=26"></script>
+<script type="text/babel" src="v3/shell.jsx?v=26"></script>
+<script type="text/babel" src="v3/home-anim.jsx?v=26"></script>
+<script type="text/babel" src="v3/components/MosaicAnimated.jsx?v=26"></script>
+<script type="text/babel" src="v3/components/HomeSatelliteScanner.jsx?v=26"></script>
+
+<!-- Pages -->
+<script type="text/babel" src="v3/pages/Home.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/Servizi.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/Contatti.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/AnalisiSuoloHero.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/AnalisiSuolo.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/Consulenza.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/Marketing.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/PrecisioneSatHero.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/Precisione.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/RicercaScanHero.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/Ricerca.jsx?v=26"></script>
+<script type="text/babel" src="v3/pages/Legal.jsx?v=26"></script>
+
+<!-- App root -->
+<script type="text/babel">
+  // Singolo tema: il lime è stato sostituito col verde brand.
+  // Tutti gli rgba che usavano la triplette del lime ora puntano a un verde
+  // medio-chiaro brillante che resta leggibile sul bg verde scuro.
+  const THEME = {
+    bg:'#fbfbf8', fg:'#0e1f1a', muted:'#4a5d54', line:'#e2e6dc', card:'#eef0e7',
+    primary:'#0b614e', primaryDeep:'#082e25',
+    // Accent: verde brand (foglia) al posto del lime. Tutti i tag, etichette
+    // mono, bordi accent, italic emphasis, HUD numerici e linee dei
+    // connettori usano questo verde. Contrasto adeguato sul bg #082e25 e
+    // coerente con la palette del logo IoTerra.
+    accent:'#41a752',     accentRgb:'65,167,82',
+    dark:'#082e25',       darkRgb:'8,46,37',
+    onDark:'#f3f5ed',     onDarkRgb:'243,245,237',
+    onDarkMuted:'#a8b8af',
+  };
+
+  // ── PhoneFrame ─────────────────────────────────────────────────────────
+  // Cornice iPhone 14 Pro (390 × 844) per anteprima mobile dal browser.
+  // Espone il proprio scroll container come window.__scrollRoot così che
+  // gli IntersectionObserver/scroll listener delle scene scroll-driven
+  // si bindano correttamente al frame e non al viewport del browser.
+  const PhoneFrame = ({ children, onClose }) => {
+    const scrollRef = React.useRef(null);
+    React.useEffect(() => {
+      window.__scrollRoot = scrollRef.current;
+      window.dispatchEvent(new Event('__scrollRootChanged'));
+      return () => {
+        window.__scrollRoot = null;
+        window.dispatchEvent(new Event('__scrollRootChanged'));
+      };
+    }, []);
+    return (
+      <div style={{position:'fixed',inset:0,zIndex:1000,background:'#0a0d09',
+        display:'grid',placeItems:'center',padding:'24px',overflow:'auto'}}>
+        {/* Toolbar */}
+        <div style={{position:'fixed',top:16,left:'50%',transform:'translateX(-50%)',
+          zIndex:1001,display:'flex',gap:8,padding:'8px 12px',
+          background:'rgba(8,46,37,.85)',backdropFilter:'blur(12px)',
+          border:'1px solid rgba(65,167,82,.3)',borderRadius:999,fontSize:12,
+          color:'#41a752',alignItems:'center',fontFamily:'Inter,system-ui'}}>
+          <span style={{display:'flex',gap:6,alignItems:'center'}}>
+            <span style={{width:6,height:6,background:'#41a752',borderRadius:'50%',
+              animation:'blink 1.4s infinite'}}/>
+            iPhone 14 Pro · 390 × 844
+          </span>
+          <button onClick={onClose} style={{background:'rgba(65,167,82,.18)',
+            border:'1px solid rgba(65,167,82,.35)',color:'#41a752',borderRadius:999,
+            padding:'4px 12px',fontSize:11,fontFamily:'inherit',cursor:'pointer',
+            marginLeft:8}}>← Desktop</button>
+        </div>
+        {/* Phone bezel */}
+        <div style={{position:'relative',width:412,height:868,background:'#000',
+          borderRadius:56,padding:11,
+          boxShadow:'0 40px 100px -20px rgba(65,167,82,.18), 0 24px 60px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.1)',
+          marginTop:48}}>
+          <div style={{width:'100%',height:'100%',borderRadius:46,overflow:'hidden',
+            background:'#082e25',position:'relative'}}>
+            {/* Notch */}
+            <div style={{position:'absolute',top:10,left:'50%',
+              transform:'translateX(-50%)',width:120,height:32,background:'#000',
+              borderRadius:20,zIndex:10}}/>
+            {/* Status bar */}
+            <div style={{position:'absolute',top:0,left:0,right:0,height:44,
+              padding:'0 32px',display:'flex',justifyContent:'space-between',
+              alignItems:'center',fontSize:14,color:'#fff',
+              fontFamily:'-apple-system,SF Pro,Inter',fontWeight:600,zIndex:9}}>
+              <span style={{paddingTop:4}}>9:41</span>
+              <span style={{paddingTop:4,display:'flex',gap:6,alignItems:'center'}}>
+                <svg width="18" height="10" viewBox="0 0 18 10" fill="#fff">
+                  <rect x="0" y="6" width="3" height="4" rx="0.5"/>
+                  <rect x="4" y="4" width="3" height="6" rx="0.5"/>
+                  <rect x="8" y="2" width="3" height="8" rx="0.5"/>
+                  <rect x="12" y="0" width="3" height="10" rx="0.5"/>
+                </svg>
+                <svg width="26" height="12" viewBox="0 0 26 12" fill="none">
+                  <rect x="0.5" y="0.5" width="22" height="11" rx="2.5" stroke="#fff"/>
+                  <rect x="2" y="2" width="18" height="8" rx="1.5" fill="#fff"/>
+                  <rect x="23" y="4" width="2" height="4" rx="1" fill="#fff"/>
+                </svg>
+              </span>
+            </div>
+            {/* Scrollable content */}
+            <div ref={scrollRef} style={{width:'100%',height:'100%',overflow:'auto'}}>
+              {children}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const App = () => {
+    const route = useRoute();
+    const [mobile, setMobile] = React.useState(() => {
+      try { return localStorage.getItem('ioterra:device') === 'mobile'; }
+      catch { return false; }
+    });
+    const toggleMobile = (v) => {
+      setMobile(v);
+      try { localStorage.setItem('ioterra:device', v ? 'mobile' : 'desktop'); } catch {}
+    };
+
+    const themeVars = {
+      '--c-bg': THEME.bg, '--c-fg': THEME.fg, '--c-muted': THEME.muted, '--c-line': THEME.line,
+      '--c-card': THEME.card, '--c-primary': THEME.primary, '--c-primary-deep': THEME.primaryDeep,
+      '--c-accent': THEME.accent, '--c-accent-rgb': THEME.accentRgb,
+      '--c-dark': THEME.dark, '--c-dark-rgb': THEME.darkRgb,
+      '--c-onDark': THEME.onDark, '--c-onDark-rgb': THEME.onDarkRgb,
+      '--c-onDark-muted': THEME.onDarkMuted,
+      '--font-display': `'Fraunces', serif`,
+      '--font-ui': `'Inter', system-ui, sans-serif`,
+      '--font-mono': `'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace`,
+      '--radius': '20px',
+    };
+
+    let Page = PageHome;
+    if (route === '#/servizi') Page = PageServizi;
+    else if (route === '#/contatti') Page = PageContatti;
+    else if (route === '#/analisi-suolo') Page = PageAnalisiSuolo;
+    else if (route === '#/consulenza') Page = PageConsulenza;
+    else if (route === '#/marketing') Page = PageMarketing;
+    else if (route === '#/precisione') Page = PagePrecisione;
+    else if (route === '#/ricerca') Page = PageRicerca;
+    else if (route === '#/privacy') Page = PagePrivacy;
+    else if (route === '#/termini') Page = PageTermini;
+
+    const inner = (
+      <div className={`v3-app v3-grain ${mobile ? 'v3-mobile' : ''}`} style={themeVars}>
+        <V3GlobalStyle/>
+        <Nav route={route}/>
+        <main><Page/></main>
+        <Footer/>
+      </div>
+    );
+
+    return (
+      <>
+        {mobile
+          ? <PhoneFrame onClose={() => toggleMobile(false)}>{inner}</PhoneFrame>
+          : inner}
+
+        {!mobile && (
+          <button
+            onClick={() => toggleMobile(true)}
+            aria-label="Anteprima mobile"
+            style={{position:'fixed',bottom:24,right:24,zIndex:999,
+              padding:'12px 18px',background:'rgba(8,46,37,.88)',
+              backdropFilter:'blur(12px)',border:'1px solid rgba(65,167,82,.35)',
+              borderRadius:999,color:'#41a752',fontFamily:'Inter,system-ui',
+              fontSize:13,fontWeight:600,letterSpacing:'.02em',cursor:'pointer',
+              display:'flex',gap:10,alignItems:'center',
+              boxShadow:'0 12px 32px rgba(0,0,0,.4)'}}>
+            <svg width="14" height="20" viewBox="0 0 14 20" fill="none"
+              stroke="#41a752" strokeWidth="1.5">
+              <rect x="1" y="1" width="12" height="18" rx="2"/>
+              <circle cx="7" cy="16" r="0.6" fill="#41a752"/>
+            </svg>
+            Anteprima mobile
+          </button>
+        )}
+
+        <CookieBanner/>
+      </>
+    );
+  };
+
+  // ── CookieBanner — GDPR-compliant minimal ────────────────────────────────
+  const CookieBanner = () => {
+    const [shown, setShown] = React.useState(() => {
+      try { return !localStorage.getItem('ioterra:cookie'); }
+      catch { return true; }
+    });
+    const accept = (mode) => {
+      try { localStorage.setItem('ioterra:cookie', mode); } catch {}
+      setShown(false);
+    };
+    if (!shown) return null;
+    return (
+      <div role="dialog" aria-label="Avviso cookie" style={{
+        position:'fixed', left:16, right:16, bottom:16, zIndex:998,
+        maxWidth:520, marginLeft:'auto',
+        background:'rgba(8,46,37,0.92)', backdropFilter:'blur(14px) saturate(140%)',
+        WebkitBackdropFilter:'blur(14px) saturate(140%)',
+        border:'1px solid rgba(65,167,82,0.30)', borderRadius:16,
+        padding:'18px 20px', color:'#f3f5ed',
+        fontFamily:'Inter,system-ui,sans-serif',
+        boxShadow:'0 24px 60px rgba(0,0,0,0.5)',
+      }}>
+        <div style={{display:'flex',alignItems:'center',gap:10,
+          fontSize:11,letterSpacing:'.16em',textTransform:'uppercase',
+          color:'#41a752',marginBottom:8}}>
+          <span style={{width:6,height:6,borderRadius:'50%',background:'#41a752',
+            animation:'pulse 1.6s ease-in-out infinite'}}/>
+          Cookie · Privacy
+        </div>
+        <p style={{margin:'0 0 14px',fontSize:14,lineHeight:1.55,
+          color:'rgba(243,245,237,0.85)'}}>
+          Usiamo cookie tecnici necessari al funzionamento del sito e cookie di
+          preferenza per ricordare le tue scelte. Nessun cookie di profilazione.
+          Per saperne di più consulta la{' '}
+          <a href="#/privacy" style={{color:'#41a752',textDecoration:'none',
+            borderBottom:'1px solid rgba(65,167,82,0.5)'}}>Privacy Policy</a>.
+        </p>
+        <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
+          <button onClick={() => accept('all')} style={{
+            flex:'1 1 auto', padding:'10px 16px',
+            background:'#41a752', color:'#082e25',
+            border:'1px solid #41a752', borderRadius:999,
+            fontFamily:'inherit', fontSize:13, fontWeight:600,
+            cursor:'pointer', minWidth:140}}>
+            Accetta tutti
+          </button>
+          <button onClick={() => accept('essential')} style={{
+            flex:'1 1 auto', padding:'10px 16px',
+            background:'transparent', color:'#f3f5ed',
+            border:'1px solid rgba(255,255,255,0.18)', borderRadius:999,
+            fontFamily:'inherit', fontSize:13, fontWeight:500,
+            cursor:'pointer', minWidth:140}}>
+            Solo necessari
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
