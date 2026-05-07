@@ -286,7 +286,7 @@ const PageHome = () => (
     <section className="v3-call-strip">
       <div>
         <h2>Pronto a portare la tua azienda nel <em style={{color:'var(--c-onDark)'}}>futuro?</em></h2>
-        <p>Contattaci per una consulenza gratuita. Analizziamo le esigenze della tua azienda e costruiamo insieme la strategia agronomica più adatta.</p>
+        <p>La prima consulenza è gratuita: analizziamo le esigenze della tua azienda e costruiamo insieme la strategia agronomica più adatta.</p>
       </div>
       <div className="right">
         <div className="phone">+39 366 539 3733</div>
