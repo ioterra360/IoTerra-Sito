@@ -181,14 +181,8 @@
 
   const App = () => {
     const route = useRoute();
-    const [mobile, setMobile] = React.useState(() => {
-      try { return localStorage.getItem('ioterra:device') === 'mobile'; }
-      catch { return false; }
-    });
-    const toggleMobile = (v) => {
-      setMobile(v);
-      try { localStorage.setItem('ioterra:device', v ? 'mobile' : 'desktop'); } catch {}
-    };
+    // Anteprima mobile rimossa dal sito pubblico. mobile resta sempre false.
+    const [mobile] = React.useState(false);
 
     const themeVars = {
       '--c-bg': THEME.bg, '--c-fg': THEME.fg, '--c-muted': THEME.muted, '--c-line': THEME.line,
@@ -225,30 +219,7 @@
 
     return (
       <>
-        {mobile
-          ? <PhoneFrame onClose={() => toggleMobile(false)}>{inner}</PhoneFrame>
-          : inner}
-
-        {!mobile && (
-          <button
-            onClick={() => toggleMobile(true)}
-            aria-label="Anteprima mobile"
-            style={{position:'fixed',bottom:24,right:24,zIndex:999,
-              padding:'12px 18px',background:'rgba(8,46,37,.88)',
-              backdropFilter:'blur(12px)',border:'1px solid rgba(65,167,82,.35)',
-              borderRadius:999,color:'#41a752',fontFamily:'Inter,system-ui',
-              fontSize:13,fontWeight:600,letterSpacing:'.02em',cursor:'pointer',
-              display:'flex',gap:10,alignItems:'center',
-              boxShadow:'0 12px 32px rgba(0,0,0,.4)'}}>
-            <svg width="14" height="20" viewBox="0 0 14 20" fill="none"
-              stroke="#41a752" strokeWidth="1.5">
-              <rect x="1" y="1" width="12" height="18" rx="2"/>
-              <circle cx="7" cy="16" r="0.6" fill="#41a752"/>
-            </svg>
-            Anteprima mobile
-          </button>
-        )}
-
+        {inner}
         <CookieBanner/>
       </>
     );
