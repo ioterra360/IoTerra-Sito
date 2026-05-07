@@ -375,16 +375,15 @@ const V3GlobalStyle = () => (
       .v3-footer-brand .lg img { height: 28px !important; }
       .v3-footer-brand p { font-size: 13px; line-height: 1.55; }
       .v3-footer-top h4 {
-        font-family: var(--font-mono);
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--c-accent);
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        color: var(--c-onDark);
         margin: 0 0 14px;
       }
-      .v3-footer-top ul { gap: 12px; }
-      .v3-footer-top a { font-size: 15px; }
+      .v3-footer-top ul { gap: 10px; }
+      .v3-footer-top a { font-size: 14.5px; }
       /* Social inline orizzontale (ultimo div) */
       .v3-footer-top > div:last-child ul {
         display: flex;
