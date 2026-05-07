@@ -82,19 +82,23 @@ const SoilBlastHero = () => {
   // delle zolle e per le dust particles.
   const scale = Math.max(0.45, Math.min(1, (vw - 320) / 880));
   const isNarrow = vw < 900;
-  const chipScale = Math.max(0.42, Math.min(1, (vw - 360) / 700));
-  const flyScale  = Math.max(0.32, Math.min(1, (vw - 360) / 700));
+  // chipScale conservativo su 320-720, generoso su desktop. Coordinate base
+  // ±200 con scale 0.32 = ±64px dal centro (iPhone SE) — mai out-of-screen.
+  const chipScale = Math.max(0.32, Math.min(1, (vw - 360) / 700));
+  const flyScale  = Math.max(0.30, Math.min(1, (vw - 360) / 700));
 
   // 6 chip parametri ancorati a posizioni compatte intorno alla pianta.
   // Valori scientifici plausibili per suolo agricolo mediterraneo.
   // Coordinate calibrate per restare dentro lo schermo a viewport >= 720px.
+  // Coordinate spinte verso i bordi laterali. chipScale (sotto) clampa a 0.32
+  // per garantire che su iPhone SE (vw=320) i chip restino dentro il viewport.
   const chips = React.useMemo(() => ([
-    { sym:'N',  name:'AZOTO',     val:'1.4 g/kg',  x:-130, y:-130, big:true },
-    { sym:'P',  name:'FOSFORO',   val:'42 mg/kg',  x: 130, y:-150, big:true },
-    { sym:'K',  name:'POTASSIO',  val:'180 ppm',   x:-125, y:  20, big:true },
-    { sym:'pH', name:'REAZIONE',  val:'7.2',       x: 125, y:  40, big:false },
-    { sym:'OM', name:'SOST. ORG', val:'2.8%',      x:-110, y: 160, big:false },
-    { sym:'CE', name:'SALINITÀ',  val:'0.4 dS/m',  x: 140, y: 180, big:false },
+    { sym:'N',  name:'AZOTO',     val:'1.4 g/kg',  x:-200, y:-130, big:true },
+    { sym:'P',  name:'FOSFORO',   val:'42 mg/kg',  x: 200, y:-150, big:true },
+    { sym:'K',  name:'POTASSIO',  val:'180 ppm',   x:-220, y:  20, big:true },
+    { sym:'pH', name:'REAZIONE',  val:'7.2',       x: 220, y:  40, big:false },
+    { sym:'OM', name:'SOST. ORG', val:'2.8%',      x:-200, y: 170, big:false },
+    { sym:'CE', name:'SALINITÀ',  val:'0.4 dS/m',  x: 215, y: 190, big:false },
   ]), []);
 
   // 24 dust particles con seed deterministico

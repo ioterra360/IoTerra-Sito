@@ -12,9 +12,7 @@ const PageRicerca = () => (
     <section className="v3-page-hero">
       <div className="v3-page-hero-bg" style={{backgroundImage:`url(${RD_IMG.vertical})`}}/>
       <div className="v3-page-hero-content">
-        <Reveal>
-          <div className="v3-tag" style={{marginBottom:16}}>SERVIZIO 05 · VERTICAL FARMING · IOTERRA LAB</div>
-          <h1 className="v3-h1">Ricerca<br/>& <em>Sviluppo.</em></h1>
+        <Reveal>          <h1 className="v3-h1">Ricerca<br/>& <em>Sviluppo.</em></h1>
           <p>
             Lavoriamo a fianco delle aziende agricole per studiare nuove soluzioni: prove di campo, sperimentazioni in laboratorio, analisi dati e sviluppo di prodotti e protocolli innovativi.
           </p>

@@ -4,9 +4,7 @@ const PageConsulenza = () => (
     <section className="v3-page-hero">
       <div className="v3-page-hero-bg" style={{backgroundImage:"url('assets/img/tablet-consulenza.jpg')"}}/>
       <div className="v3-page-hero-content">
-        <Reveal>
-          <div className="v3-tag" style={{marginBottom:16}}>SERVIZIO 02</div>
-          <h1 className="v3-h1">Consulenza<br/><em>agronomica.</em></h1>
+        <Reveal>          <h1 className="v3-h1">Consulenza<br/><em>agronomica.</em></h1>
           <p>
             La consulenza agronomica è uno strumento strategico per migliorare la gestione delle attività agricole e garantire la sostenibilità economica, ambientale e produttiva.
           </p>

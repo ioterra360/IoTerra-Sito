@@ -121,7 +121,8 @@ const V3GlobalStyle = () => (
     }
 
     h1, h2, h3 { font-family: var(--font-display); font-weight: 300; letter-spacing: -0.04em; line-height: 0.94; margin: 0; color: var(--c-onDark); }
-    h1 em, h2 em, h3 em { font-style: italic; color: var(--c-accent); font-weight: 300; }
+    /* Em titoli in verde più scuro/saturo (vs accent brand sui tag/btn). */
+    h1 em, h2 em, h3 em { font-style: italic; color: #2c8a3a; font-weight: 300; }
     p { color: var(--c-onDark-muted); font-size: 16.5px; line-height: 1.65; }
 
     .v3-h1 { font-size: clamp(56px, 10vw, 144px); }
@@ -2498,9 +2499,12 @@ const V3GlobalStyle = () => (
       font-family: var(--font-mono); font-size: 10px;
       color: rgba(var(--c-onDark-rgb),0.55);
     }
-    /* I chip stanno sempre SOPRA l'hero gradient (z-index 8) */
-    .hsc-chip { z-index: 12 !important; }
-    .hsc-poi-layer { z-index: 11 !important; }
+    /* Hero text Home rimane sempre VISIBILE — chip dell'animazione vanno
+       sotto, mai sopra al titolo "Coltiviamo il...". */
+    .hsc-hero { z-index: 20 !important; }
+    .hsc-chip { z-index: 6 !important; }
+    .hsc-poi-layer { z-index: 5 !important; }
+    /* Precisione: i chip restano sopra al field (no overlap con hero del sito) */
     .sat-chip { z-index: 14 !important; }
     .sat-poi-layer { z-index: 13 !important; }
 

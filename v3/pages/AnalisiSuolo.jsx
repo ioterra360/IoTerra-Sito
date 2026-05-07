@@ -4,9 +4,7 @@ const PageAnalisiSuolo = () => (
     <section className="v3-page-hero">
       <div className="v3-page-hero-bg" style={{backgroundImage:"url('assets/img/lab.jpg')"}}/>
       <div className="v3-page-hero-content">
-        <Reveal>
-          <div className="v3-tag" style={{marginBottom:16}}>SERVIZIO 01</div>
-          <h1 className="v3-h1">Analisi del<br/><em>suolo.</em></h1>
+        <Reveal>          <h1 className="v3-h1">Analisi del<br/><em>suolo.</em></h1>
           <p>
             Analizzare il suolo della tua azienda ci permette di comprenderne le caratteristiche e pianificare in maniera precisa la fertilizzazione e la gestione idrica.
           </p>

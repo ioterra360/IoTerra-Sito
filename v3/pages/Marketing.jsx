@@ -67,9 +67,7 @@ const PageMarketing = () => {
     <section className="v3-page-hero">
       <div className="v3-page-hero-bg" style={{backgroundImage:`url(${DIG_IMG.hero})`}}/>
       <div className="v3-page-hero-content">
-        <Reveal>
-          <div className="v3-tag" style={{marginBottom:16}}>SERVIZIO 03</div>
-          <h1 className="v3-h1">Servizi<br/><em>Digitali.</em></h1>
+        <Reveal>          <h1 className="v3-h1">Servizi<br/><em>Digitali.</em></h1>
           <p>
             Siti web dedicati, applicazioni full-stack e web app costruite su misura per il tuo business agricolo. Trasformiamo il tuo lavoro in strumenti digitali che funzionano davvero.
           </p>
