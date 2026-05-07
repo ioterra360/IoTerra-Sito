@@ -180,7 +180,7 @@ const PageHome = () => (
       <div className="v3-section-narrow">
         <Reveal style={{textAlign:'center',marginBottom:88}}>
           <div className="v3-tag" style={{marginBottom:16}}>I NOSTRI SERVIZI</div>
-          <h2 className="v3-h2" style={{lineHeight:1.05}}>Scegli quello<br/>che fa <em>per te.</em></h2>
+          <h2 className="v3-h2" style={{fontSize:'clamp(64px, 10vw, 140px)', lineHeight:1.0}}>Pensati<br/><em>per te.</em></h2>
         </Reveal>
         <div className="v3-svc-grid" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16}}>
           {[
