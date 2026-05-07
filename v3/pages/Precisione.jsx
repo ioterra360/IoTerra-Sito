@@ -25,10 +25,12 @@ const NDVIBig = () => {
 
 const PagePrecisione = () => (
   <>
-    <section className="v3-section" style={{paddingBottom:24}}>
-      <div className="v3-section-narrow">
-        <Reveal>          <h1 className="v3-h1">Agricoltura<br/>di <em>precisione.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.6,color:'var(--c-onDark-muted)',marginTop:32,maxWidth:820}}>
+    <section className="v3-page-hero">
+      <div className="v3-page-hero-bg" style={{backgroundImage:`url(assets/img/precisione-hero.jpg)`}}/>
+      <div className="v3-page-hero-content">
+        <Reveal>
+          <h1 className="v3-h1">Agricoltura<br/>di <em>precisione.</em></h1>
+          <p>
             L'agricoltura di precisione è un'opportunità unica per trasformare la tua azienda agricola: efficienza, risparmio e sostenibilità.
           </p>
         </Reveal>
