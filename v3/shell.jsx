@@ -176,7 +176,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="v3-footer-bot">
-      <span>© {new Date().getFullYear()} IoTerra · P.IVA 03034130900</span>
+      <span>© IoTerra · P.IVA 03034130900</span>
       <span>
         <a href="#/privacy">Privacy</a> · <a href="#/termini">Termini</a>
       </span>
