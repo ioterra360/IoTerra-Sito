@@ -139,15 +139,22 @@ const PageMarketing = () => {
       </div>
     </section>
 
-    {/* FULL-BLEED IMAGE BREAK */}
-    <section className="v3-section" style={{paddingTop:0,paddingBottom:0}}>
-      <div style={{position:'relative',width:'100%',aspectRatio:'21 / 8',overflow:'hidden'}}>
-        <img src="assets/img/smartphone-field.jpg" alt="Smartphone in campo agricolo" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-        <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(var(--c-dark-rgb),0.92) 0%,rgba(var(--c-dark-rgb),0.5) 50%,transparent 100%)'}}/>
-        <div style={{position:'absolute',left:'8%',top:'50%',transform:'translateY(-50%)',maxWidth:560}}>
-          <div style={{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'0.15em',color:'var(--c-accent)',marginBottom:16}}>● BUILD · DEPLOY · SCALE</div>
-          <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:48,fontWeight:300,color:'#fff',lineHeight:1.05,letterSpacing:'-0.02em'}}>Il tuo lavoro,<br/>online.</div>
-          <div style={{fontFamily:'var(--font-mono)',fontSize:11,color:'rgba(255,255,255,0.5)',marginTop:16,letterSpacing:'0.05em'}}>FRONTEND · BACKEND · CLOUD · MONITORING</div>
+    {/* FULL-BLEED HERO BREAK — Smartphone in campo */}
+    <section className="v3-fbhero">
+      <div className="v3-fbhero-img" style={{backgroundImage:"url('assets/img/smartphone-field.jpg')"}}/>
+      <div className="v3-fbhero-grad"/>
+      <div className="v3-fbhero-vignette"/>
+      <div className="v3-fbhero-content">
+        <div className="v3-fbhero-kicker">● BUILD · DEPLOY · SCALE</div>
+        <h2 className="v3-fbhero-h">Il tuo lavoro,<br/><em>online.</em></h2>
+        <p className="v3-fbhero-sub">
+          Dal sito vetrina al gestionale. Costruiamo prodotti digitali che vivono dove i tuoi clienti già sono.
+        </p>
+        <div className="v3-fbhero-tags">
+          <span>FRONTEND</span>
+          <span>BACKEND</span>
+          <span>CLOUD</span>
+          <span>MONITORING</span>
         </div>
       </div>
     </section>

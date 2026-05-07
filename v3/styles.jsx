@@ -121,8 +121,12 @@ const V3GlobalStyle = () => (
     }
 
     h1, h2, h3 { font-family: var(--font-display); font-weight: 300; letter-spacing: -0.04em; line-height: 0.94; margin: 0; color: var(--c-onDark); }
-    /* Em titoli in verde più scuro/saturo (vs accent brand sui tag/btn). */
-    h1 em, h2 em, h3 em { font-style: italic; color: #2c8a3a; font-weight: 300; }
+    /* Em titoli in verde scuro saturo (vs accent brand sui tag/btn). Aggiunto
+       text-shadow per leggibilità coerente su sfondi scuri E sfondi chiari/verdi. */
+    h1 em, h2 em, h3 em {
+      font-style: italic; color: #1f6b2a; font-weight: 400;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.55), 0 0 1px rgba(0,0,0,0.35);
+    }
     p { color: var(--c-onDark-muted); font-size: 16.5px; line-height: 1.65; }
 
     .v3-h1 { font-size: clamp(56px, 10vw, 144px); }
@@ -1164,7 +1168,7 @@ const V3GlobalStyle = () => (
     /* === END MOSAIC ANIMATED === */
 
     /* === SOIL BLAST HERO (AnalisiSuolo) === */
-    .sb-stage { position: relative; height: 500vh; }
+    .sb-stage { position: relative; height: 380vh; }
     .sb-pin {
       position: sticky; top: 0; left: 0; height: 100vh; width: 100%;
       overflow: hidden;
@@ -2283,6 +2287,123 @@ const V3GlobalStyle = () => (
     .v3-mobile .v3-rd-strip-meta .ttl { font-size: clamp(20px, 6vw, 28px); }
     .v3-mobile .v3-rd-strip-meta .badge { text-align: left; font-size: 10px; }
     /* === END Ricerca strip === */
+
+    /* === FULL-BLEED HERO BREAK (Marketing + Ricerca) ============== */
+    /* Sezione full-width con foto immersiva, multi-layer gradient per stacco
+       del testo dal soggetto fotografico, kicker mono, titolo display 56px,
+       paragrafo descrittivo + tag chips. Mobile: aspect-ratio più verticale. */
+    .v3-fbhero {
+      position: relative; width: 100%;
+      aspect-ratio: 21 / 9;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .v3-fbhero-img {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transform: scale(1.05);
+      filter: saturate(1.05) contrast(1.05);
+    }
+    /* Gradient orizzontale (sx scuro per stacco testo, dx visibile soggetto) */
+    .v3-fbhero-grad {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg,
+          rgba(var(--c-dark-rgb),0.92) 0%,
+          rgba(var(--c-dark-rgb),0.65) 35%,
+          rgba(var(--c-dark-rgb),0.20) 65%,
+          transparent 100%),
+        linear-gradient(180deg,
+          rgba(var(--c-dark-rgb),0.30) 0%,
+          transparent 30%,
+          rgba(var(--c-dark-rgb),0.45) 100%);
+    }
+    /* Vignette accent in basso a sinistra per richiamo brand */
+    .v3-fbhero-vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 0% 100%,
+        rgba(var(--c-accent-rgb),0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .v3-fbhero-content {
+      position: absolute; left: 8%; top: 50%;
+      transform: translateY(-50%);
+      max-width: 600px; z-index: 2;
+    }
+    .v3-fbhero-kicker {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.18em; color: var(--c-accent);
+      margin-bottom: 18px; display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px;
+      background: rgba(var(--c-dark-rgb),0.5);
+      border: 1px solid rgba(var(--c-accent-rgb),0.25);
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+    }
+    .v3-fbhero-h {
+      font-family: var(--font-display); font-weight: 300;
+      font-size: clamp(40px, 5.6vw, 72px);
+      line-height: 1; letter-spacing: -0.04em;
+      color: #fff; margin: 0 0 18px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .v3-fbhero-h em {
+      font-style: italic; color: var(--c-accent); font-weight: 300;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .v3-fbhero-sub {
+      font-size: 17px; line-height: 1.55;
+      color: rgba(255,255,255,0.88); max-width: 520px;
+      margin: 0 0 22px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .v3-fbhero-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .v3-fbhero-tags span {
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 6px 12px;
+      background: rgba(var(--c-dark-rgb),0.6);
+      border: 1px solid rgba(var(--c-accent-rgb),0.22);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    @media (max-width: 760px) {
+      .v3-fbhero { aspect-ratio: 4 / 5; }
+      .v3-fbhero-grad {
+        background:
+          linear-gradient(180deg,
+            rgba(var(--c-dark-rgb),0.20) 0%,
+            rgba(var(--c-dark-rgb),0.50) 40%,
+            rgba(var(--c-dark-rgb),0.92) 100%);
+      }
+      .v3-fbhero-content {
+        left: 6%; right: 6%; top: auto; bottom: 8%;
+        transform: none; max-width: 100%;
+      }
+      .v3-fbhero-h { font-size: clamp(34px, 9vw, 48px); }
+      .v3-fbhero-sub { font-size: 14.5px; max-width: 100%; }
+      .v3-fbhero-tags span { font-size: 9.5px; padding: 5px 10px; }
+    }
+    .v3-mobile .v3-fbhero { aspect-ratio: 4 / 5; }
+    .v3-mobile .v3-fbhero-grad {
+      background:
+        linear-gradient(180deg,
+          rgba(var(--c-dark-rgb),0.20) 0%,
+          rgba(var(--c-dark-rgb),0.50) 40%,
+          rgba(var(--c-dark-rgb),0.92) 100%);
+    }
+    .v3-mobile .v3-fbhero-content {
+      left: 6%; right: 6%; top: auto; bottom: 8%;
+      transform: none; max-width: 100%;
+    }
+    .v3-mobile .v3-fbhero-h { font-size: clamp(34px, 9vw, 48px); }
+    .v3-mobile .v3-fbhero-sub { font-size: 14.5px; max-width: 100%; }
+    .v3-mobile .v3-fbhero-tags span { font-size: 9.5px; padding: 5px 10px; }
+    /* === END FULL-BLEED HERO BREAK === */
 
     /* === BANDI AGRICOLI (Home) ====================================== */
     /* Sezione finanziamenti — su mobile: stack verticale con card lime,

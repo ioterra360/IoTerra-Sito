@@ -92,13 +92,15 @@ const SoilBlastHero = () => {
   // Coordinate calibrate per restare dentro lo schermo a viewport >= 720px.
   // Coordinate spinte verso i bordi laterali. chipScale (sotto) clampa a 0.32
   // per garantire che su iPhone SE (vw=320) i chip restino dentro il viewport.
+  // Coordinate ben sparse: top -190/-180, mid 30/50, bottom 200/220.
+  // Range Y totale ~400px → chip ben distinti tra loro.
   const chips = React.useMemo(() => ([
-    { sym:'N',  name:'AZOTO',     val:'1.4 g/kg',  x:-200, y:-130, big:true },
-    { sym:'P',  name:'FOSFORO',   val:'42 mg/kg',  x: 200, y:-150, big:true },
-    { sym:'K',  name:'POTASSIO',  val:'180 ppm',   x:-220, y:  20, big:true },
-    { sym:'pH', name:'REAZIONE',  val:'7.2',       x: 220, y:  40, big:false },
-    { sym:'OM', name:'SOST. ORG', val:'2.8%',      x:-200, y: 170, big:false },
-    { sym:'CE', name:'SALINITÀ',  val:'0.4 dS/m',  x: 215, y: 190, big:false },
+    { sym:'N',  name:'AZOTO',     val:'1.4 g/kg',  x:-205, y:-180, big:true },
+    { sym:'P',  name:'FOSFORO',   val:'42 mg/kg',  x: 205, y:-190, big:true },
+    { sym:'K',  name:'POTASSIO',  val:'180 ppm',   x:-225, y:  30, big:true },
+    { sym:'pH', name:'REAZIONE',  val:'7.2',       x: 225, y:  50, big:false },
+    { sym:'OM', name:'SOST. ORG', val:'2.8%',      x:-205, y: 215, big:false },
+    { sym:'CE', name:'SALINITÀ',  val:'0.4 dS/m',  x: 220, y: 225, big:false },
   ]), []);
 
   // 24 dust particles con seed deterministico
@@ -166,11 +168,11 @@ const SoilBlastHero = () => {
   const stable = Math.max(0, Math.min(1, (progress - 0.55) / 0.25));
   const finale = Math.max(0, Math.min(1, (progress - 0.82) / 0.18));
 
-  // Step caption (0..3)
+  // Step caption (0..3) — step 3 attivato prima per non avere zona morta a fine
   let step = 0;
   if (progress > 0.15) step = 1;
-  if (progress > 0.45) step = 2;
-  if (progress > 0.78) step = 3;
+  if (progress > 0.40) step = 2;
+  if (progress > 0.68) step = 3;
 
   const captions = [
     { tag:'STEP 01 · CAMPIONAMENTO', t:'Si parte dal campo.', d:'Campioni di suolo prelevati in punti strategici della parcella, georeferenziati con GPS.' },

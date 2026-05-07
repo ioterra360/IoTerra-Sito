@@ -120,15 +120,22 @@ const PageRicerca = () => (
       </div>
     </section>
 
-    {/* FULL-BLEED IMAGE — pisello detail */}
-    <section className="v3-section" style={{paddingTop:0,paddingBottom:0}}>
-      <div style={{position:'relative',width:'100%',aspectRatio:'21 / 8',overflow:'hidden'}}>
-        <img src={RD_IMG.pisello} alt="Parcella sperimentale di pisello — IoTerra Lab" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',filter:'saturate(1.05)'}}/>
-        <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,rgba(var(--c-dark-rgb),0.88) 0%,rgba(var(--c-dark-rgb),0.4) 50%,transparent 100%)'}}></div>
-        <div style={{position:'absolute',left:'8%',top:'50%',transform:'translateY(-50%)',maxWidth:520}}>
-          <div style={{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'0.15em',color:'var(--c-accent)',marginBottom:16}}>● METODO SCIENTIFICO · CAMPO + LAB</div>
-          <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:48,fontWeight:300,color:'#fff',lineHeight:1.05,letterSpacing:'-0.02em'}}>Dall'ipotesi<br/>al dato.</div>
-          <div style={{fontFamily:'var(--font-mono)',fontSize:11,color:'rgba(255,255,255,0.5)',marginTop:16,letterSpacing:'0.05em'}}>DESIGN · RILIEVI · ANALISI · REPORT</div>
+    {/* FULL-BLEED HERO BREAK — Parcella pisello R&S */}
+    <section className="v3-fbhero">
+      <div className="v3-fbhero-img" style={{backgroundImage:`url(${RD_IMG.pisello})`,filter:'saturate(1.08) brightness(1.02)'}}/>
+      <div className="v3-fbhero-grad"/>
+      <div className="v3-fbhero-vignette"/>
+      <div className="v3-fbhero-content">
+        <div className="v3-fbhero-kicker">● METODO SCIENTIFICO · CAMPO + LAB</div>
+        <h2 className="v3-fbhero-h">Dall'ipotesi<br/><em>al dato.</em></h2>
+        <p className="v3-fbhero-sub">
+          Disegno sperimentale, rilievi periodici, analisi statistica e report finale. Un metodo replicabile, calibrato sulla tua filiera.
+        </p>
+        <div className="v3-fbhero-tags">
+          <span>DESIGN</span>
+          <span>RILIEVI</span>
+          <span>ANALISI</span>
+          <span>REPORT</span>
         </div>
       </div>
     </section>
