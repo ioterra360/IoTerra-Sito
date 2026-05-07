@@ -121,12 +121,10 @@ const V3GlobalStyle = () => (
     }
 
     h1, h2, h3 { font-family: var(--font-display); font-weight: 300; letter-spacing: -0.04em; line-height: 0.94; margin: 0; color: var(--c-onDark); }
-    /* Em titoli: stesso accent brand dei chip/tag/HUD per coerenza "digitale"
-       e leggibilità piena su qualunque sfondo scuro. text-shadow lieve
-       per staccare sull'immagine quando l'em compare sopra una foto. */
+    /* Em titoli: accent brand pieno, NESSUN text-shadow / sfumatura.
+       Tutte le parole del sito sono nitide, senza glow. */
     h1 em, h2 em, h3 em {
       font-style: italic; color: var(--c-accent); font-weight: 400;
-      text-shadow: 0 1px 14px rgba(8,46,37,0.55);
     }
     p { color: var(--c-onDark-muted); font-size: 16.5px; line-height: 1.65; }
 
@@ -382,7 +380,7 @@ const V3GlobalStyle = () => (
       pointer-events: none;
     }
     .v3-call-strip h2 { font-size: clamp(36px, 5vw, 64px); line-height: 0.96; margin: 0; color: var(--c-dark); }
-    .v3-call-strip h2 em { font-style: italic; color: var(--c-primary); }
+    .v3-call-strip h2 em { font-style: italic; color: var(--c-onDark); }
     .v3-call-strip p { font-size: 16px; line-height: 1.6; margin: 16px 0 0; max-width: 540px; opacity: 0.85; color: var(--c-dark); }
     .v3-call-strip .right { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; position: relative; z-index: 1; }
     .v3-call-strip .phone {

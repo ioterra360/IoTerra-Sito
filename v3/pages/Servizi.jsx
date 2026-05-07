@@ -14,7 +14,7 @@ const PageServizi = () => (
       <div className="v3-section-narrow">
         <Reveal>
           <div className="v3-tag" style={{marginBottom:16}}>SERVIZI</div>
-          <h1 className="v3-h1" style={{maxWidth:1200}}>I nostri <em>servizi.</em><br/>Scegli quello che fa per te.</h1>
+          <h1 className="v3-h1" style={{maxWidth:1200}}>I nostri <em>servizi.</em><br/>Pensati <em>per te.</em></h1>
         </Reveal>
       </div>
     </section>
