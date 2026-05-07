@@ -358,9 +358,58 @@ const V3GlobalStyle = () => (
     }
     @media (max-width: 900px) {
       .v3-block { margin: 0 12px; padding: 48px 24px; border-radius: 20px; }
-      .v3-footer { margin: 12px; padding: 40px 24px 20px; border-radius: 20px; }
-      .v3-footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .v3-footer-bot { flex-direction: column; gap: 8px; }
+      /* FOOTER MOBILE - single column editoriale con divider tra sezioni */
+      .v3-footer { margin: 8px; padding: 36px 22px 20px; border-radius: 20px; }
+      .v3-footer-top {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding-bottom: 22px;
+      }
+      .v3-footer-top > div + div {
+        padding-top: 22px;
+        margin-top: 22px;
+        border-top: 1px solid rgba(var(--c-accent-rgb), 0.12);
+      }
+      .v3-footer-brand { gap: 12px; }
+      .v3-footer-brand .lg { font-size: 22px; }
+      .v3-footer-brand .lg img { height: 28px !important; }
+      .v3-footer-brand p { font-size: 13px; line-height: 1.55; }
+      .v3-footer-top h4 {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--c-accent);
+        margin: 0 0 14px;
+      }
+      .v3-footer-top ul { gap: 12px; }
+      .v3-footer-top a { font-size: 15px; }
+      /* Social inline orizzontale (ultimo div) */
+      .v3-footer-top > div:last-child ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .v3-footer-top > div:last-child ul li a {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border: 1px solid rgba(var(--c-accent-rgb), 0.18);
+        border-radius: 999px;
+        font-size: 13px;
+        color: var(--c-onDark);
+      }
+      .v3-footer-bot {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+        font-size: 11.5px;
+        letter-spacing: 0.06em;
+        padding-top: 22px;
+      }
     }
 
     /* CTA STRIP */
@@ -775,13 +824,58 @@ const V3GlobalStyle = () => (
     .v3-mobile .v3-call-strip .right { align-items: flex-start; }
     .v3-mobile .v3-call-strip .phone { font-size: 20px !important; white-space: nowrap !important; }
 
-    /* Footer */
-    .v3-mobile .v3-footer { margin: 8px; padding: 32px 20px 20px; border-radius: 20px; }
-    .v3-mobile .v3-footer-top { grid-template-columns: 1fr 1fr !important; gap: 28px 20px !important; }
-    .v3-mobile .v3-footer-brand { grid-column: 1 / -1; }
-    .v3-mobile .v3-footer-brand .lg { font-size: 24px; }
-    .v3-mobile .v3-footer-brand p { font-size: 13px; }
-    .v3-mobile .v3-footer-bot { flex-direction: column; gap: 8px; align-items: flex-start; font-size: 12px; }
+    /* Footer mobile - single column con divider editoriale tra sezioni */
+    .v3-mobile .v3-footer { margin: 8px; padding: 36px 22px 20px; border-radius: 20px; }
+    .v3-mobile .v3-footer-top {
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+      padding-bottom: 22px !important;
+    }
+    .v3-mobile .v3-footer-top > div + div {
+      padding-top: 22px;
+      margin-top: 22px;
+      border-top: 1px solid rgba(var(--c-accent-rgb), 0.12);
+    }
+    .v3-mobile .v3-footer-brand { grid-column: auto !important; gap: 12px; }
+    .v3-mobile .v3-footer-brand .lg { font-size: 22px; }
+    .v3-mobile .v3-footer-brand .lg img { height: 28px !important; }
+    .v3-mobile .v3-footer-brand p { font-size: 13px; line-height: 1.55; }
+    .v3-mobile .v3-footer-top h4 {
+      font-family: var(--font-mono);
+      font-size: 11px !important;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      margin: 0 0 14px !important;
+    }
+    .v3-mobile .v3-footer-top ul { gap: 12px !important; }
+    .v3-mobile .v3-footer-top a { font-size: 15px; }
+    /* Social inline orizzontale */
+    .v3-mobile .v3-footer-top > div:last-child ul {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: wrap;
+      gap: 10px !important;
+    }
+    .v3-mobile .v3-footer-top > div:last-child ul li a {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid rgba(var(--c-accent-rgb), 0.18);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--c-onDark);
+    }
+    .v3-mobile .v3-footer-bot {
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      padding-top: 22px !important;
+    }
     .v3-mobile .v3-footer-mega { font-size: clamp(48px, 16vw, 72px) !important; margin: 24px 0 0 !important; }
 
     /* Tickers */
