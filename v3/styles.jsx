@@ -322,12 +322,13 @@ const V3GlobalStyle = () => (
       position: relative;
     }
     .v3-footer-top h4 {
-      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--c-accent);
-      margin: 0 0 16px; font-weight: 600; font-family: var(--font-ui);
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 24px; letter-spacing: -0.02em;
+      color: var(--c-onDark);
+      margin: 0 0 18px;
     }
-    .v3-footer-top ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-    .v3-footer-top a { color: var(--c-onDark-muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .v3-footer-top ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .v3-footer-top a { color: var(--c-onDark-muted); text-decoration: none; font-size: 14.5px; transition: color .2s; }
     .v3-footer-top a:hover { color: var(--c-accent); }
     .v3-footer-brand { display: flex; flex-direction: column; gap: 16px; }
     .v3-footer-brand .lg { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 400; font-size: 28px; color: var(--c-accent); letter-spacing: -0.02em; }
@@ -2174,6 +2175,101 @@ const V3GlobalStyle = () => (
     .v3-mobile .v3-pkg-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
     /* === END MOBILE GRID FIX === */
 
+    /* === PAGE HERO with bg image + gradient (Analisi/Consulenza/Marketing) === */
+    .v3-page-hero {
+      position: relative;
+      min-height: clamp(360px, 58vh, 560px);
+      padding: clamp(96px, 14vh, 160px) 32px clamp(56px, 8vh, 96px);
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .v3-page-hero-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      filter: saturate(0.95) contrast(1.05);
+    }
+    .v3-page-hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(var(--c-dark-rgb),0.35) 0%,
+          rgba(var(--c-dark-rgb),0.55) 45%,
+          rgba(var(--c-dark-rgb),0.92) 100%),
+        radial-gradient(ellipse 70% 50% at 0% 100%, rgba(var(--c-accent-rgb),0.18), transparent 70%);
+    }
+    .v3-page-hero-content {
+      position: relative; z-index: 2;
+      max-width: 1280px; margin: 0 auto; width: 100%;
+    }
+    .v3-page-hero-content .v3-tag { margin-bottom: 16px; }
+    .v3-page-hero-content h1 { color: var(--c-onDark);
+      text-shadow: 0 4px 24px rgba(0,0,0,0.45); }
+    .v3-page-hero-content p {
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.6; color: rgba(var(--c-onDark-rgb), 0.92);
+      margin-top: 28px; max-width: 820px;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 720px) {
+      .v3-page-hero { padding: 110px 20px 40px;
+        min-height: clamp(320px, 50vh, 460px); }
+    }
+    .v3-mobile .v3-page-hero { padding: 110px 20px 40px;
+      min-height: clamp(320px, 50vh, 460px); }
+    /* === END PAGE HERO === */
+
+    /* === Ricerca strip vertical farming (responsive) =================== */
+    .v3-rd-strip {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 21 / 9;
+      border: 1px solid rgba(var(--c-accent-rgb),0.12);
+    }
+    .v3-rd-strip img { width:100%; height:100%; object-fit:cover; display:block; }
+    .v3-rd-strip-grad {
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent 35%, rgba(var(--c-dark-rgb),0.92) 100%);
+    }
+    .v3-rd-strip-meta {
+      position:absolute; left:32px; bottom:28px; right:32px;
+      display:flex; justify-content:space-between; align-items:flex-end;
+      gap:24px; flex-wrap:wrap;
+    }
+    .v3-rd-strip-meta .kicker {
+      font-family: var(--font-mono); font-size:11px; letter-spacing:0.15em;
+      color: var(--c-accent); margin-bottom: 8px;
+    }
+    .v3-rd-strip-meta .ttl {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(20px, 3.4vw, 32px); font-weight: 300;
+      color: #fff; line-height: 1.15;
+    }
+    .v3-rd-strip-meta .badge {
+      font-family: var(--font-mono); font-size: 11px;
+      color: rgba(255,255,255,0.7); text-align: right;
+    }
+    @media (max-width: 720px) {
+      .v3-rd-strip { aspect-ratio: 4 / 5; }
+      .v3-rd-strip-grad {
+        background: linear-gradient(180deg, transparent 30%, rgba(var(--c-dark-rgb),0.95) 75%);
+      }
+      .v3-rd-strip-meta {
+        left: 18px; right: 18px; bottom: 20px;
+        flex-direction: column; align-items: flex-start; gap: 14px;
+      }
+      .v3-rd-strip-meta .kicker { font-size: 10px; }
+      .v3-rd-strip-meta .ttl { font-size: clamp(20px, 6vw, 28px); }
+      .v3-rd-strip-meta .badge { text-align: left; font-size: 10px; }
+    }
+    .v3-mobile .v3-rd-strip { aspect-ratio: 4 / 5; }
+    .v3-mobile .v3-rd-strip-meta {
+      left: 18px; right: 18px; bottom: 20px;
+      flex-direction: column; align-items: flex-start; gap: 14px;
+    }
+    .v3-mobile .v3-rd-strip-meta .ttl { font-size: clamp(20px, 6vw, 28px); }
+    .v3-mobile .v3-rd-strip-meta .badge { text-align: left; font-size: 10px; }
+    /* === END Ricerca strip === */
+
     /* === BANDI AGRICOLI (Home) ====================================== */
     /* Sezione finanziamenti — su mobile: stack verticale con card lime,
        desktop: 4-col con divisori. */
@@ -2389,6 +2485,11 @@ const V3GlobalStyle = () => (
       font-family: var(--font-mono); font-size: 10px;
       color: rgba(var(--c-onDark-rgb),0.55);
     }
+    /* I chip stanno sempre SOPRA l'hero gradient (z-index 8) */
+    .hsc-chip { z-index: 12 !important; }
+    .hsc-poi-layer { z-index: 11 !important; }
+    .sat-chip { z-index: 14 !important; }
+    .sat-poi-layer { z-index: 13 !important; }
 
     /* Caption */
     .hsc-caption {

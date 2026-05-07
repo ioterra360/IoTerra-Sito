@@ -1,10 +1,11 @@
 // v3/pages/Servizi.jsx
+// Riusa le stesse immagini delle 5 card servizi della home per coerenza.
 const SVC_IMG = {
-  s1: 'assets/img/lab.jpg',
-  s2: 'assets/img/uliveto.jpg',
-  s3: 'assets/img/data.jpg',
-  s4: 'assets/img/sensoristica.webp',
-  s5: 'assets/img/rd-trays.jpg',
+  s1: 'assets/img/soil-closeup.jpg',          // Analisi del Suolo (= home hands)
+  s2: 'assets/img/tablet-consulenza.jpg',     // Consulenza Agronomica (= home sardinia)
+  s3: 'assets/img/smartphone-field.jpg',      // Servizi Digitali (= home smartphone)
+  s4: 'assets/img/iot.jpg',                   // Agricoltura di Precisione (= home tech)
+  s5: 'assets/img/vertical-farming.jpg',      // Ricerca & Sviluppo (= home rd)
 };
 
 const PageServizi = () => (

@@ -1,4 +1,75 @@
 // v3/pages/Contatti.jsx
+const ContactForm = () => {
+  const [vals, setVals] = React.useState({nome:'', email:'', messaggio:'', accept:false});
+  const [err, setErr] = React.useState(null);
+  const submit = (e) => {
+    e.preventDefault();
+    setErr(null);
+    if (!vals.nome.trim() || !vals.email.trim() || !vals.messaggio.trim()) {
+      setErr('Compila nome, email e messaggio.'); return;
+    }
+    if (!vals.accept) {
+      setErr('Devi accettare Privacy Policy e Termini.'); return;
+    }
+    // mailto: apre il client di posta con campi precompilati. Funziona ovunque
+    // (Gmail web, Apple Mail, Outlook). L'utente conferma l'invio dal suo client.
+    const subject = encodeURIComponent('Richiesta dal sito · ' + vals.nome);
+    const body = encodeURIComponent(
+      'Nome: ' + vals.nome + '\n' +
+      'Email: ' + vals.email + '\n\n' +
+      'Messaggio:\n' + vals.messaggio + '\n\n— Inviato dal modulo contatti di www.ioterra.it'
+    );
+    window.location.href = 'mailto:ioterraservizi@gmail.com?subject=' + subject + '&body=' + body;
+  };
+  const inp = (k) => (e) => setVals(v => ({...v, [k]: e.target.value}));
+  return (
+    <form className="v3-card" style={{padding:40}} onSubmit={submit}>
+      <div style={{fontSize:11,letterSpacing:'.14em',marginBottom:8,color:'var(--c-accent)',fontWeight:600,textTransform:'uppercase',display:'inline-flex',alignItems:'center',gap:8}}><Icon name="mail" size={12}/> Modulo contatti</div>
+      <h3 className="v3-h3" style={{fontSize:32,marginBottom:32}}>Scrivici un <em>messaggio</em></h3>
+      {[
+        {l:'Nome', k:'nome', p:'Scrivi il tuo nome…', type:'text'},
+        {l:'Email', k:'email', p:'Scrivi la tua email…', type:'email'},
+      ].map(f => (
+        <div key={f.k} style={{marginBottom:20}}>
+          <label style={{display:'block',fontSize:11,color:'var(--c-onDark-muted)',fontWeight:600,marginBottom:8,letterSpacing:'.08em',textTransform:'uppercase'}}>{f.l}</label>
+          <input
+            type={f.type}
+            placeholder={f.p}
+            value={vals[f.k]}
+            onChange={inp(f.k)}
+            required
+            style={{width:'100%',background:'rgba(0,0,0,0.2)',border:'1px solid rgba(255,255,255,0.1)',borderRadius:12,padding:'14px 16px',fontFamily:'inherit',fontSize:17,outline:'none',color:'var(--c-onDark)',transition:'border-color .2s'}}
+            onFocus={e=>e.target.style.borderColor='var(--c-accent)'}
+            onBlur={e=>e.target.style.borderColor='rgba(255,255,255,0.1)'}/>
+        </div>
+      ))}
+      <div style={{marginBottom:24}}>
+        <label style={{display:'block',fontSize:11,color:'var(--c-onDark-muted)',fontWeight:600,marginBottom:8,letterSpacing:'.08em',textTransform:'uppercase'}}>Messaggio</label>
+        <textarea
+          rows={5}
+          placeholder="Scrivi il tuo messaggio…"
+          value={vals.messaggio}
+          onChange={inp('messaggio')}
+          required
+          style={{width:'100%',background:'rgba(0,0,0,0.2)',border:'1px solid rgba(255,255,255,0.1)',borderRadius:12,padding:'14px 16px',fontFamily:'inherit',fontSize:17,outline:'none',color:'var(--c-onDark)',resize:'none'}}/>
+      </div>
+      <label style={{fontSize:12,color:'var(--c-onDark-muted)',display:'flex',gap:10,alignItems:'flex-start',marginBottom:16,lineHeight:1.5}}>
+        <input
+          type="checkbox"
+          checked={vals.accept}
+          onChange={e=>setVals(v=>({...v, accept:e.target.checked}))}
+          style={{marginTop:3,accentColor:'var(--c-accent)'}}/>
+        <span>Ho letto e accetto la <a href="#/privacy" style={{color:'var(--c-accent)'}}>Privacy Policy</a> e i <a href="#/termini" style={{color:'var(--c-accent)'}}>Termini e Condizioni</a></span>
+      </label>
+      {err && <div style={{padding:'10px 14px',background:'rgba(180,60,60,0.16)',border:'1px solid rgba(220,90,90,0.5)',borderRadius:8,color:'#ffb4b4',fontSize:13,marginBottom:14}}>{err}</div>}
+      <button type="submit" className="v3-btn v3-btn-accent" style={{width:'100%',justifyContent:'center',padding:'16px'}}>Invia messaggio →</button>
+      <div style={{fontSize:11,color:'var(--c-onDark-muted)',marginTop:14,textAlign:'center',lineHeight:1.5}}>
+        Cliccando invia, si aprirà il tuo client di posta con il messaggio precompilato verso <a href="mailto:ioterraservizi@gmail.com" style={{color:'var(--c-accent)'}}>ioterraservizi@gmail.com</a>.
+      </div>
+    </form>
+  );
+};
+
 const PageContatti = () => (
   <>
     <section className="v3-section" style={{paddingBottom:32}}>
@@ -36,30 +107,7 @@ const PageContatti = () => (
         </Reveal>
 
         <Reveal delay={150}>
-          <form className="v3-card" style={{padding:40}}>
-            <div style={{fontSize:11,letterSpacing:'.14em',marginBottom:8,color:'var(--c-accent)',fontWeight:600,textTransform:'uppercase',display:'inline-flex',alignItems:'center',gap:8}}><Icon name="mail" size={12}/> Modulo contatti</div>
-            <h3 className="v3-h3" style={{fontSize:32,marginBottom:32}}>Scrivici un <em>messaggio</em></h3>
-            {[
-              {l:'Nome', p:'Scrivi il tuo nome…'},
-              {l:'Email', p:'Scrivi la tua email…'},
-            ].map(f => (
-              <div key={f.l} style={{marginBottom:20}}>
-                <label style={{display:'block',fontSize:11,color:'var(--c-onDark-muted)',fontWeight:600,marginBottom:8,letterSpacing:'.08em',textTransform:'uppercase'}}>{f.l}</label>
-                <input placeholder={f.p} style={{width:'100%',background:'rgba(0,0,0,0.2)',border:'1px solid rgba(255,255,255,0.1)',borderRadius:12,padding:'14px 16px',fontFamily:'inherit',fontSize:17,outline:'none',color:'var(--c-onDark)',transition:'border-color .2s'}}
-                  onFocus={e=>e.target.style.borderColor='var(--c-accent)'}
-                  onBlur={e=>e.target.style.borderColor='rgba(255,255,255,0.1)'}/>
-              </div>
-            ))}
-            <div style={{marginBottom:24}}>
-              <label style={{display:'block',fontSize:11,color:'var(--c-onDark-muted)',fontWeight:600,marginBottom:8,letterSpacing:'.08em',textTransform:'uppercase'}}>Messaggio</label>
-              <textarea rows={5} placeholder="Scrivi il tuo messaggio…" style={{width:'100%',background:'rgba(0,0,0,0.2)',border:'1px solid rgba(255,255,255,0.1)',borderRadius:12,padding:'14px 16px',fontFamily:'inherit',fontSize:17,outline:'none',color:'var(--c-onDark)',resize:'none'}}/>
-            </div>
-            <label style={{fontSize:12,color:'var(--c-onDark-muted)',display:'flex',gap:10,alignItems:'flex-start',marginBottom:24,lineHeight:1.5}}>
-              <input type="checkbox" style={{marginTop:3,accentColor:'var(--c-accent)'}}/>
-              <span>Ho letto e accetto la Privacy Policy e i Termini e Condizioni</span>
-            </label>
-            <button type="button" className="v3-btn v3-btn-accent" style={{width:'100%',justifyContent:'center',padding:'16px'}}>Invia messaggio →</button>
-          </form>
+          <ContactForm/>
         </Reveal>
       </div>
     </section>

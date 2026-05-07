@@ -1,12 +1,13 @@
 // v3/pages/AnalisiSuolo.jsx
 const PageAnalisiSuolo = () => (
   <>
-    <section className="v3-section" style={{paddingBottom:24}}>
-      <div className="v3-section-narrow">
+    <section className="v3-page-hero">
+      <div className="v3-page-hero-bg" style={{backgroundImage:"url('assets/img/lab.jpg')"}}/>
+      <div className="v3-page-hero-content">
         <Reveal>
           <div className="v3-tag" style={{marginBottom:16}}>SERVIZIO 01</div>
           <h1 className="v3-h1">Analisi del<br/><em>suolo.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.6,color:'var(--c-onDark-muted)',marginTop:32,maxWidth:820}}>
+          <p>
             Analizzare il suolo della tua azienda ci permette di comprenderne le caratteristiche e pianificare in maniera precisa la fertilizzazione e la gestione idrica.
           </p>
         </Reveal>
@@ -14,12 +15,7 @@ const PageAnalisiSuolo = () => (
     </section>
 
     <section className="v3-section" style={{paddingTop:24}}>
-      <div className="v3-section-narrow" style={{display:'grid',gridTemplateColumns:'1.2fr 1fr 1fr',gap:16}}>
-        <Reveal>
-          <div className="v3-img" style={{height:280}}>
-            <img src="assets/img/lab.jpg" alt=""/>
-          </div>
-        </Reveal>
+      <div className="v3-section-narrow" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:18}}>
         <Reveal delay={100}>
           <div className="v3-card" style={{padding:36,height:'100%'}}>
             <p style={{fontSize:18,lineHeight:1.55,margin:0,fontFamily:'var(--font-display)',fontWeight:300,color:'var(--c-onDark)'}}>

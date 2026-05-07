@@ -1,21 +1,21 @@
 // v3/pages/Consulenza.jsx
 const PageConsulenza = () => (
   <>
-    <section className="v3-section" style={{paddingBottom:24}}>
-      <div className="v3-section-narrow">
+    <section className="v3-page-hero">
+      <div className="v3-page-hero-bg" style={{backgroundImage:"url('assets/img/tablet-consulenza.jpg')"}}/>
+      <div className="v3-page-hero-content">
         <Reveal>
           <div className="v3-tag" style={{marginBottom:16}}>SERVIZIO 02</div>
           <h1 className="v3-h1">Consulenza<br/><em>agronomica.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.6,color:'var(--c-onDark-muted)',marginTop:32,maxWidth:820}}>
+          <p>
             La consulenza agronomica è uno strumento strategico per migliorare la gestione delle attività agricole e garantire la sostenibilità economica, ambientale e produttiva.
           </p>
         </Reveal>
       </div>
     </section>
 
-    <section className="v3-section" style={{paddingTop:0}}>
-      <div className="v3-section-narrow" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:16}}>
-        <Reveal><div className="v3-img" style={{height:280}}><img src="assets/img/uliveto.jpg" alt=""/></div></Reveal>
+    <section className="v3-section" style={{paddingTop:24}}>
+      <div className="v3-section-narrow" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:18}}>
         <Reveal delay={100}><div className="v3-card" style={{padding:36,height:'100%'}}><p style={{fontSize:18,lineHeight:1.55,margin:0,fontFamily:'var(--font-display)',fontWeight:300,color:'var(--c-onDark)'}}>Offriamo competenze specialistiche dal supporto normativo alla pianificazione strategica, rendendo la consulenza un <em style={{color:'var(--c-accent)',fontStyle:'italic'}}>investimento prezioso</em>.</p></div></Reveal>
         <Reveal delay={200}><div className="v3-card" style={{padding:36,height:'100%'}}><p style={{fontSize:18,lineHeight:1.55,margin:0,fontFamily:'var(--font-display)',fontWeight:300,color:'var(--c-onDark)'}}>Sopralluoghi in campo per valutare colture e suolo. In caso di sintomi sospetti valutiamo <em style={{color:'var(--c-accent)',fontStyle:'italic'}}>fitopatie, parassiti o carenze</em>.</p></div></Reveal>
       </div>

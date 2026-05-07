@@ -64,38 +64,15 @@ const PageMarketing = () => {
 
   return (
   <>
-    {/* HERO con immagine + glow animato */}
-    <section className="v3-section" style={{paddingBottom:24,position:'relative',overflow:'hidden'}}>
-      {/* Glow animato di sfondo */}
-      <div style={{position:'absolute',top:'-20%',right:'-10%',width:'60%',height:'70%',background:'radial-gradient(circle,rgba(var(--c-accent-rgb),0.18) 0%,transparent 60%)',filter:'blur(40px)',pointerEvents:'none',animation:'pulse 8s ease-in-out infinite'}}/>
-      <div className="v3-section-narrow" style={{position:'relative',zIndex:1}}>
+    <section className="v3-page-hero">
+      <div className="v3-page-hero-bg" style={{backgroundImage:`url(${DIG_IMG.hero})`}}/>
+      <div className="v3-page-hero-content">
         <Reveal>
           <div className="v3-tag" style={{marginBottom:16}}>SERVIZIO 03</div>
           <h1 className="v3-h1">Servizi<br/><em>Digitali.</em></h1>
-          <p style={{fontSize:18,lineHeight:1.6,color:'var(--c-onDark-muted)',marginTop:32,maxWidth:820}}>
+          <p>
             Siti web dedicati, applicazioni full-stack e web app costruite su misura per il tuo business agricolo. Trasformiamo il tuo lavoro in strumenti digitali che funzionano davvero.
           </p>
-        </Reveal>
-      </div>
-    </section>
-
-    {/* HERO IMAGE — Browser mockup */}
-    <section className="v3-section" style={{paddingTop:24,paddingBottom:24}}>
-      <div className="v3-section-narrow">
-        <Reveal>
-          <div style={{position:'relative'}}>
-            <BrowserFrame url="ioterra.it · live preview">
-              <div style={{aspectRatio:'21 / 10',background:`url(${DIG_IMG.hero}) center/cover`,position:'relative'}}>
-                <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg,transparent 60%,rgba(var(--c-dark-rgb),0.7) 100%)'}}/>
-                <div style={{position:'absolute',left:24,bottom:20,display:'flex',gap:8,flexWrap:'wrap'}}>
-                  <div style={{padding:'6px 12px',background:'rgba(var(--c-accent-rgb),0.18)',backdropFilter:'blur(8px)',border:'1px solid rgba(var(--c-accent-rgb),0.4)',borderRadius:999,fontFamily:'var(--font-mono)',fontSize:10,color:'var(--c-accent)',letterSpacing:'0.1em'}}>● LIVE · 99.9% UPTIME</div>
-                  <div style={{padding:'6px 12px',background:'rgba(0,0,0,0.4)',backdropFilter:'blur(8px)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:999,fontFamily:'var(--font-mono)',fontSize:10,color:'rgba(255,255,255,0.8)',letterSpacing:'0.1em'}}>SSL · CDN · GDPR</div>
-                </div>
-              </div>
-            </BrowserFrame>
-            {/* Floating badges */}
-            <div style={{position:'absolute',top:-16,right:-8,padding:'10px 16px',background:'var(--c-accent)',color:'var(--c-dark)',borderRadius:12,fontFamily:'var(--font-mono)',fontSize:11,fontWeight:700,letterSpacing:'0.05em',transform:'rotate(3deg)',boxShadow:'0 12px 24px rgba(var(--c-accent-rgb),0.3)',animation:'float 4s ease-in-out infinite'}}>↑ +240% LEAD</div>
-          </div>
         </Reveal>
       </div>
     </section>

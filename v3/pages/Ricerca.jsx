@@ -25,15 +25,15 @@ const PageRicerca = () => (
     <section className="v3-section" style={{paddingTop:24,paddingBottom:24}}>
       <div className="v3-section-narrow">
         <Reveal>
-          <div style={{position:'relative',borderRadius:'var(--radius)',overflow:'hidden',aspectRatio:'21 / 9',border:'1px solid var(--c-border)'}}>
-            <img src={RD_IMG.vertical} alt="Vertical farming — coltivazione idroponica controllata" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
-            <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg,transparent 45%,rgba(var(--c-dark-rgb),0.92) 100%)'}}></div>
-            <div style={{position:'absolute',left:32,bottom:32,right:32,display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:24,flexWrap:'wrap'}}>
+          <div className="v3-rd-strip">
+            <img src={RD_IMG.vertical} alt="Vertical farming — coltivazione idroponica controllata"/>
+            <div className="v3-rd-strip-grad"/>
+            <div className="v3-rd-strip-meta">
               <div>
-                <div style={{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'0.15em',color:'var(--c-accent)',marginBottom:8}}>● VERTICAL FARMING · IOTERRA LAB</div>
-                <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:'clamp(20px, 4vw, 32px)',fontWeight:300,color:'#fff',lineHeight:1.15,maxWidth:'100%',wordBreak:'normal',overflowWrap:'break-word'}}>Vertical farming.<br/>Spazio ottimizzato, dati continui.</div>
+                <div className="kicker">● VERTICAL FARMING · IOTERRA LAB</div>
+                <div className="ttl">Vertical farming.<br/>Spazio ottimizzato, dati continui.</div>
               </div>
-              <div style={{fontFamily:'var(--font-mono)',fontSize:11,color:'rgba(255,255,255,0.6)',textAlign:'right'}}>
+              <div className="badge">
                 T° · UR% · pH · EC · PAR · DLI<br/>monitorati 24/7
               </div>
             </div>
