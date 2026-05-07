@@ -90,13 +90,21 @@ const ScrollMosaic = () => (
 );
 
 // Animated NDVI grid
+// Scala colori coerente con la convenzione NDVI:
+//   alto (vegetazione densa)  → verde scuro
+//   medio                     → verde brand
+//   basso / stress idrico     → giallino
 const NDVIMap = () => {
   const cols = 14, rows = 8;
   const cells = [];
   for (let i = 0; i < cols * rows; i++) {
     const r = i % cols, c = Math.floor(i / cols);
     const v = (Math.sin(r*0.5+c*0.7) + Math.cos(r*0.3-c*0.4) + 2) / 4;
-    const col = v > 0.65 ? 'var(--c-accent)' : v > 0.5 ? '#a8d63a' : v > 0.35 ? '#41a752' : v > 0.2 ? '#0b614e' : '#082e25';
+    const col = v > 0.7  ? '#0b614e'   // vigore alto  → verde scuro
+              : v > 0.55 ? '#1f8a3a'   // alto-medio
+              : v > 0.4  ? '#41a752'   // medio        → verde brand
+              : v > 0.25 ? '#a8d63a'   // medio-basso  → lime
+              :            '#d6c43a';  // stress       → giallino
     cells.push({ x: r, y: c, col, v, delay: (r+c) * 30 });
   }
   return (
@@ -168,9 +176,9 @@ const PageHome = () => (
     </section>
 
     {/* SERVIZI griglia */}
-    <section className="v3-section" style={{paddingTop:0}}>
+    <section className="v3-section" style={{paddingTop:64}}>
       <div className="v3-section-narrow">
-        <Reveal style={{textAlign:'center',marginBottom:64}}>
+        <Reveal style={{textAlign:'center',marginBottom:88}}>
           <div className="v3-tag" style={{marginBottom:16}}>I NOSTRI SERVIZI</div>
           <h2 className="v3-h2">Scegli quello<br/>che fa <em>per te.</em></h2>
         </Reveal>
@@ -194,8 +202,8 @@ const PageHome = () => (
                     <span style={{fontFamily:'var(--font-ui)',fontSize:11,letterSpacing:'.14em',color:'var(--c-onDark-muted)'}}>SVC · 0{s.n.replace('0','')}</span>
                   </div>
                   <h3 className="v3-h3">{s.title} <em>{s.em}</em></h3>
-                  <p style={{fontSize:17,lineHeight:1.6,margin:0,color:'var(--c-onDark-muted)'}}>{s.desc}</p>
-                  <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',paddingTop:16,borderTop:'1px solid rgba(255,255,255,0.08)',color:'var(--c-accent)',fontWeight:600,fontSize:17}}>
+                  <p style={{fontSize:18.5,lineHeight:1.65,margin:0,color:'var(--c-onDark-muted)'}}>{s.desc}</p>
+                  <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',paddingTop:16,borderTop:'1px solid rgba(255,255,255,0.08)',color:'var(--c-accent)',fontWeight:600,fontSize:18}}>
                     <span>scopri di più</span><span style={{fontSize:18}}>→</span>
                   </div>
                 </div>
@@ -241,9 +249,9 @@ const PageHome = () => (
               </div>
               <div className="iot360-map-frame"><NDVIMap/></div>
               <div className="iot360-map-legend">
-                <span><span className="sw" style={{background:'var(--c-accent)'}}/>Vigore alto</span>
+                <span><span className="sw" style={{background:'#0b614e'}}/>Vigore alto</span>
                 <span><span className="sw" style={{background:'#41a752'}}/>Medio</span>
-                <span><span className="sw" style={{background:'#082e25'}}/>Stress</span>
+                <span><span className="sw" style={{background:'#d6c43a'}}/>Stress</span>
               </div>
             </div>
           </Reveal>

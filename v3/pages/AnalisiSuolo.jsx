@@ -73,7 +73,7 @@ const PageAnalisiSuolo = () => (
       <div className="v3-section-narrow">
         <Reveal style={{textAlign:'center',marginBottom:48}}>
           <div className="v3-tag" style={{marginBottom:16}}><Icon name="layers" size={12}/> PACCHETTI</div>
-          <h2 className="v3-h2">Tre livelli di <em>profondità.</em></h2>
+          <h2 className="v3-h2">Tre livelli di <em>servizio.</em></h2>
         </Reveal>
         <div className="v3-pkg-grid">
           <Reveal delay={0}>

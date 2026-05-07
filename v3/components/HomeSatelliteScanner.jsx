@@ -39,19 +39,17 @@ const HomeSatelliteScanner = ({ children }) => {
     };
   }, []);
 
-  // 5 POI ancorati a punti coerenti con la foto satellite-scanner.jpg.
-  // Posizionati nella metà inferiore della scena per non collidere con l'hero
-  // text che ora vive nella metà superiore. Chip clampati 8-92% per restare dentro.
+  // 3 POI essenziali sulla foto satellite-scanner.jpg (SAT, DASHBOARD, LAB).
+  // Su laptop la card-gradient può estendersi fino al ~68% del viewport →
+  // i 3 chip vivono nella banda 70-80% (sotto al testo, sopra agli step).
+  // Lati alternati (L/R/L) per evitare stacking sullo stesso fianco e dare
+  // respiro orizzontale anche su mobile. Il dot POI resta sulla foto a p.x/p.y.
   const POI = React.useMemo(() => ([
-    { id:'sat',  x:18, y:46, chipDX: 16, chipDY: 12,
+    { id:'sat',  x:22, y:46, chipDX: 16, chipCy: 70,
       sym:'SAT', name:'SATELLITI',     val:'NDVI 0.78', unit:'· S2 5gg' },
-    { id:'cono', x:42, y:58, chipDX:-14, chipDY:-12,
+    { id:'cono', x:50, y:58, chipDX: 16, chipCy: 74,
       sym:'AI',  name:'DASHBOARD',     val:'42',        unit:'campi attivi' },
-    { id:'campo',x:58, y:72, chipDX: 16, chipDY:-12,
-      sym:'UAV', name:'DRONI',         val:'120',       unit:'ha mappata' },
-    { id:'ne',   x:80, y:54, chipDX:-14, chipDY: 14,
-      sym:'°C',  name:'STAZIONI METEO',val:'24°',       unit:'· UR 64%' },
-    { id:'sw',   x:30, y:80, chipDX: 16, chipDY:-12,
+    { id:'sw',   x:78, y:74, chipDX:-30, chipCy: 78,
       sym:'LAB', name:'LABORATORIO',   val:'200+',      unit:'campioni' },
   ]), []);
 
@@ -114,7 +112,9 @@ const HomeSatelliteScanner = ({ children }) => {
           const persistent = Math.max(0, Math.min(1, (scanX - p.x + 6) / 12));
           const right = (p.x + (p.chipDX || 0)) >= 50;
           const cx = right ? 96 : 4;
-          const cy = Math.max(12, Math.min(82, p.y + (p.chipDY || 0)));
+          // chipCy: y dedicata nella banda 68-80% fra card-gradient (~65%)
+          // e step-caption (~82%).
+          const cy = Math.max(68, Math.min(80, p.chipCy));
           const tx = right ? -100 : 0;
           return (
             <div

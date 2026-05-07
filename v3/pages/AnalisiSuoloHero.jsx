@@ -164,7 +164,11 @@ const SoilBlastHero = () => {
   // 0.55..0.80 : chips stabili
   // 0.80..1.0  : caption finale
   const detonate = Math.max(0, Math.min(1, (progress - 0.10) / 0.45)); // più lenta
-  const chipReveal = Math.max(0, Math.min(1, (progress - 0.20) / 0.30)); // anticipata
+  // chipReveal non capped a 1: con cap a 1 l'ultima chip (delay 0.40) raggiunge
+  // solo opacity 0.60. Lasciamo crescere oltre 1 — cp viene clampato dentro al
+  // ciclo, così TUTTE le chip (azoto, fosforo, …, salinità, sost. org)
+  // arrivano a piena opacità.
+  const chipReveal = Math.max(0, (progress - 0.20) / 0.30);
   const stable = Math.max(0, Math.min(1, (progress - 0.55) / 0.25));
   const finale = Math.max(0, Math.min(1, (progress - 0.82) / 0.18));
 
