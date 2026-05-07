@@ -27,7 +27,13 @@ const Nav = ({ route }) => {
   return (
     <>
       <nav className="v3-nav">
-        <a href="#/" className="v3-nav-logo">
+        <a href="#/" className="v3-nav-logo" onClick={(e) => {
+          const h = window.location.hash;
+          if (h === '#/' || h === '' || h === '#') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }}>
           <img src="assets/logo-ioterra.svg" alt="" className="v3-nav-logo-img"/>
           <span className="v3-nav-logo-text">IoTerra</span>
         </a>
@@ -80,7 +86,14 @@ const Nav = ({ route }) => {
       {open && (
         <div className="v3-mobile-menu">
           <div className="v3-mobile-menu-head">
-            <a href="#/" className="v3-nav-logo" onClick={()=>setOpen(false)}>
+            <a href="#/" className="v3-nav-logo" onClick={(e) => {
+              setOpen(false);
+              const h = window.location.hash;
+              if (h === '#/' || h === '' || h === '#') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}>
               <img src="assets/logo-ioterra-light.svg" alt="" className="v3-mobile-logo-img"/>
               <span>IoTerra</span>
             </a>
