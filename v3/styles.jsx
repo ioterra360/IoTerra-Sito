@@ -371,8 +371,8 @@ const V3GlobalStyle = () => (
         border-top: 1px solid rgba(var(--c-accent-rgb), 0.12);
       }
       .v3-footer-brand { gap: 12px; }
-      .v3-footer-brand .lg { font-size: 22px; }
-      .v3-footer-brand .lg img { height: 28px !important; }
+      .v3-footer-brand .lg { font-size: 28px; }
+      .v3-footer-brand .lg img { height: 36px !important; }
       .v3-footer-brand p { font-size: 13px; line-height: 1.55; }
       .v3-footer-top h4 {
         font-family: var(--font-display);
