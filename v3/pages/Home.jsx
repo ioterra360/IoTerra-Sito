@@ -204,7 +204,7 @@ const PageHome = () => (
                   <h3 className="v3-h3">{s.title} <em>{s.em}</em></h3>
                   <p style={{fontSize:18.5,lineHeight:1.65,margin:0,color:'var(--c-onDark-muted)'}}>{s.desc}</p>
                   <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',paddingTop:16,borderTop:'1px solid rgba(255,255,255,0.08)',color:'var(--c-accent)',fontWeight:600,fontSize:18}}>
-                    <span>scopri di più</span><span style={{fontSize:18}}>→</span>
+                    <span>Scopri di più</span><span style={{fontSize:18}}>→</span>
                   </div>
                 </div>
               </a>

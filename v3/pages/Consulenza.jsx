@@ -76,7 +76,7 @@ const PageConsulenza = () => (
                 <div className="v3-pkg-tier">PACCHETTO {p.n}</div>
                 <h3>{p.t}</h3>
                 <p className="v3-pkg-desc">{p.d}</p>
-                <a href="#/contatti" className={'v3-btn ' + (p.featured?'v3-btn-accent':'v3-btn-ghost')}>contattaci →</a>
+                <a href="#/contatti" className={'v3-btn ' + (p.featured?'v3-btn-accent':'v3-btn-ghost')}>Contattaci →</a>
               </div>
             </Reveal>
           ))}
