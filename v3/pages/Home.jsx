@@ -164,7 +164,7 @@ const PageHome = () => (
       <div className="v3-section-narrow" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:80,alignItems:'flex-end'}}>
         <Reveal>
           <div className="v3-tag" style={{marginBottom:24}}><Icon name="book" size={12}/> APPROCCIO</div>
-          <h2 className="v3-h2">Tecnologia,<br/>scienza, <em>terra.</em></h2>
+          <h2 className="v3-h2">Tecnologia,<br/>scienza,<br/><em>innovazione.</em></h2>
         </Reveal>
         <Reveal delay={150}>
           <p style={{fontSize:18,lineHeight:1.7,color:'var(--c-onDark-muted)',margin:0}}>
