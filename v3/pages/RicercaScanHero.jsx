@@ -83,11 +83,11 @@ const PlantScanHero = () => {
   if (progress > 0.55) step = 2;
   if (progress > 0.82) step = 3;
 
-  // scanPct: valore "visibile" 0-100% mostrato nel tag e nell'HUD.
-  // scanY: posizione fisica della linea sulla pianta (5% top foglie -> 92% fine radici).
-  // Il PNG ha ~5% bianco sopra e ~8% bianco sotto: limitiamo la linea al contenuto reale.
+  // scanY: posizione della linea su tutto il box pianta (0% = poco sopra le
+  // foglie, 100% = poco sotto le radici — il PNG ha gia' ~5% bianco sopra e
+  // ~8% bianco sotto che funzionano come margine "approccio/uscita").
   const scanPct = Math.max(0, Math.min(100, (progress - 0.03) / 0.94 * 100));
-  const scanY = 5 + scanPct * 0.87;
+  const scanY = scanPct;
   // Plant glow appare dopo che la scan ha fatto qualche cm
   const glowO = Math.max(0, Math.min(0.65, (progress - 0.10) * 1.4));
   // Wireframe contour dopo metà scan
