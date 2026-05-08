@@ -1815,7 +1815,7 @@ const V3GlobalStyle = () => (
        Una scan-beam verticale parte dal satellite e attraversa il campo
        da sx a dx mentre scorri. Dietro la beam si rivela l'overlay NDVI.
        I chip-metrica sono posizionati sopra il campo, mai fuori. */
-    .sat-stage { position: relative; height: 280vh; }
+    .sat-stage { position: relative; height: 200vh; }
     .sat-pin {
       position: sticky; top: 0; left: 0; height: 100vh; width: 100%;
       overflow: hidden;
@@ -2052,7 +2052,7 @@ const V3GlobalStyle = () => (
     }
 
     @media (max-width: 720px) {
-      .sat-stage { height: 280vh; }
+      .sat-stage { height: 200vh; }
       /* Field box e icone ulteriormente abbassati per dare spazio all'HUD
          (top:80px) e mostrare scritte/satellite intere */
       .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
@@ -2074,7 +2074,7 @@ const V3GlobalStyle = () => (
       .sat-caption p { font-size: 11.5px; max-width: 100%; line-height: 1.45; }
       .sat-rail { bottom: 16px; width: min(220px, 70vw); }
     }
-    .v3-mobile .sat-stage { height: 280vh; }
+    .v3-mobile .sat-stage { height: 200vh; }
     .v3-mobile .sat-ticks { display: none; }
     .v3-mobile .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
     .v3-mobile .sat-icon { width: 44px; height: 44px; top: 18%; }
