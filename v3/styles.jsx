@@ -1861,7 +1861,7 @@ const V3GlobalStyle = () => (
     /* Satellite icon che si muove con la scan */
     .sat-icon {
       position: absolute;
-      top: 6%;
+      top: 12%;
       left: var(--scan-x, 0%);
       transform: translateX(-50%);
       width: 64px; height: 64px;
@@ -1882,7 +1882,7 @@ const V3GlobalStyle = () => (
     /* Beam verticale dal satellite al campo */
     .sat-beam {
       position: absolute;
-      top: calc(6% + 64px); bottom: 22%;
+      top: calc(12% + 64px); bottom: 22%;
       left: var(--scan-x, 0%);
       width: 2px;
       transform: translateX(-1px);
@@ -2660,11 +2660,11 @@ const V3GlobalStyle = () => (
     }
 
     /* Scan line verticale (si muove orizzontalmente con --scan-x).
-       Top:26% = appena sotto il satellite nella foto bg.
+       Top:30% = appena sotto il satellite nella foto bg.
        Bottom:0 = arriva fino in fondo, dietro le caption STEP.
        Niente cielo sopra al satellite, scannerizza solo campo + caption. */
     .hsc-line {
-      position: absolute; top: 26%; bottom: 0;
+      position: absolute; top: 30%; bottom: 0;
       left: var(--scan-x, 0%);
       width: 2px; transform: translateX(-1px);
       pointer-events: none; z-index: 4;
