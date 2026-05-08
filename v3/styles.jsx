@@ -1879,28 +1879,11 @@ const V3GlobalStyle = () => (
       animation: pulse 2s ease-in-out infinite;
     }
 
-    /* Linea di trasmissione satellite -> campo (cielo, NON scannerizza).
-       Sottile e sfumata, parte da sotto il satellite e arriva al top del campo.
-       Niente glow box-shadow: e' solo un "raggio guida". */
-    .sat-link {
-      position: absolute;
-      top: calc(6% + 64px);
-      height: calc(12% - 64px);
-      left: var(--scan-x, 0%);
-      width: 1px;
-      transform: translateX(-0.5px);
-      pointer-events: none;
-      z-index: 4;
-      background: linear-gradient(180deg,
-        rgba(var(--c-accent-rgb),0.18) 0%,
-        rgba(var(--c-accent-rgb),0.45) 100%);
-    }
-
-    /* Beam che scannerizza il campo (NON tocca il cielo).
-       Top allineato al top del campo, bottom al bottom del campo. */
+    /* Beam scannerizzante che parte da SOTTO il satellite ed arriva fino al
+       fondo del pin (dietro la caption). Niente cielo sopra al satellite. */
     .sat-beam {
       position: absolute;
-      top: 18%; bottom: 22%;
+      top: calc(6% + 64px); bottom: 0;
       left: var(--scan-x, 0%);
       width: 2px;
       transform: translateX(-1px);
@@ -1908,7 +1891,8 @@ const V3GlobalStyle = () => (
       z-index: 5;
       background: linear-gradient(180deg,
         rgba(var(--c-accent-rgb),0.85) 0%,
-        rgba(var(--c-accent-rgb),0.45) 100%);
+        rgba(var(--c-accent-rgb),0.55) 80%,
+        rgba(var(--c-accent-rgb),0.30) 100%);
       box-shadow: 0 0 14px rgba(var(--c-accent-rgb),0.6),
                   0 0 38px rgba(var(--c-accent-rgb),0.3);
     }
@@ -2076,8 +2060,7 @@ const V3GlobalStyle = () => (
          (top:80px) e mostrare scritte/satellite intere */
       .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
       .sat-icon { width: 44px; height: 44px; top: 18%; }
-      .sat-link { top: calc(18% + 44px); height: calc(12% - 44px); }
-      .sat-beam { top: 30%; bottom: 32%; }
+      .sat-beam { top: calc(18% + 44px); bottom: 0; }
       .sat-hud, .sat-hud-r { top: 80px; font-size: 10px; }
       .sat-hud { left: 14px; } .sat-hud-r { right: 14px; }
       .sat-hud-r > div:first-child { font-size: 12px; }
@@ -2100,8 +2083,7 @@ const V3GlobalStyle = () => (
     .v3-mobile .sat-ticks { display: none; }
     .v3-mobile .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
     .v3-mobile .sat-icon { width: 44px; height: 44px; top: 18%; }
-    .v3-mobile .sat-link { top: calc(18% + 44px); height: calc(12% - 44px); }
-    .v3-mobile .sat-beam { top: 30%; bottom: 32%; }
+    .v3-mobile .sat-beam { top: calc(18% + 44px); bottom: 0; }
     .v3-mobile .sat-caption { top: 72%; bottom: auto; padding: 0 16px;
       transform: translateX(-50%); }
     .v3-mobile .sat-cap-frame { min-height: 78px; }
