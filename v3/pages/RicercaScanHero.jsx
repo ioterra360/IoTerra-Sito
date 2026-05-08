@@ -83,9 +83,9 @@ const PlantScanHero = () => {
   if (progress > 0.55) step = 2;
   if (progress > 0.82) step = 3;
 
-  // Scan position (Y%) — la scan-line entra a 0% e finisce a 100%
-  // ma con un piccolo "warm-up" iniziale e "afterglow" finale.
-  const scanY = Math.max(0, Math.min(100, (progress - 0.05) / 0.85 * 100));
+  // Scan position (Y%) — entra a 0% e si ferma a 96% (appena sotto le radici,
+  // ultimo POI a y:90). Niente afterglow oltre la pianta su area vuota.
+  const scanY = Math.max(0, Math.min(96, (progress - 0.03) / 0.92 * 96));
   // Plant glow appare dopo che la scan ha fatto qualche cm
   const glowO = Math.max(0, Math.min(0.65, (progress - 0.10) * 1.4));
   // Wireframe contour dopo metà scan
