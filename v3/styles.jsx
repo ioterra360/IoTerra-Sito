@@ -1263,7 +1263,7 @@ const V3GlobalStyle = () => (
     /* === END MOSAIC ANIMATED === */
 
     /* === SOIL BLAST HERO (AnalisiSuolo) === */
-    .sb-stage { position: relative; height: 380vh; }
+    .sb-stage { position: relative; height: 190vh; }
     .sb-pin {
       position: sticky; top: 0; left: 0; height: 100vh; width: 100%;
       overflow: hidden;
@@ -1515,7 +1515,7 @@ const V3GlobalStyle = () => (
     /* === END SOIL BLAST HERO === */
 
     /* === PLANT SCAN HERO (Ricerca, alternativa alla blast) === */
-    .scn-stage { position: relative; height: 500vh; }
+    .scn-stage { position: relative; height: 250vh; }
     .scn-pin {
       position: sticky; top: 0; left: 0; height: 100vh; width: 100%;
       overflow: hidden;
@@ -1777,7 +1777,7 @@ const V3GlobalStyle = () => (
 
     /* Mobile */
     @media (max-width: 720px) {
-      .scn-stage { height: 380vh; }
+      .scn-stage { height: 190vh; }
       .scn-plant-wrap { width: min(60vw, 240px); }
       .scn-hud, .scn-hud-r { top: 80px; font-size: 10px; }
       .scn-hud { left: 16px; } .scn-hud-r { right: 16px; }
@@ -1795,7 +1795,7 @@ const V3GlobalStyle = () => (
       .scn-ttl { font-size: 18px; }
       .scn-caption p { font-size: 11.5px; max-width: 90%; }
     }
-    .v3-mobile .scn-stage { height: 380vh; }
+    .v3-mobile .scn-stage { height: 190vh; }
     .v3-mobile .scn-ticks { display: none; }
     .v3-mobile .scn-chip { min-width: 0; width: max-content; padding: 4px 7px; gap: 6px; }
     .v3-mobile .scn-chip-name { font-size: 7.5px; letter-spacing: .12em; margin-bottom: 1px; }
@@ -1810,7 +1810,7 @@ const V3GlobalStyle = () => (
        Una scan-beam verticale parte dal satellite e attraversa il campo
        da sx a dx mentre scorri. Dietro la beam si rivela l'overlay NDVI.
        I chip-metrica sono posizionati sopra il campo, mai fuori. */
-    .sat-stage { position: relative; height: 500vh; }
+    .sat-stage { position: relative; height: 250vh; }
     .sat-pin {
       position: sticky; top: 0; left: 0; height: 100vh; width: 100%;
       overflow: hidden;
@@ -2045,7 +2045,7 @@ const V3GlobalStyle = () => (
     }
 
     @media (max-width: 720px) {
-      .sat-stage { height: 500vh; }
+      .sat-stage { height: 250vh; }
       /* Field box e icone ulteriormente abbassati per dare spazio all'HUD
          (top:80px) e mostrare scritte/satellite intere */
       .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
@@ -2067,7 +2067,7 @@ const V3GlobalStyle = () => (
       .sat-caption p { font-size: 11.5px; max-width: 100%; line-height: 1.45; }
       .sat-rail { bottom: 16px; width: min(220px, 70vw); }
     }
-    .v3-mobile .sat-stage { height: 500vh; }
+    .v3-mobile .sat-stage { height: 250vh; }
     .v3-mobile .sat-ticks { display: none; }
     .v3-mobile .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
     .v3-mobile .sat-icon { width: 44px; height: 44px; top: 18%; }
@@ -2555,8 +2555,8 @@ const V3GlobalStyle = () => (
     /* === HOME SATELLITE SCANNER (sostituisce mosaico cosa facciamo) ====== */
     /* Sfondo: foto reale satellite + campo. Scan-line orizzontale si muove
        sul campo, 3 POI essenziali (SAT/DASHBOARD/LAB) si illuminano.
-       Stage 360vh pinned (260vh su mobile) — accorciato vs versione 5-POI. */
-    .hsc-stage { position: relative; height: 360vh; }
+       Stage 180vh pinned (130vh su mobile). */
+    .hsc-stage { position: relative; height: 180vh; }
     .hsc-pin {
       position: sticky; top: 0; height: 100vh; width: 100%;
       overflow: hidden; background: var(--c-dark);
@@ -2764,7 +2764,7 @@ const V3GlobalStyle = () => (
     }
 
     @media (max-width: 720px) {
-      .hsc-stage { height: 260vh; }
+      .hsc-stage { height: 130vh; }
       /* Riadatto la foto satellite per mostrare il sat in alto a sinistra
          (su mobile portrait il cover ritaglia ai lati). */
       .hsc-bg { background-position: 30% 30%; }
@@ -2795,7 +2795,7 @@ const V3GlobalStyle = () => (
       .hsc-caption p { font-size: 11px; max-width: 100%; line-height: 1.45; }
       .hsc-rail { bottom: 18px; width: min(220px, 70vw); }
     }
-    .v3-mobile .hsc-stage { height: 260vh; }
+    .v3-mobile .hsc-stage { height: 130vh; }
     .v3-mobile .hsc-bg { background-position: 30% 30%; }
     .v3-mobile .hsc-hero { top: 110px; left: 18px; right: 18px; padding: 14px 18px 20px; }
     .v3-mobile .hsc-hero::before { border-radius: 12px; }
