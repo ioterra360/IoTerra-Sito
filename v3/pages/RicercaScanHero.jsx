@@ -210,12 +210,13 @@ const PlantScanHero = () => {
                 </React.Fragment>
               );
             })}
-          </div>
 
-          {/* Scan line + tag */}
-          <div className="scn-line" style={{ '--scan-y': scanY + '%' }}/>
-          <div className="scn-line-tag" style={{ '--scan-y': scanY + '%' }}>
-            Y<b>{Math.round(scanY)}%</b>
+            {/* Scan line + tag — DENTRO plant-wrap così scorre solo sulla pianta
+                (prima era su scn-scene = full viewport, scansionava aria sopra/sotto) */}
+            <div className="scn-line" style={{ '--scan-y': scanY + '%' }}/>
+            <div className="scn-line-tag" style={{ '--scan-y': scanY + '%' }}>
+              Y<b>{Math.round(scanY)}%</b>
+            </div>
           </div>
         </div>
 

@@ -1571,7 +1571,10 @@ const V3GlobalStyle = () => (
 
     /* Scan line orizzontale */
     .scn-line {
-      position: absolute; left: -10%; right: -10%; height: 2px;
+      /* Posizionata DENTRO scn-plant-wrap: top % = % della pianta.
+         Estendo width a 100vw centrato sulla pianta per attraversare tutto lo schermo. */
+      position: absolute; left: 50%; width: 100vw; height: 2px;
+      transform: translateX(-50%);
       top: var(--scan-y, 0%);
       background: linear-gradient(90deg,
         transparent 0%, rgba(var(--c-accent-rgb),0.85) 25%,
@@ -1593,7 +1596,9 @@ const V3GlobalStyle = () => (
     }
     /* Tag laterale sulla scan line */
     .scn-line-tag {
-      position: absolute; right: 8%; top: calc(var(--scan-y, 0%) - 11px);
+      /* Anchorata appena a destra del plant-wrap, sulla scan-line estesa */
+      position: absolute; left: calc(100% + 14px);
+      top: calc(var(--scan-y, 0%) - 11px);
       padding: 4px 10px;
       background: rgba(var(--c-dark-rgb),0.78);
       border: 1px solid rgba(var(--c-accent-rgb),0.45);
@@ -1602,7 +1607,7 @@ const V3GlobalStyle = () => (
       letter-spacing: 0.12em; color: var(--c-accent);
       backdrop-filter: blur(8px);
       z-index: 5;
-      transform: translateX(0); white-space: nowrap;
+      white-space: nowrap;
     }
     .scn-line-tag b { color: var(--c-onDark); font-weight: 500; margin-left: 6px;
       font-variant-numeric: tabular-nums; }
