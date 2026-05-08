@@ -1815,7 +1815,7 @@ const V3GlobalStyle = () => (
        Una scan-beam verticale parte dal satellite e attraversa il campo
        da sx a dx mentre scorri. Dietro la beam si rivela l'overlay NDVI.
        I chip-metrica sono posizionati sopra il campo, mai fuori. */
-    .sat-stage { position: relative; height: 160vh; }
+    .sat-stage { position: relative; height: 320vh; }
     .sat-pin {
       position: sticky; top: 0; left: 0; height: 100vh; width: 100%;
       overflow: hidden;
