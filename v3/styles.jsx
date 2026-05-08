@@ -2562,8 +2562,8 @@ const V3GlobalStyle = () => (
     /* === HOME SATELLITE SCANNER (sostituisce mosaico cosa facciamo) ====== */
     /* Sfondo: foto reale satellite + campo. Scan-line orizzontale si muove
        sul campo, 3 POI essenziali (SAT/DASHBOARD/LAB) si illuminano.
-       Stage 180vh pinned (130vh su mobile). */
-    .hsc-stage { position: relative; height: 180vh; }
+       Stage 360vh pinned (260vh su mobile). */
+    .hsc-stage { position: relative; height: 360vh; }
     .hsc-pin {
       position: sticky; top: 0; height: 100vh; width: 100%;
       overflow: hidden; background: var(--c-dark);
@@ -2788,7 +2788,7 @@ const V3GlobalStyle = () => (
     }
 
     @media (max-width: 720px) {
-      .hsc-stage { height: 130vh; }
+      .hsc-stage { height: 260vh; }
       /* Riadatto la foto satellite per mostrare il sat in alto a sinistra
          (su mobile portrait il cover ritaglia ai lati). */
       .hsc-bg { background-position: 30% 30%; }
@@ -2822,7 +2822,7 @@ const V3GlobalStyle = () => (
       .hsc-caption p { font-size: 11px; max-width: 100%; line-height: 1.45; }
       .hsc-rail { bottom: 18px; width: min(220px, 70vw); }
     }
-    .v3-mobile .hsc-stage { height: 130vh; }
+    .v3-mobile .hsc-stage { height: 260vh; }
     .v3-mobile .hsc-bg { background-position: 30% 30%; }
     .v3-mobile .hsc-hero { top: 110px; left: 18px; right: 18px; padding: 14px 18px 20px; }
     .v3-mobile .hsc-hero::before { border-radius: 12px; }
