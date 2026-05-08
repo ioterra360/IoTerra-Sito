@@ -2660,11 +2660,11 @@ const V3GlobalStyle = () => (
     }
 
     /* Scan line verticale (si muove orizzontalmente con --scan-x).
-       Top:18% = sotto il satellite nella foto bg (satellite e' nel quartile alto).
+       Top:26% = appena sotto il satellite nella foto bg.
        Bottom:0 = arriva fino in fondo, dietro le caption STEP.
        Niente cielo sopra al satellite, scannerizza solo campo + caption. */
     .hsc-line {
-      position: absolute; top: 18%; bottom: 0;
+      position: absolute; top: 26%; bottom: 0;
       left: var(--scan-x, 0%);
       width: 2px; transform: translateX(-1px);
       pointer-events: none; z-index: 4;
