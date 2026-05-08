@@ -76,7 +76,10 @@ const HomeSatelliteScanner = ({ children }) => {
         {/* Hero overlay (children dal Home.jsx) — fisso al top sopra la foto */}
         <div className="hsc-hero">
           {children}
-          <span className="hsc-scan-tag">● SCAN · LIVE · {String(Math.round(progress * 100)).padStart(2,'0')}%</span>
+          <span className="hsc-scan-tag">
+            <span className="hsc-scan-lbl">● SCAN · LIVE</span>
+            <span className="hsc-scan-pct">{String(Math.round(progress * 100)).padStart(2,'0')}<small>%</small></span>
+          </span>
         </div>
 
         {/* Scan line verticale */}

@@ -1879,11 +1879,10 @@ const V3GlobalStyle = () => (
       animation: pulse 2s ease-in-out infinite;
     }
 
-    /* Beam scannerizzante che parte da SOTTO il satellite ed arriva fino al
-       fondo del pin (dietro la caption). Niente cielo sopra al satellite. */
+    /* Beam verticale dal satellite al campo */
     .sat-beam {
       position: absolute;
-      top: calc(6% + 64px); bottom: 0;
+      top: calc(6% + 64px); bottom: 22%;
       left: var(--scan-x, 0%);
       width: 2px;
       transform: translateX(-1px);
@@ -1891,8 +1890,7 @@ const V3GlobalStyle = () => (
       z-index: 5;
       background: linear-gradient(180deg,
         rgba(var(--c-accent-rgb),0.85) 0%,
-        rgba(var(--c-accent-rgb),0.55) 80%,
-        rgba(var(--c-accent-rgb),0.30) 100%);
+        rgba(var(--c-accent-rgb),0.45) 100%);
       box-shadow: 0 0 14px rgba(var(--c-accent-rgb),0.6),
                   0 0 38px rgba(var(--c-accent-rgb),0.3);
     }
@@ -2002,18 +2000,15 @@ const V3GlobalStyle = () => (
     .sat-hud .ph b { font-size: 17px; color: var(--c-onDark);
       font-variant-numeric: tabular-nums; font-weight: 500; }
     .sat-hud-r { right: 28px; text-align: right; }
-    .sat-hud-r > div:first-child {
-      color: var(--c-accent); letter-spacing: 0.16em;
-      font-size: 14px;
-    }
+    .sat-hud-r > div:first-child { color: var(--c-accent); letter-spacing: 0.16em; }
     .sat-hud-r .lg {
-      display: block; font-size: 48px; font-weight: 300;
+      display: block; font-size: 32px; font-weight: 300;
       color: var(--c-onDark); letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums; margin-top: 6px;
-      font-family: var(--font-display); line-height: 1;
+      font-variant-numeric: tabular-nums; margin-top: 4px;
+      font-family: var(--font-display);
     }
-    .sat-hud-r .lg small { font-size: 18px; color: var(--c-accent);
-      margin-left: 3px; font-family: var(--font-mono); }
+    .sat-hud-r .lg small { font-size: 13px; color: var(--c-accent);
+      margin-left: 2px; font-family: var(--font-mono); }
 
     /* Caption (uguale a scn) */
     .sat-caption {
@@ -2060,12 +2055,10 @@ const V3GlobalStyle = () => (
          (top:80px) e mostrare scritte/satellite intere */
       .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
       .sat-icon { width: 44px; height: 44px; top: 18%; }
-      .sat-beam { top: calc(18% + 44px); bottom: 0; }
+      .sat-beam { top: calc(18% + 44px); bottom: 32%; }
       .sat-hud, .sat-hud-r { top: 80px; font-size: 10px; }
       .sat-hud { left: 14px; } .sat-hud-r { right: 14px; }
-      .sat-hud-r > div:first-child { font-size: 12px; }
-      .sat-hud-r .lg { font-size: 36px; }
-      .sat-hud-r .lg small { font-size: 14px; }
+      .sat-hud-r .lg { font-size: 22px; }
       .sat-ticks { display: none; }
       .sat-chip { min-width: 78px; padding: 5px 9px; }
       .sat-chip-sym { font-size: 14px; }
@@ -2083,16 +2076,14 @@ const V3GlobalStyle = () => (
     .v3-mobile .sat-ticks { display: none; }
     .v3-mobile .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
     .v3-mobile .sat-icon { width: 44px; height: 44px; top: 18%; }
-    .v3-mobile .sat-beam { top: calc(18% + 44px); bottom: 0; }
+    .v3-mobile .sat-beam { top: calc(18% + 44px); bottom: 32%; }
     .v3-mobile .sat-caption { top: 72%; bottom: auto; padding: 0 16px;
       transform: translateX(-50%); }
     .v3-mobile .sat-cap-frame { min-height: 78px; }
     .v3-mobile .sat-rail { bottom: 16px; width: min(220px, 70vw); }
     .v3-mobile .sat-hud, .v3-mobile .sat-hud-r { top: 12px; font-size: 10px; }
     .v3-mobile .sat-hud { left: 14px; } .v3-mobile .sat-hud-r { right: 14px; }
-    .v3-mobile .sat-hud-r > div:first-child { font-size: 12px; }
-    .v3-mobile .sat-hud-r .lg { font-size: 36px; }
-    .v3-mobile .sat-hud-r .lg small { font-size: 14px; }
+    .v3-mobile .sat-hud-r .lg { font-size: 22px; }
     .v3-mobile .sat-chip { min-width: 78px; padding: 5px 9px; }
     .v3-mobile .sat-chip-sym { font-size: 14px; }
     .v3-mobile .sat-chip-val { font-size: 10.5px; }
@@ -2646,25 +2637,42 @@ const V3GlobalStyle = () => (
     .hsc-hero-cta-btns { display: contents; }
     .hsc-scan-tag {
       position: absolute;
-      top: -56px; right: 0;
-      display: inline-flex; gap: 8px; align-items: center;
-      font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .16em;
-      text-transform: uppercase; color: var(--c-accent);
-      padding: 6px 12px;
+      top: -64px; right: 0;
+      display: inline-flex; gap: 12px; align-items: center;
+      padding: 8px 14px;
       background: rgba(var(--c-dark-rgb),0.6);
       border: 1px solid rgba(var(--c-accent-rgb),0.25);
       border-radius: 999px; backdrop-filter: blur(10px);
     }
+    .hsc-scan-lbl {
+      font-family: var(--font-mono); font-size: 13px; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--c-accent);
+    }
+    .hsc-scan-pct {
+      font-family: var(--font-display); font-weight: 300;
+      font-size: 26px; line-height: 1;
+      color: var(--c-onDark); letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .hsc-scan-pct small {
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--c-accent); margin-left: 2px;
+    }
 
-    /* Scan line orizzontale (si muove con --scan-x) */
+    /* Scan line verticale (si muove orizzontalmente con --scan-x).
+       Top:18% = sotto il satellite nella foto bg (satellite e' nel quartile alto).
+       Bottom:0 = arriva fino in fondo, dietro le caption STEP.
+       Niente cielo sopra al satellite, scannerizza solo campo + caption. */
     .hsc-line {
-      position: absolute; top: 0; bottom: 30%;
+      position: absolute; top: 18%; bottom: 0;
       left: var(--scan-x, 0%);
       width: 2px; transform: translateX(-1px);
       pointer-events: none; z-index: 4;
       background: linear-gradient(180deg,
-        transparent 0%, rgba(var(--c-accent-rgb),0.85) 30%,
-        var(--c-accent) 60%, rgba(var(--c-accent-rgb),0.85) 100%);
+        rgba(var(--c-accent-rgb),0.85) 0%,
+        var(--c-accent) 40%,
+        rgba(var(--c-accent-rgb),0.55) 80%,
+        rgba(var(--c-accent-rgb),0.30) 100%);
       box-shadow: 0 0 14px rgba(var(--c-accent-rgb),0.6),
                   0 0 38px rgba(var(--c-accent-rgb),0.3);
     }
@@ -2796,7 +2804,10 @@ const V3GlobalStyle = () => (
         flex: 1 1 auto; justify-content: center;
         min-width: 120px; padding: 10px 14px; font-size: 12.5px;
       }
-      .hsc-scan-tag { top: -38px; font-size: 9.5px; padding: 4px 10px; }
+      .hsc-scan-tag { top: -50px; padding: 6px 12px; gap: 10px; }
+      .hsc-scan-lbl { font-size: 11px; }
+      .hsc-scan-pct { font-size: 22px; }
+      .hsc-scan-pct small { font-size: 11px; }
       .hsc-chip { min-width: 78px; padding: 4px 7px; }
       .hsc-chip-name { font-size: 8px; letter-spacing: .14em; }
       .hsc-chip-sym { font-size: 14px; }
@@ -2822,7 +2833,10 @@ const V3GlobalStyle = () => (
       flex: 1 1 auto; justify-content: center;
       min-width: 120px; padding: 10px 14px; font-size: 12.5px;
     }
-    .v3-mobile .hsc-scan-tag { top: -38px; font-size: 9.5px; padding: 4px 10px; }
+    .v3-mobile .hsc-scan-tag { top: -50px; padding: 6px 12px; gap: 10px; }
+    .v3-mobile .hsc-scan-lbl { font-size: 11px; }
+    .v3-mobile .hsc-scan-pct { font-size: 22px; }
+    .v3-mobile .hsc-scan-pct small { font-size: 11px; }
     .v3-mobile .hsc-chip { min-width: 78px; padding: 4px 7px; }
     .v3-mobile .hsc-chip-name { font-size: 8px; }
     .v3-mobile .hsc-chip-sym { font-size: 14px; }
