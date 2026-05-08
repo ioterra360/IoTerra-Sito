@@ -83,9 +83,11 @@ const PlantScanHero = () => {
   if (progress > 0.55) step = 2;
   if (progress > 0.82) step = 3;
 
-  // Scan position (Y%) — entra a 0% e si ferma a 96% (appena sotto le radici,
-  // ultimo POI a y:90). Niente afterglow oltre la pianta su area vuota.
-  const scanY = Math.max(0, Math.min(96, (progress - 0.03) / 0.92 * 96));
+  // scanPct: valore "visibile" 0-100% mostrato nel tag e nell'HUD.
+  // scanY: posizione fisica della linea sulla pianta (5% top foglie -> 92% fine radici).
+  // Il PNG ha ~5% bianco sopra e ~8% bianco sotto: limitiamo la linea al contenuto reale.
+  const scanPct = Math.max(0, Math.min(100, (progress - 0.03) / 0.94 * 100));
+  const scanY = 5 + scanPct * 0.87;
   // Plant glow appare dopo che la scan ha fatto qualche cm
   const glowO = Math.max(0, Math.min(0.65, (progress - 0.10) * 1.4));
   // Wireframe contour dopo metà scan
@@ -123,11 +125,11 @@ const PlantScanHero = () => {
           </div>
         </div>
 
-        {/* Y-axis ticks (sinistra) */}
+        {/* Y-axis ticks (sinistra) — usano scanPct (display) */}
         <div className="scn-ticks">
           {['0','25','50','75','100'].map((v, i) => {
             const ti = i * 25;
-            const lit = Math.abs(scanY - ti) < 8;
+            const lit = Math.abs(scanPct - ti) < 8;
             return <span key={v} className={lit ? 'on' : ''}>{v}%</span>;
           })}
         </div>
@@ -215,7 +217,7 @@ const PlantScanHero = () => {
                 (prima era su scn-scene = full viewport, scansionava aria sopra/sotto) */}
             <div className="scn-line" style={{ '--scan-y': scanY + '%' }}/>
             <div className="scn-line-tag" style={{ '--scan-y': scanY + '%' }}>
-              Y<b>{Math.round(scanY)}%</b>
+              Y<b>{Math.round(scanPct)}%</b>
             </div>
           </div>
         </div>

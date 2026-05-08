@@ -1515,7 +1515,7 @@ const V3GlobalStyle = () => (
     /* === END SOIL BLAST HERO === */
 
     /* === PLANT SCAN HERO (Ricerca, alternativa alla blast) === */
-    .scn-stage { position: relative; height: 250vh; }
+    .scn-stage { position: relative; height: 180vh; }
     .scn-pin {
       position: sticky; top: 0; left: 0; height: 100vh; width: 100%;
       overflow: hidden;
@@ -1535,7 +1535,7 @@ const V3GlobalStyle = () => (
     }
     .scn-plant-wrap {
       position: relative;
-      width: clamp(220px, 30vw, 380px);
+      width: clamp(280px, 42vw, 520px);
       aspect-ratio: 1122 / 1402;
       filter: drop-shadow(0 30px 60px rgba(0,0,0,0.55))
               drop-shadow(0 0 28px rgba(var(--c-accent-rgb),0.06));
@@ -1782,8 +1782,8 @@ const V3GlobalStyle = () => (
 
     /* Mobile */
     @media (max-width: 720px) {
-      .scn-stage { height: 190vh; }
-      .scn-plant-wrap { width: min(60vw, 240px); }
+      .scn-stage { height: 150vh; }
+      .scn-plant-wrap { width: min(70vw, 320px); }
       .scn-hud, .scn-hud-r { top: 80px; font-size: 10px; }
       .scn-hud { left: 16px; } .scn-hud-r { right: 16px; }
       .scn-hud-r .lg { font-size: 28px; }
