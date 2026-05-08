@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- Forza il browser a NON cachare index.html: cosi' i ?v=N dei .jsx vengono letti
+     sempre freschi e i cambiamenti sono immediatamente visibili. -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
 
 <!-- SPA fallback restorer per GitHub Pages.
      404.html salva l'URL originale in sessionStorage e redireziona qui.
