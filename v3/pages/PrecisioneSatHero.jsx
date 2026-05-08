@@ -170,7 +170,11 @@ const SatelliteScanHero = () => {
           })}
         </div>
 
-        {/* Beam verticale */}
+        {/* Linea di trasmissione satellite -> top campo (NON scan: e' solo
+            il "raggio guida" attraverso il cielo, sottile e fumato) */}
+        <div className="sat-link" style={{ '--scan-x': scanX + '%' }}/>
+
+        {/* Beam scannerizzante: SOLO sul campo (top:18% -> bottom:22%) */}
         <div className="sat-beam" style={{ '--scan-x': scanX + '%' }}/>
 
         {/* Satellite icon che si muove */}

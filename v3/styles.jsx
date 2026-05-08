@@ -1879,10 +1879,28 @@ const V3GlobalStyle = () => (
       animation: pulse 2s ease-in-out infinite;
     }
 
-    /* Beam verticale dal satellite al campo */
+    /* Linea di trasmissione satellite -> campo (cielo, NON scannerizza).
+       Sottile e sfumata, parte da sotto il satellite e arriva al top del campo.
+       Niente glow box-shadow: e' solo un "raggio guida". */
+    .sat-link {
+      position: absolute;
+      top: calc(6% + 64px);
+      height: calc(12% - 64px);
+      left: var(--scan-x, 0%);
+      width: 1px;
+      transform: translateX(-0.5px);
+      pointer-events: none;
+      z-index: 4;
+      background: linear-gradient(180deg,
+        rgba(var(--c-accent-rgb),0.18) 0%,
+        rgba(var(--c-accent-rgb),0.45) 100%);
+    }
+
+    /* Beam che scannerizza il campo (NON tocca il cielo).
+       Top allineato al top del campo, bottom al bottom del campo. */
     .sat-beam {
       position: absolute;
-      top: calc(6% + 64px); bottom: 22%;
+      top: 18%; bottom: 22%;
       left: var(--scan-x, 0%);
       width: 2px;
       transform: translateX(-1px);
@@ -2000,15 +2018,18 @@ const V3GlobalStyle = () => (
     .sat-hud .ph b { font-size: 17px; color: var(--c-onDark);
       font-variant-numeric: tabular-nums; font-weight: 500; }
     .sat-hud-r { right: 28px; text-align: right; }
-    .sat-hud-r > div:first-child { color: var(--c-accent); letter-spacing: 0.16em; }
-    .sat-hud-r .lg {
-      display: block; font-size: 32px; font-weight: 300;
-      color: var(--c-onDark); letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums; margin-top: 4px;
-      font-family: var(--font-display);
+    .sat-hud-r > div:first-child {
+      color: var(--c-accent); letter-spacing: 0.16em;
+      font-size: 14px;
     }
-    .sat-hud-r .lg small { font-size: 13px; color: var(--c-accent);
-      margin-left: 2px; font-family: var(--font-mono); }
+    .sat-hud-r .lg {
+      display: block; font-size: 48px; font-weight: 300;
+      color: var(--c-onDark); letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums; margin-top: 6px;
+      font-family: var(--font-display); line-height: 1;
+    }
+    .sat-hud-r .lg small { font-size: 18px; color: var(--c-accent);
+      margin-left: 3px; font-family: var(--font-mono); }
 
     /* Caption (uguale a scn) */
     .sat-caption {
@@ -2055,10 +2076,13 @@ const V3GlobalStyle = () => (
          (top:80px) e mostrare scritte/satellite intere */
       .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
       .sat-icon { width: 44px; height: 44px; top: 18%; }
-      .sat-beam { top: calc(18% + 44px); bottom: 32%; }
+      .sat-link { top: calc(18% + 44px); height: calc(12% - 44px); }
+      .sat-beam { top: 30%; bottom: 32%; }
       .sat-hud, .sat-hud-r { top: 80px; font-size: 10px; }
       .sat-hud { left: 14px; } .sat-hud-r { right: 14px; }
-      .sat-hud-r .lg { font-size: 22px; }
+      .sat-hud-r > div:first-child { font-size: 12px; }
+      .sat-hud-r .lg { font-size: 36px; }
+      .sat-hud-r .lg small { font-size: 14px; }
       .sat-ticks { display: none; }
       .sat-chip { min-width: 78px; padding: 5px 9px; }
       .sat-chip-sym { font-size: 14px; }
@@ -2076,14 +2100,17 @@ const V3GlobalStyle = () => (
     .v3-mobile .sat-ticks { display: none; }
     .v3-mobile .sat-field { left: 4%; right: 4%; top: 30%; bottom: 32%; }
     .v3-mobile .sat-icon { width: 44px; height: 44px; top: 18%; }
-    .v3-mobile .sat-beam { top: calc(18% + 44px); bottom: 32%; }
+    .v3-mobile .sat-link { top: calc(18% + 44px); height: calc(12% - 44px); }
+    .v3-mobile .sat-beam { top: 30%; bottom: 32%; }
     .v3-mobile .sat-caption { top: 72%; bottom: auto; padding: 0 16px;
       transform: translateX(-50%); }
     .v3-mobile .sat-cap-frame { min-height: 78px; }
     .v3-mobile .sat-rail { bottom: 16px; width: min(220px, 70vw); }
     .v3-mobile .sat-hud, .v3-mobile .sat-hud-r { top: 12px; font-size: 10px; }
     .v3-mobile .sat-hud { left: 14px; } .v3-mobile .sat-hud-r { right: 14px; }
-    .v3-mobile .sat-hud-r .lg { font-size: 22px; }
+    .v3-mobile .sat-hud-r > div:first-child { font-size: 12px; }
+    .v3-mobile .sat-hud-r .lg { font-size: 36px; }
+    .v3-mobile .sat-hud-r .lg small { font-size: 14px; }
     .v3-mobile .sat-chip { min-width: 78px; padding: 5px 9px; }
     .v3-mobile .sat-chip-sym { font-size: 14px; }
     .v3-mobile .sat-chip-val { font-size: 10.5px; }
