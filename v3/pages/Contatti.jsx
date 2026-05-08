@@ -59,7 +59,7 @@ const ContactForm = () => {
           checked={vals.accept}
           onChange={e=>setVals(v=>({...v, accept:e.target.checked}))}
           style={{marginTop:3,accentColor:'var(--c-accent)'}}/>
-        <span>Ho letto e accetto la <a href="#/privacy" style={{color:'var(--c-accent)'}}>Privacy Policy</a> e i <a href="#/termini" style={{color:'var(--c-accent)'}}>Termini e Condizioni</a></span>
+        <span>Ho letto e accetto la <a href="/privacy" style={{color:'var(--c-accent)'}}>Privacy Policy</a> e i <a href="/termini" style={{color:'var(--c-accent)'}}>Termini e Condizioni</a></span>
       </label>
       {err && <div style={{padding:'10px 14px',background:'rgba(180,60,60,0.16)',border:'1px solid rgba(220,90,90,0.5)',borderRadius:8,color:'#ffb4b4',fontSize:13,marginBottom:14}}>{err}</div>}
       <button type="submit" className="v3-btn v3-btn-accent" style={{width:'100%',justifyContent:'center',padding:'16px'}}>Invia messaggio →</button>

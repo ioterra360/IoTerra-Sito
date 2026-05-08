@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<title>IoTerra</title>
+<!-- GitHub Pages SPA fallback.
+     Quando un visitatore apre direttamente un URL pulito (es. /contatti) o ricarica la pagina,
+     GitHub Pages serve questo 404.html (perche' /contatti come file fisico non esiste).
+     Salviamo l'URL originale in sessionStorage e redirezioniamo a / dove index.html
+     legge il valore e ripristina la rotta tramite history.replaceState. -->
+<script>
+  sessionStorage.setItem('ioterra:redirect', location.href);
+  location.replace('/');
+</script>
+<meta http-equiv="refresh" content="0; url=/"/>
+</head>
+<body>
+<p>Reindirizzamento a <a href="/">www.ioterra.it</a>...</p>
+</body>
+</html>

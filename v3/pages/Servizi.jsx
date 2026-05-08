@@ -22,11 +22,11 @@ const PageServizi = () => (
     <section className="v3-section" style={{paddingTop:16}}>
       <div className="v3-section-narrow" style={{display:'grid',gap:16}}>
         {[
-          { href:'#/analisi-suolo', n:'01', img:SVC_IMG.s1, title:'Analisi del suolo', tag:'LAB · GIS · MAPPE', desc:"Caratteristiche chimico-fisiche del suolo. Pianifichiamo fertilizzazione e irrigazione in modo preciso, aiutandoti anche nella scelta delle cultivar."},
-          { href:'#/consulenza', n:'02', img:SVC_IMG.s2, title:'Consulenza agronomica', tag:'PAC · CSR · BANDI', desc:"Assistenza tecnica e consulenza a 360° in campo agricolo. Seguiamo la tua azienda dal punto di vista agronomico, normativo ed economico."},
-          { href:'#/marketing', n:'03', img:SVC_IMG.s3, title:'Servizi Digitali', tag:'WEB · APP · FULL-STACK', desc:"Siti web dedicati, applicazioni full-stack e web app costruite su misura per il tuo business agricolo. Trasformiamo i tuoi processi in strumenti digitali che funzionano davvero."},
-          { href:'#/precisione', n:'04', img:SVC_IMG.s4, title:'Agricoltura di precisione', tag:'IOT · SATELLITI · AI', desc:"Tecnologie avanzate per monitorare e ottimizzare le operazioni agricole. Aumentiamo la resa, riduciamo costi e impatto ambientale."},
-          { href:'#/ricerca', n:'05', img:SVC_IMG.s5, title:'Ricerca & Sviluppo', tag:'LAB · PROVE · DATA', desc:"Affianchiamo aziende e centri di ricerca in progetti di innovazione: prove di campo, sperimentazioni in laboratorio, analisi dati e sviluppo di prodotti."},
+          { href:'/analisi-suolo', n:'01', img:SVC_IMG.s1, title:'Analisi del suolo', tag:'LAB · GIS · MAPPE', desc:"Caratteristiche chimico-fisiche del suolo. Pianifichiamo fertilizzazione e irrigazione in modo preciso, aiutandoti anche nella scelta delle cultivar."},
+          { href:'/consulenza', n:'02', img:SVC_IMG.s2, title:'Consulenza agronomica', tag:'PAC · CSR · BANDI', desc:"Assistenza tecnica e consulenza a 360° in campo agricolo. Seguiamo la tua azienda dal punto di vista agronomico, normativo ed economico."},
+          { href:'/marketing', n:'03', img:SVC_IMG.s3, title:'Servizi Digitali', tag:'WEB · APP · FULL-STACK', desc:"Siti web dedicati, applicazioni full-stack e web app costruite su misura per il tuo business agricolo. Trasformiamo i tuoi processi in strumenti digitali che funzionano davvero."},
+          { href:'/precisione', n:'04', img:SVC_IMG.s4, title:'Agricoltura di precisione', tag:'IOT · SATELLITI · AI', desc:"Tecnologie avanzate per monitorare e ottimizzare le operazioni agricole. Aumentiamo la resa, riduciamo costi e impatto ambientale."},
+          { href:'/ricerca', n:'05', img:SVC_IMG.s5, title:'Ricerca & Sviluppo', tag:'LAB · PROVE · DATA', desc:"Affianchiamo aziende e centri di ricerca in progetti di innovazione: prove di campo, sperimentazioni in laboratorio, analisi dati e sviluppo di prodotti."},
         ].map((s,i) => (
           <Reveal key={s.n} delay={i*100}>
             <a href={s.href} className="v3-card" style={{display:'grid',gridTemplateColumns:'180px 80px 1fr 80px',gap:32,alignItems:'center',textDecoration:'none',color:'inherit',padding:24}}>
@@ -53,7 +53,7 @@ const PageServizi = () => (
       </div>
       <div className="right">
         <a href="tel:+393665393733" className="phone">+39 366 539 3733</a>
-        <a href="#/contatti" className="v3-btn v3-btn-light">Parla con noi →</a>
+        <a href="/contatti" className="v3-btn v3-btn-light">Parla con noi →</a>
       </div>
     </section>
   </>

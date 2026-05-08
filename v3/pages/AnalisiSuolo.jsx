@@ -81,7 +81,7 @@ const PageAnalisiSuolo = () => (
               <div className="v3-pkg-tier">PACCHETTO 1</div>
               <h3>Base</h3>
               <ul><li>Analisi del suolo</li><li>Elaborazione dati</li><li>Relazione agronomica</li></ul>
-              <a href="#/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
+              <a href="/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
             </div>
           </Reveal>
           <Reveal delay={100}>
@@ -90,7 +90,7 @@ const PageAnalisiSuolo = () => (
               <div className="v3-pkg-tier">PACCHETTO 2</div>
               <h3>Premium</h3>
               <ul><li>Analisi del suolo</li><li>Elaborazione dati</li><li>Relazione agronomica</li><li>Mappe di prescrizione</li><li>Monitoraggio satellitare</li></ul>
-              <a href="#/contatti" className="v3-btn v3-btn-accent">Contattaci →</a>
+              <a href="/contatti" className="v3-btn v3-btn-accent">Contattaci →</a>
             </div>
           </Reveal>
           <Reveal delay={200}>
@@ -98,7 +98,7 @@ const PageAnalisiSuolo = () => (
               <div className="v3-pkg-tier">PACCHETTO 3</div>
               <h3>All-Inclusive</h3>
               <ul><li>Tutte le nostre tecnologie a tua disposizione, senza limiti!</li></ul>
-              <a href="#/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
+              <a href="/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
             </div>
           </Reveal>
         </div>

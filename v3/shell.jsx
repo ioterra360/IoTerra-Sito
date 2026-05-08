@@ -1,14 +1,14 @@
 // v3/shell.jsx — Nav + Footer condivisi
 const NAV_ITEMS = [
-  { href: '#/', label: 'Home' },
-  { href: '#/servizi', label: 'Servizi', children: [
-    { href: '#/analisi-suolo', label: 'Analisi del suolo', tag: 'LAB · GIS' },
-    { href: '#/consulenza',    label: 'Consulenza agronomica', tag: 'PAC · CSR · BANDI' },
-    { href: '#/marketing',     label: 'Servizi Digitali', tag: 'WEB · APP · FULL-STACK' },
-    { href: '#/precisione',    label: 'Agricoltura di precisione', tag: 'IOT · SATELLITI · AI' },
-    { href: '#/ricerca',       label: 'Ricerca & Sviluppo', tag: 'LAB · PROVE · DATA' },
+  { href: '/', label: 'Home' },
+  { href: '/servizi', label: 'Servizi', children: [
+    { href: '/analisi-suolo', label: 'Analisi del suolo', tag: 'LAB · GIS' },
+    { href: '/consulenza',    label: 'Consulenza agronomica', tag: 'PAC · CSR · BANDI' },
+    { href: '/marketing',     label: 'Servizi Digitali', tag: 'WEB · APP · FULL-STACK' },
+    { href: '/precisione',    label: 'Agricoltura di precisione', tag: 'IOT · SATELLITI · AI' },
+    { href: '/ricerca',       label: 'Ricerca & Sviluppo', tag: 'LAB · PROVE · DATA' },
   ]},
-  { href: '#/contatti', label: 'Contatti' },
+  { href: '/contatti', label: 'Contatti' },
 ];
 
 const Nav = ({ route }) => {
@@ -27,13 +27,7 @@ const Nav = ({ route }) => {
   return (
     <>
       <nav className="v3-nav">
-        <a href="#/" className="v3-nav-logo" onClick={(e) => {
-          const h = window.location.hash;
-          if (h === '#/' || h === '' || h === '#') {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-        }}>
+        <a href="/" className="v3-nav-logo">
           <img src="assets/logo-ioterra.svg" alt="" className="v3-nav-logo-img"/>
           <span className="v3-nav-logo-text">IoTerra</span>
         </a>
@@ -53,7 +47,7 @@ const Nav = ({ route }) => {
                   </button>
                   {svcOpen && (
                     <div className="v3-nav-dropdown">
-                      <a href="#/servizi" className="v3-nav-dropdown-all" onClick={()=>setSvcOpen(false)}>
+                      <a href="/servizi" className="v3-nav-dropdown-all" onClick={()=>setSvcOpen(false)}>
                         <span>Tutti i servizi</span>
                         <span className="arrow">→</span>
                       </a>
@@ -77,7 +71,7 @@ const Nav = ({ route }) => {
         </div>
         <div className="v3-nav-right">
           <a href="tel:+393665393733" className="v3-btn v3-btn-ghost">+39 366 539 3733</a>
-          <a href="#/contatti" className="v3-btn v3-btn-light">Contattaci →</a>
+          <a href="/contatti" className="v3-btn v3-btn-light">Contattaci →</a>
           <button className="v3-nav-burger" aria-label="Menu" onClick={()=>setOpen(true)}>
             <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
           </button>
@@ -86,14 +80,7 @@ const Nav = ({ route }) => {
       {open && (
         <div className="v3-mobile-menu">
           <div className="v3-mobile-menu-head">
-            <a href="#/" className="v3-nav-logo" onClick={(e) => {
-              setOpen(false);
-              const h = window.location.hash;
-              if (h === '#/' || h === '' || h === '#') {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }}>
+            <a href="/" className="v3-nav-logo" onClick={()=>setOpen(false)}>
               <img src="assets/logo-ioterra-light.svg" alt="" className="v3-mobile-logo-img"/>
               <span>IoTerra</span>
             </a>
@@ -135,7 +122,7 @@ const Nav = ({ route }) => {
               <Icon name="phone" size={14}/>
               <span>+39 366 539 3733</span>
             </a>
-            <a href="#/contatti" onClick={()=>setOpen(false)} className="v3-btn v3-btn-accent" style={{justifyContent:'center',padding:'16px'}}>Richiedi preventivo →</a>
+            <a href="/contatti" onClick={()=>setOpen(false)} className="v3-btn v3-btn-accent" style={{justifyContent:'center',padding:'16px'}}>Richiedi preventivo →</a>
             <div className="v3-mm-social">
               <a href="https://www.instagram.com/ioterra_360/" target="_blank" rel="noopener"><Icon name="instagram" size={14}/>Instagram</a>
               <a href="mailto:ioterraservizi@gmail.com"><Icon name="mail" size={14}/>Email</a>
@@ -165,17 +152,17 @@ const Footer = () => (
       <div>
         <h4>Servizi</h4>
         <ul>
-          <li><a href="#/analisi-suolo">Analisi del suolo</a></li>
-          <li><a href="#/consulenza">Consulenza agronomica</a></li>
-          <li><a href="#/marketing">Servizi Digitali</a></li>
-          <li><a href="#/precisione">Agricoltura di precisione</a></li>
-          <li><a href="#/ricerca">Ricerca & Sviluppo</a></li>
+          <li><a href="/analisi-suolo">Analisi del suolo</a></li>
+          <li><a href="/consulenza">Consulenza agronomica</a></li>
+          <li><a href="/marketing">Servizi Digitali</a></li>
+          <li><a href="/precisione">Agricoltura di precisione</a></li>
+          <li><a href="/ricerca">Ricerca & Sviluppo</a></li>
         </ul>
       </div>
       <div>
         <h4>Studio</h4>
         <ul>
-          <li><a href="#/contatti">Contatti</a></li>
+          <li><a href="/contatti">Contatti</a></li>
           <li><a href="tel:+393665393733">+39 366 539 3733</a></li>
           <li><a href="mailto:ioterraservizi@gmail.com">ioterraservizi@gmail.com</a></li>
         </ul>
@@ -191,18 +178,49 @@ const Footer = () => (
     <div className="v3-footer-bot">
       <span>© IoTerra · P.IVA 03034130900</span>
       <span>
-        <a href="#/privacy">Privacy</a> · <a href="#/termini">Termini</a>
+        <a href="/privacy">Privacy</a> · <a href="/termini">Termini</a>
       </span>
     </div>
   </footer>
 );
 
+// Path-based routing (URL puliti tipo /servizi, /contatti).
+// Listener:
+//  - popstate: pulsanti back/forward del browser
+//  - click globale su <a>: intercetta link interni e usa history.pushState
+//    (no full reload). I link esterni / mailto: / tel: / target=_blank
+//    bypassano l'intercettore.
 const useRoute = () => {
-  const [r, setR] = React.useState(window.location.hash || '#/');
+  const [r, setR] = React.useState(window.location.pathname || '/');
   React.useEffect(() => {
-    const onHash = () => { setR(window.location.hash || '#/'); window.scrollTo(0, 0); };
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
+    const sync = () => { setR(window.location.pathname || '/'); window.scrollTo(0, 0); };
+    const onClick = (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest('a[href]');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      if (!href) return;
+      // Salta esterni, ancore in-page, mailto/tel, target=_blank, download
+      if (/^(https?:|mailto:|tel:|#)/i.test(href)) return;
+      if (a.target && a.target !== '_self') return;
+      if (a.hasAttribute('download')) return;
+      // Solo path-relative interni
+      if (!href.startsWith('/')) return;
+      e.preventDefault();
+      if (href !== window.location.pathname) {
+        window.history.pushState(null, '', href);
+        sync();
+      } else {
+        // Stessa rotta → scroll-to-top liscio
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+    window.addEventListener('popstate', sync);
+    document.addEventListener('click', onClick);
+    return () => {
+      window.removeEventListener('popstate', sync);
+      document.removeEventListener('click', onClick);
+    };
   }, []);
   return r;
 };

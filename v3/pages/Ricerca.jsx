@@ -150,18 +150,18 @@ const PageRicerca = () => (
           <Reveal delay={0}><div className="v3-pkg" style={{height:'100%'}}>
             <div className="v3-pkg-tier">FORMULA 1</div><h3>Singola prova</h3>
             <ul><li>Disegno sperimentale dedicato</li><li>1 stagione o ciclo colturale</li><li>Rilievi standardizzati</li><li>Analisi statistica</li><li>Report finale</li></ul>
-            <a href="#/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
+            <a href="/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
           </div></Reveal>
           <Reveal delay={100}><div className="v3-pkg featured" style={{height:'100%'}}>
             <div className="v3-pkg-flag">Raccomandato</div>
             <div className="v3-pkg-tier">FORMULA 2</div><h3>Programma annuale</h3>
             <ul><li>Più prove coordinate</li><li>Confronto configurazioni multiple</li><li>Monitoraggio continuo</li><li>Analisi dati avanzata</li><li>Riunioni di avanzamento</li><li>Documentazione tecnica completa</li></ul>
-            <a href="#/contatti" className="v3-btn v3-btn-accent">Contattaci →</a>
+            <a href="/contatti" className="v3-btn v3-btn-accent">Contattaci →</a>
           </div></Reveal>
           <Reveal delay={200}><div className="v3-pkg" style={{height:'100%'}}>
             <div className="v3-pkg-tier">FORMULA 3</div><h3>Progetto pluriennale</h3>
             <ul><li>R&D strutturata 2-4 anni</li><li>Team dedicato</li><li>Integrazione con bandi e finanziamenti</li><li>Pubblicazioni e divulgazione</li><li>Sviluppo prodotto / protocollo</li><li>Trasferimento tecnologico</li></ul>
-            <a href="#/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
+            <a href="/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
           </div></Reveal>
         </div>
       </div>

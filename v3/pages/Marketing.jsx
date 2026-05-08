@@ -198,18 +198,18 @@ const PageMarketing = () => {
           <Reveal delay={0}><div className="v3-pkg" style={{height:'100%'}}>
             <div className="v3-pkg-tier">PACCHETTO 1</div><h3>Sito vetrina</h3>
             <ul><li>Design su misura, 4-6 sezioni</li><li>Mobile-first, performance ottimizzate</li><li>SEO base e Google My Business</li><li>Hosting e dominio inclusi</li><li>Manutenzione 6 mesi</li></ul>
-            <a href="#/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
+            <a href="/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
           </div></Reveal>
           <Reveal delay={100}><div className="v3-pkg featured" style={{height:'100%'}}>
             <div className="v3-pkg-flag">Raccomandato</div>
             <div className="v3-pkg-tier">PACCHETTO 2</div><h3>Web app</h3>
             <ul><li>App custom installabile (PWA)</li><li>Frontend React/Next.js</li><li>Backend Node o Python + DB</li><li>Autenticazione e ruoli</li><li>Dashboard e gestione dati</li><li>Deploy su cloud + monitoring</li></ul>
-            <a href="#/contatti" className="v3-btn v3-btn-accent">Contattaci →</a>
+            <a href="/contatti" className="v3-btn v3-btn-accent">Contattaci →</a>
           </div></Reveal>
           <Reveal delay={200}><div className="v3-pkg" style={{height:'100%'}}>
             <div className="v3-pkg-tier">PACCHETTO 3</div><h3>Full-stack su misura</h3>
             <ul><li>Analisi processi e architettura</li><li>Backend completo + API</li><li>Frontend custom + UX studiata</li><li>Integrazioni esterne (ERP, IoT, GIS)</li><li>Sviluppo iterativo a sprint</li><li>Manutenzione e SLA</li></ul>
-            <a href="#/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
+            <a href="/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
           </div></Reveal>
         </div>
       </div>

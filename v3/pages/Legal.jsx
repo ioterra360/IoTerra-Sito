@@ -186,7 +186,7 @@ const PageTermini = () => {
 
               <H3>6 · Privacy</H3>
               <P>
-                Il trattamento dei dati personali avviene nel rispetto del Regolamento UE 2016/679 (GDPR). Per maggiori informazioni consulta la nostra <a href="#/privacy" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>Privacy Policy</a>.
+                Il trattamento dei dati personali avviene nel rispetto del Regolamento UE 2016/679 (GDPR). Per maggiori informazioni consulta la nostra <a href="/privacy" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>Privacy Policy</a>.
               </P>
 
               <H3>Contatti</H3>

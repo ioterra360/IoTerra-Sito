@@ -69,7 +69,7 @@ const PagePrecisione = () => (
             <p style={{fontSize:19,lineHeight:1.7,marginTop:24,maxWidth:520}}>
               Il nostro software rende la gestione dei campi semplice e intuitiva, con dati in tempo reale dal tuo smartphone. Monitora colture, ottimizza irrigazione e altro con pochi click.
             </p>
-            <a href="#/contatti" className="v3-btn v3-btn-accent" style={{marginTop:32}}>Scopri di più →</a>
+            <a href="/contatti" className="v3-btn v3-btn-accent" style={{marginTop:32}}>Scopri di più →</a>
           </Reveal>
           <Reveal delay={200}>
             <div style={{background:'rgba(0,0,0,0.3)',border:'1px solid rgba(var(--c-accent-rgb),0.15)',borderRadius:20,padding:24,height:480,display:'flex',flexDirection:'column',gap:16}}>
@@ -159,18 +159,18 @@ const PagePrecisione = () => (
           <Reveal><div className="v3-pkg" style={{height:'100%'}}>
             <div className="v3-pkg-tier">PACCHETTO 1</div><h3>Base</h3>
             <ul><li>IoTerra360 Base</li><li>Digitalizzazione aziendale</li><li>Monitoraggio satellitare</li><li>Mappe di prescrizione</li></ul>
-            <a href="#/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
+            <a href="/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
           </div></Reveal>
           <Reveal delay={100}><div className="v3-pkg featured" style={{height:'100%'}}>
             <div className="v3-pkg-flag">Raccomandato</div>
             <div className="v3-pkg-tier">PACCHETTO 2</div><h3>Premium</h3>
             <ul><li>IoTerra360 Premium</li><li>Digitalizzazione aziendale</li><li>Monitoraggio satellitare</li><li>Mappe di prescrizione</li><li>Monitoraggio climatico Premium</li><li>Monitoraggio suolo Premium</li><li>Monitoraggio colturale Premium</li><li>Monitoraggio insetti Premium</li></ul>
-            <a href="#/contatti" className="v3-btn v3-btn-accent">Contattaci →</a>
+            <a href="/contatti" className="v3-btn v3-btn-accent">Contattaci →</a>
           </div></Reveal>
           <Reveal delay={200}><div className="v3-pkg" style={{height:'100%'}}>
             <div className="v3-pkg-tier">PACCHETTO 3</div><h3>All-Inclusive</h3>
             <ul><li>Supporto agronomico costante</li><li>Software custom per la tua azienda</li><li>Analisi chimico-fisiche in lab</li><li>Monitoraggio completo Premium</li><li>Mappe di prescrizione</li></ul>
-            <a href="#/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
+            <a href="/contatti" className="v3-btn v3-btn-ghost">Contattaci →</a>
           </div></Reveal>
         </div>
       </div>

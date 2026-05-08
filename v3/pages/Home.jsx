@@ -153,8 +153,8 @@ const PageHome = () => (
           Studio agronomico che integra <em style={{color:'var(--c-accent)',fontStyle:'italic'}}>analisi di laboratorio</em>, satelliti e IoT per portare l'agricoltura sarda nel futuro.
         </p>
         <div className="hsc-hero-cta-btns">
-          <a href="#/servizi" className="v3-btn v3-btn-light">Esplora i servizi →</a>
-          <a href="#/contatti" className="v3-btn v3-btn-ghost">Parla con noi</a>
+          <a href="/servizi" className="v3-btn v3-btn-light">Esplora i servizi →</a>
+          <a href="/contatti" className="v3-btn v3-btn-ghost">Parla con noi</a>
         </div>
       </div>
     </HomeSatelliteScanner>
@@ -170,7 +170,7 @@ const PageHome = () => (
           <p style={{fontSize:18,lineHeight:1.7,color:'var(--c-onDark-muted)',margin:0}}>
             IoTerra è uno studio agronomico con sede in Sardegna che offre consulenza tecnica e soluzioni innovative per il settore agricolo. Integriamo <em style={{color:'var(--c-accent)',fontStyle:'italic'}}>tecnologia avanzata</em>, ricerca scientifica e competenze agronomiche maturate sul campo.
           </p>
-          <a href="#/contatti" className="v3-btn v3-btn-ghost" style={{marginTop:32}}>Parla con noi →</a>
+          <a href="/contatti" className="v3-btn v3-btn-ghost" style={{marginTop:32}}>Parla con noi →</a>
         </Reveal>
       </div>
     </section>
@@ -184,11 +184,11 @@ const PageHome = () => (
         </Reveal>
         <div className="v3-svc-grid" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16}}>
           {[
-            { href:'#/analisi-suolo', img:HOME_IMG.hands, n:'01', tag:'Lab + GIS', title:'Analisi del', em:'suolo', desc:"Caratteristiche chimico-fisiche del suolo. Pianifichiamo fertilizzazione e irrigazione in modo preciso, ti aiutiamo nella scelta delle cultivar."},
-            { href:'#/consulenza', img:HOME_IMG.sardinia, n:'02', tag:'PAC · CSR · Bandi', title:'Consulenza', em:'agronomica', desc:"Assistenza tecnica e consulenza a 360° in campo agricolo. Seguiamo la tua azienda dal punto di vista agronomico, normativo ed economico."},
-            { href:'#/marketing', img:HOME_IMG.smartphone, n:'03', tag:'Web + App + Full-stack', title:'Servizi', em:'Digitali', desc:"Siti web dedicati, applicazioni full-stack e web app costruite su misura per il tuo business agricolo."},
-            { href:'#/precisione', img:HOME_IMG.tech, n:'04', tag:'IoT + Satelliti + AI', title:'Agricoltura di', em:'precisione', desc:"Tecnologie avanzate per monitorare e ottimizzare le operazioni agricole. Aumentiamo la resa, riduciamo costi e impatto ambientale."},
-            { href:'#/ricerca', img:HOME_IMG.rd, n:'05', tag:'Lab + Prove + Data', title:'Ricerca &', em:'Sviluppo', desc:"Affianchiamo aziende e centri di ricerca in progetti di innovazione: prove di campo, sperimentazioni in laboratorio, analisi dati e nuovi protocolli."},
+            { href:'/analisi-suolo', img:HOME_IMG.hands, n:'01', tag:'Lab + GIS', title:'Analisi del', em:'suolo', desc:"Caratteristiche chimico-fisiche del suolo. Pianifichiamo fertilizzazione e irrigazione in modo preciso, ti aiutiamo nella scelta delle cultivar."},
+            { href:'/consulenza', img:HOME_IMG.sardinia, n:'02', tag:'PAC · CSR · Bandi', title:'Consulenza', em:'agronomica', desc:"Assistenza tecnica e consulenza a 360° in campo agricolo. Seguiamo la tua azienda dal punto di vista agronomico, normativo ed economico."},
+            { href:'/marketing', img:HOME_IMG.smartphone, n:'03', tag:'Web + App + Full-stack', title:'Servizi', em:'Digitali', desc:"Siti web dedicati, applicazioni full-stack e web app costruite su misura per il tuo business agricolo."},
+            { href:'/precisione', img:HOME_IMG.tech, n:'04', tag:'IoT + Satelliti + AI', title:'Agricoltura di', em:'precisione', desc:"Tecnologie avanzate per monitorare e ottimizzare le operazioni agricole. Aumentiamo la resa, riduciamo costi e impatto ambientale."},
+            { href:'/ricerca', img:HOME_IMG.rd, n:'05', tag:'Lab + Prove + Data', title:'Ricerca &', em:'Sviluppo', desc:"Affianchiamo aziende e centri di ricerca in progetti di innovazione: prove di campo, sperimentazioni in laboratorio, analisi dati e nuovi protocolli."},
           ].map((s,i) => (
             <Reveal key={i} delay={i*100}>
               <a href={s.href} className="v3-card" style={{textDecoration:'none',color:'inherit',display:'grid',gridTemplateRows:'200px 1fr',gap:24,padding:0,overflow:'hidden',height:'100%'}}>
@@ -239,7 +239,7 @@ const PageHome = () => (
                 </div>
               ))}
             </div>
-            <a href="#/precisione" className="v3-btn v3-btn-accent" style={{marginTop:32,color:'var(--c-onDark)'}}>Esplora IoTerra360 →</a>
+            <a href="/precisione" className="v3-btn v3-btn-accent" style={{marginTop:32,color:'var(--c-onDark)'}}>Esplora IoTerra360 →</a>
           </Reveal>
           <Reveal delay={200} className="iot360-map">
             <div className="iot360-map-card">
@@ -290,7 +290,7 @@ const PageHome = () => (
       </div>
       <div className="right">
         <a href="tel:+393665393733" className="phone">+39 366 539 3733</a>
-        <a href="#/contatti" className="v3-btn v3-btn-light">Inizia ora →</a>
+        <a href="/contatti" className="v3-btn v3-btn-light">Inizia ora →</a>
       </div>
     </section>
   </>

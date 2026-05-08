@@ -3,6 +3,25 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- SPA fallback restorer per GitHub Pages.
+     404.html salva l'URL originale in sessionStorage e redireziona qui.
+     Questo script ripristina la rotta richiesta senza ricaricare la pagina,
+     così con URL puliti tipo /contatti il browser arriva sempre alla rotta giusta. -->
+<script>
+  (function() {
+    try {
+      var redirect = sessionStorage.getItem('ioterra:redirect');
+      if (redirect) {
+        sessionStorage.removeItem('ioterra:redirect');
+        if (redirect !== location.href) {
+          history.replaceState(null, '', redirect);
+        }
+      }
+    } catch(e) {}
+  })();
+</script>
+
 <title>IoTerra — Studio agronomico in Sardegna · Analisi suolo, consulenza, agricoltura di precisione</title>
 <meta name="description" content="IoTerra è uno studio agronomico in Sardegna. Analisi del suolo, consulenza agronomica (PAC, CSR, bandi), servizi digitali per aziende agricole, agricoltura di precisione con sensori IoT, satelliti e il software IoTerra360."/>
 <meta name="theme-color" content="#082e25"/>
@@ -65,26 +84,26 @@
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
 
 <!-- Shared design system + components — ?v= forza il cache-busting tra build -->
-<script type="text/babel" src="v3/styles.jsx?v=41"></script>
-<script type="text/babel" src="v3/icons.jsx?v=31"></script>
-<script type="text/babel" src="v3/shell.jsx?v=33"></script>
-<script type="text/babel" src="v3/home-anim.jsx?v=31"></script>
-<script type="text/babel" src="v3/components/MosaicAnimated.jsx?v=31"></script>
-<script type="text/babel" src="v3/components/HomeSatelliteScanner.jsx?v=34"></script>
+<script type="text/babel" src="v3/styles.jsx?v=42"></script>
+<script type="text/babel" src="v3/icons.jsx?v=32"></script>
+<script type="text/babel" src="v3/shell.jsx?v=34"></script>
+<script type="text/babel" src="v3/home-anim.jsx?v=32"></script>
+<script type="text/babel" src="v3/components/MosaicAnimated.jsx?v=32"></script>
+<script type="text/babel" src="v3/components/HomeSatelliteScanner.jsx?v=35"></script>
 
 <!-- Pages -->
-<script type="text/babel" src="v3/pages/Home.jsx?v=40"></script>
-<script type="text/babel" src="v3/pages/Servizi.jsx?v=34"></script>
-<script type="text/babel" src="v3/pages/Contatti.jsx?v=31"></script>
-<script type="text/babel" src="v3/pages/AnalisiSuoloHero.jsx?v=32"></script>
-<script type="text/babel" src="v3/pages/AnalisiSuolo.jsx?v=34"></script>
-<script type="text/babel" src="v3/pages/Consulenza.jsx?v=33"></script>
-<script type="text/babel" src="v3/pages/Marketing.jsx?v=33"></script>
-<script type="text/babel" src="v3/pages/PrecisioneSatHero.jsx?v=31"></script>
-<script type="text/babel" src="v3/pages/Precisione.jsx?v=33"></script>
-<script type="text/babel" src="v3/pages/RicercaScanHero.jsx?v=36"></script>
-<script type="text/babel" src="v3/pages/Ricerca.jsx?v=34"></script>
-<script type="text/babel" src="v3/pages/Legal.jsx?v=31"></script>
+<script type="text/babel" src="v3/pages/Home.jsx?v=41"></script>
+<script type="text/babel" src="v3/pages/Servizi.jsx?v=35"></script>
+<script type="text/babel" src="v3/pages/Contatti.jsx?v=32"></script>
+<script type="text/babel" src="v3/pages/AnalisiSuoloHero.jsx?v=33"></script>
+<script type="text/babel" src="v3/pages/AnalisiSuolo.jsx?v=35"></script>
+<script type="text/babel" src="v3/pages/Consulenza.jsx?v=34"></script>
+<script type="text/babel" src="v3/pages/Marketing.jsx?v=34"></script>
+<script type="text/babel" src="v3/pages/PrecisioneSatHero.jsx?v=32"></script>
+<script type="text/babel" src="v3/pages/Precisione.jsx?v=34"></script>
+<script type="text/babel" src="v3/pages/RicercaScanHero.jsx?v=37"></script>
+<script type="text/babel" src="v3/pages/Ricerca.jsx?v=35"></script>
+<script type="text/babel" src="v3/pages/Legal.jsx?v=32"></script>
 
 <!-- App root -->
 <script type="text/babel">
@@ -198,15 +217,15 @@
     };
 
     let Page = PageHome;
-    if (route === '#/servizi') Page = PageServizi;
-    else if (route === '#/contatti') Page = PageContatti;
-    else if (route === '#/analisi-suolo') Page = PageAnalisiSuolo;
-    else if (route === '#/consulenza') Page = PageConsulenza;
-    else if (route === '#/marketing') Page = PageMarketing;
-    else if (route === '#/precisione') Page = PagePrecisione;
-    else if (route === '#/ricerca') Page = PageRicerca;
-    else if (route === '#/privacy') Page = PagePrivacy;
-    else if (route === '#/termini') Page = PageTermini;
+    if (route === '/servizi') Page = PageServizi;
+    else if (route === '/contatti') Page = PageContatti;
+    else if (route === '/analisi-suolo') Page = PageAnalisiSuolo;
+    else if (route === '/consulenza') Page = PageConsulenza;
+    else if (route === '/marketing') Page = PageMarketing;
+    else if (route === '/precisione') Page = PagePrecisione;
+    else if (route === '/ricerca') Page = PageRicerca;
+    else if (route === '/privacy') Page = PagePrivacy;
+    else if (route === '/termini') Page = PageTermini;
 
     const inner = (
       <div className={`v3-app v3-grain ${mobile ? 'v3-mobile' : ''}`} style={themeVars}>
@@ -259,7 +278,7 @@
           Usiamo cookie tecnici necessari al funzionamento del sito e cookie di
           preferenza per ricordare le tue scelte. Nessun cookie di profilazione.
           Per saperne di più consulta la{' '}
-          <a href="#/privacy" style={{color:'#41a752',textDecoration:'none',
+          <a href="/privacy" style={{color:'#41a752',textDecoration:'none',
             borderBottom:'1px solid rgba(65,167,82,0.5)'}}>Privacy Policy</a>.
         </p>
         <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
