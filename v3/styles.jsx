@@ -2788,7 +2788,7 @@ const V3GlobalStyle = () => (
     }
 
     @media (max-width: 720px) {
-      .hsc-stage { height: 260vh; }
+      .hsc-stage { height: 200vh; }
       /* Riadatto la foto satellite per mostrare il sat in alto a sinistra
          (su mobile portrait il cover ritaglia ai lati). */
       .hsc-bg { background-position: 30% 30%; }
@@ -2822,7 +2822,7 @@ const V3GlobalStyle = () => (
       .hsc-caption p { font-size: 11px; max-width: 100%; line-height: 1.45; }
       .hsc-rail { bottom: 18px; width: min(220px, 70vw); }
     }
-    .v3-mobile .hsc-stage { height: 260vh; }
+    .v3-mobile .hsc-stage { height: 200vh; }
     .v3-mobile .hsc-bg { background-position: 30% 30%; }
     .v3-mobile .hsc-hero { top: 110px; left: 18px; right: 18px; padding: 14px 18px 20px; }
     .v3-mobile .hsc-hero::before { border-radius: 12px; }
