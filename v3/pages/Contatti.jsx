@@ -6,8 +6,8 @@ const ContactForm = () => {
   const submit = async (e) => {
     e.preventDefault();
     setErr(null);
-    if (!vals.nome.trim() || !vals.email.trim() || !vals.messaggio.trim()) {
-      setErr('Compila nome, email e messaggio.'); return;
+    if (!vals.nome.trim() || !vals.email.trim() || !vals.telefono.trim() || !vals.messaggio.trim()) {
+      setErr('Compila tutti i campi: nome, email, telefono e messaggio.'); return;
     }
     if (!vals.accept) {
       setErr('Devi accettare Privacy Policy e Termini.'); return;
@@ -24,7 +24,7 @@ const ContactForm = () => {
         body: JSON.stringify({
           Nome: vals.nome,
           Email: vals.email,
-          Telefono: vals.telefono.trim() || '— non fornito —',
+          Telefono: vals.telefono,
           Messaggio: vals.messaggio,
           _subject: 'Richiesta dal sito · ' + vals.nome,
           _template: 'table',
@@ -59,7 +59,7 @@ const ContactForm = () => {
       {[
         {l:'Nome', k:'nome', p:'Scrivi il tuo nome…', type:'text', req:true},
         {l:'Email', k:'email', p:'Scrivi la tua email…', type:'email', req:true},
-        {l:'Telefono (opzionale)', k:'telefono', p:'Es. +39 333 1234567', type:'tel', req:false},
+        {l:'Telefono', k:'telefono', p:'Es. +39 333 1234567', type:'tel', req:true},
       ].map(f => (
         <div key={f.k} style={{marginBottom:20}}>
           <label style={{display:'block',fontSize:11,color:'var(--c-onDark-muted)',fontWeight:600,marginBottom:8,letterSpacing:'.08em',textTransform:'uppercase'}}>{f.l}</label>
