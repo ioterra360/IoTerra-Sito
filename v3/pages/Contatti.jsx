@@ -1,6 +1,6 @@
 // v3/pages/Contatti.jsx
 const ContactForm = () => {
-  const [vals, setVals] = React.useState({nome:'', email:'', messaggio:'', accept:false, _gotcha:''});
+  const [vals, setVals] = React.useState({nome:'', email:'', telefono:'', messaggio:'', accept:false, _gotcha:''});
   const [err, setErr] = React.useState(null);
   const [status, setStatus] = React.useState('idle'); // idle | sending | sent
   const submit = async (e) => {
@@ -24,6 +24,7 @@ const ContactForm = () => {
         body: JSON.stringify({
           Nome: vals.nome,
           Email: vals.email,
+          Telefono: vals.telefono.trim() || '— non fornito —',
           Messaggio: vals.messaggio,
           _subject: 'Richiesta dal sito · ' + vals.nome,
           _template: 'table',
@@ -40,7 +41,7 @@ const ContactForm = () => {
         throw new Error(msg || 'Invio fallito.');
       }
       setStatus('sent');
-      setVals({nome:'', email:'', messaggio:'', accept:false, _gotcha:''});
+      setVals({nome:'', email:'', telefono:'', messaggio:'', accept:false, _gotcha:''});
     } catch (e2) {
       setStatus('idle');
       if (e2 && e2.message === 'ACTIVATION_PENDING') {
@@ -56,8 +57,9 @@ const ContactForm = () => {
       <div style={{fontSize:11,letterSpacing:'.14em',marginBottom:8,color:'var(--c-accent)',fontWeight:600,textTransform:'uppercase',display:'inline-flex',alignItems:'center',gap:8}}><Icon name="mail" size={12}/> Modulo contatti</div>
       <h3 className="v3-h3" style={{fontSize:32,marginBottom:32}}>Scrivici un <em>messaggio</em></h3>
       {[
-        {l:'Nome', k:'nome', p:'Scrivi il tuo nome…', type:'text'},
-        {l:'Email', k:'email', p:'Scrivi la tua email…', type:'email'},
+        {l:'Nome', k:'nome', p:'Scrivi il tuo nome…', type:'text', req:true},
+        {l:'Email', k:'email', p:'Scrivi la tua email…', type:'email', req:true},
+        {l:'Telefono (opzionale)', k:'telefono', p:'Es. +39 333 1234567', type:'tel', req:false},
       ].map(f => (
         <div key={f.k} style={{marginBottom:20}}>
           <label style={{display:'block',fontSize:11,color:'var(--c-onDark-muted)',fontWeight:600,marginBottom:8,letterSpacing:'.08em',textTransform:'uppercase'}}>{f.l}</label>
@@ -66,7 +68,8 @@ const ContactForm = () => {
             placeholder={f.p}
             value={vals[f.k]}
             onChange={inp(f.k)}
-            required
+            required={f.req}
+            autoComplete={f.k === 'telefono' ? 'tel' : f.k === 'email' ? 'email' : 'name'}
             style={{width:'100%',background:'rgba(0,0,0,0.2)',border:'1px solid rgba(255,255,255,0.1)',borderRadius:12,padding:'14px 16px',fontFamily:'inherit',fontSize:17,outline:'none',color:'var(--c-onDark)',transition:'border-color .2s'}}
             onFocus={e=>e.target.style.borderColor='var(--c-accent)'}
             onBlur={e=>e.target.style.borderColor='rgba(255,255,255,0.1)'}/>
