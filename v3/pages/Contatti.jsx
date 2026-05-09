@@ -1,8 +1,9 @@
 // v3/pages/Contatti.jsx
 const ContactForm = () => {
-  const [vals, setVals] = React.useState({nome:'', email:'', messaggio:'', accept:false});
+  const [vals, setVals] = React.useState({nome:'', email:'', messaggio:'', accept:false, _gotcha:''});
   const [err, setErr] = React.useState(null);
-  const submit = (e) => {
+  const [status, setStatus] = React.useState('idle'); // idle | sending | sent
+  const submit = async (e) => {
     e.preventDefault();
     setErr(null);
     if (!vals.nome.trim() || !vals.email.trim() || !vals.messaggio.trim()) {
@@ -11,15 +12,31 @@ const ContactForm = () => {
     if (!vals.accept) {
       setErr('Devi accettare Privacy Policy e Termini.'); return;
     }
-    // mailto: apre il client di posta con campi precompilati. Funziona ovunque
-    // (Gmail web, Apple Mail, Outlook). L'utente conferma l'invio dal suo client.
-    const subject = encodeURIComponent('Richiesta dal sito · ' + vals.nome);
-    const body = encodeURIComponent(
-      'Nome: ' + vals.nome + '\n' +
-      'Email: ' + vals.email + '\n\n' +
-      'Messaggio:\n' + vals.messaggio + '\n\n— Inviato dal modulo contatti di www.ioterra.it'
-    );
-    window.location.href = 'mailto:ioterraservizi@gmail.com?subject=' + subject + '&body=' + body;
+    if (vals._gotcha) return; // honeypot: bot riempie il campo nascosto, blocchiamo silenziosamente
+    setStatus('sending');
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/ioterraservizi@gmail.com', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+        body: JSON.stringify({
+          Nome: vals.nome,
+          Email: vals.email,
+          Messaggio: vals.messaggio,
+          _subject: 'Richiesta dal sito · ' + vals.nome,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === 'false') {
+        throw new Error(data.message || 'Invio fallito.');
+      }
+      setStatus('sent');
+      setVals({nome:'', email:'', messaggio:'', accept:false, _gotcha:''});
+    } catch (e2) {
+      setStatus('idle');
+      setErr('Invio non riuscito. Riprova o scrivici direttamente a ioterraservizi@gmail.com.');
+    }
   };
   const inp = (k) => (e) => setVals(v => ({...v, [k]: e.target.value}));
   return (
@@ -61,10 +78,12 @@ const ContactForm = () => {
           style={{marginTop:3,accentColor:'var(--c-accent)'}}/>
         <span>Ho letto e accetto la <a href="/privacy" style={{color:'var(--c-accent)'}}>Privacy Policy</a> e i <a href="/termini" style={{color:'var(--c-accent)'}}>Termini e Condizioni</a></span>
       </label>
+      <input type="text" name="_gotcha" value={vals._gotcha} onChange={e=>setVals(v=>({...v,_gotcha:e.target.value}))} tabIndex={-1} autoComplete="off" style={{position:'absolute',left:'-9999px',width:1,height:1,opacity:0}} aria-hidden="true"/>
       {err && <div style={{padding:'10px 14px',background:'rgba(180,60,60,0.16)',border:'1px solid rgba(220,90,90,0.5)',borderRadius:8,color:'#ffb4b4',fontSize:13,marginBottom:14}}>{err}</div>}
-      <button type="submit" className="v3-btn v3-btn-accent" style={{width:'100%',justifyContent:'center',padding:'16px'}}>Invia messaggio →</button>
+      {status === 'sent' && <div style={{padding:'12px 16px',background:'rgba(60,180,120,0.14)',border:'1px solid rgba(90,220,150,0.45)',borderRadius:8,color:'#b6f3cf',fontSize:14,marginBottom:14,lineHeight:1.5}}>Messaggio inviato. Ti risponderemo a breve all'email che hai indicato.</div>}
+      <button type="submit" disabled={status==='sending'} className="v3-btn v3-btn-accent" style={{width:'100%',justifyContent:'center',padding:'16px',opacity:status==='sending'?0.6:1,cursor:status==='sending'?'wait':'pointer'}}>{status==='sending' ? 'Invio in corso…' : 'Invia messaggio →'}</button>
       <div style={{fontSize:11,color:'var(--c-onDark-muted)',marginTop:14,textAlign:'center',lineHeight:1.5}}>
-        Cliccando invia, si aprirà il tuo client di posta con il messaggio precompilato verso <a href="mailto:ioterraservizi@gmail.com" style={{color:'var(--c-accent)'}}>ioterraservizi@gmail.com</a>.
+        Il messaggio arriva direttamente su <a href="mailto:ioterraservizi@gmail.com" style={{color:'var(--c-accent)'}}>ioterraservizi@gmail.com</a>. Ti risponderemo entro 24h lavorative.
       </div>
     </form>
   );
