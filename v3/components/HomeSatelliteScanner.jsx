@@ -56,7 +56,7 @@ const HomeSatelliteScanner = ({ children }) => {
   const captions = [
     { tag:'STEP 01 · ACQUISIZIONE', t:'Dal cielo e dalla terra.', d:'Satelliti, droni, sensori IoT e laboratorio: ogni livello osserva il campo da una prospettiva diversa.' },
     { tag:'STEP 02 · ELABORAZIONE', t:'Dati integrati in un\'unica interfaccia.', d:'NDVI, mappe di vigore, modelli di crescita e meteo locale: tutti i flussi confluiscono in un\'unica dashboard.' },
-    { tag:'STEP 03 · DECISIONE',    t:'L\'agronomia che decide.', d:'L\'esperienza agronomica trasforma i numeri in scelte: il momento giusto per concimare, irrigare, raccogliere.' },
+    { tag:'STEP 03 · DECISIONE',    t:'Dai numeri alle scelte giuste.', d:'Il nostro team legge i dati e li trasforma in raccomandazioni operative pensate per la tua coltura.' },
     { tag:'STEP 04 · AZIONE',       t:'Dal dato al campo.', d:'Mappe di prescrizione e raccomandazioni operative pronte per il tuo team.' },
   ];
 

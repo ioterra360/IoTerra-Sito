@@ -2660,6 +2660,12 @@ const V3GlobalStyle = () => (
       font-family: var(--font-mono); font-size: 10.5px;
       color: var(--c-accent); margin-left: 2px;
     }
+    /* Desktop only: il chip SCAN·LIVE va DENTRO l'hero in alto a destra
+       (prima top:-42px lo metteva sopra l'hero, ma su desktop la navbar
+       fissa lo copriva). Mobile resta intoccato col suo override. */
+    @media (min-width: 721px) {
+      .hsc-scan-tag { top: 14px; right: 18px; }
+    }
 
     /* Scan line verticale (si muove orizzontalmente con --scan-x).
        Top:30% = appena sotto il satellite nella foto bg.
