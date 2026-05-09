@@ -28,14 +28,23 @@ const ContactForm = () => {
         }),
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok || data.success === 'false') {
-        throw new Error(data.message || 'Invio fallito.');
+      const msg = (data.message || '') + '';
+      if (!res.ok || data.success === 'false' || data.success === false) {
+        // Caso speciale: form FormSubmit non ancora attivato lato amministratore
+        if (/activation/i.test(msg) || /activate/i.test(msg)) {
+          throw new Error('ACTIVATION_PENDING');
+        }
+        throw new Error(msg || 'Invio fallito.');
       }
       setStatus('sent');
       setVals({nome:'', email:'', messaggio:'', accept:false, _gotcha:''});
     } catch (e2) {
       setStatus('idle');
-      setErr('Invio non riuscito. Riprova o scrivici direttamente a ioterraservizi@gmail.com.');
+      if (e2 && e2.message === 'ACTIVATION_PENDING') {
+        setErr('Il modulo è in fase di attivazione. Riprova tra qualche minuto, oppure scrivici direttamente a ioterraservizi@gmail.com.');
+      } else {
+        setErr('Invio non riuscito. Riprova o scrivici direttamente a ioterraservizi@gmail.com.');
+      }
     }
   };
   const inp = (k) => (e) => setVals(v => ({...v, [k]: e.target.value}));
