@@ -15,7 +15,10 @@ const ContactForm = () => {
     if (vals._gotcha) return; // honeypot: bot riempie il campo nascosto, blocchiamo silenziosamente
     setStatus('sending');
     try {
-      const res = await fetch('https://formsubmit.co/ajax/ioterraservizi@gmail.com', {
+      // Hash alias FormSubmit (anti-scraping): l'email reale ioterraservizi@gmail.com
+      // resta nascosta dal JavaScript pubblico. L'attivazione del form e' legata
+      // all'email, ma l'endpoint usa il token che FormSubmit ha generato.
+      const res = await fetch('https://formsubmit.co/ajax/2b62c89ef0aa543029e6f7ca69a9f3e6', {
         method: 'POST',
         headers: {'Content-Type':'application/json', 'Accept':'application/json'},
         body: JSON.stringify({
