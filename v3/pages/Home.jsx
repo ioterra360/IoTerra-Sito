@@ -141,7 +141,7 @@ const PageHome = () => (
         sovrapposto fisso alla foto satellite, lo scanner si attiva con lo
         scroll. */}
     <HomeSatelliteScanner>
-      <h1 className="v3-h1 v3-fadeUp hsc-h1" style={{fontWeight:200,lineHeight:0.92,animationDelay:'.3s'}}>
+      <h1 className="v3-h1 v3-fadeUp hsc-h1" style={{fontWeight:200,animationDelay:'.3s'}}>
         <span style={{display:'block'}}>Coltiviamo il</span>
         <span style={{display:'block'}}>
           <ScrambleWord words={['futuro','raccolto','potenziale']}/>, analizzando

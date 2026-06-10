@@ -2559,304 +2559,138 @@ const V3GlobalStyle = () => (
     .v3-mobile .v3-bandi-lbl { font-size: 12px; margin-top: 10px; line-height: 1.35; }
     /* === END BANDI AGRICOLI === */
 
-    /* === HOME SATELLITE SCANNER (sostituisce mosaico cosa facciamo) ====== */
-    /* Sfondo: foto reale satellite + campo. Scan-line orizzontale si muove
-       sul campo, 3 POI essenziali (SAT/DASHBOARD/LAB) si illuminano.
-       Stage 360vh pinned (260vh su mobile). */
-    .hsc-stage { position: relative; height: 360vh; }
-    .hsc-pin {
-      position: sticky; top: 0; height: 100vh; width: 100%;
-      overflow: hidden; background: var(--c-dark);
+    /* === HOME HERO (statico — ex satellite scanner) ===================== */
+    /* Prima schermata a tutto schermo: foto satellite a sfondo (cover) +
+       titolo e CTA in basso a sinistra. Rimosso l'effetto scanner
+       (scan-line / POI / chip / caption a step / barra di progresso). */
+    .hsc-hero-section {
+      position: relative;
+      /* Altezza piena ma "small viewport height" su mobile: la foto e il
+         contenuto non finiscono mai sotto la barra del browser (iPhone SE →
+         iPhone 17 Pro Max). Fallback a 100vh per browser senza svh. */
+      min-height: 100vh;
+      min-height: 100svh;
+      /* L'immagine sale DIETRO la navbar flottante (sticky, ~80px di spazio):
+         così la foto parte dal bordo superiore, senza la banda di sfondo. */
+      margin-top: -80px;
+      width: 100%;
+      overflow: hidden;
+      background: var(--c-dark);
+      display: flex;
+      /* Testo alzato nel terzo superiore (non più centrato) per riempire la home */
+      align-items: flex-start;
     }
     .hsc-bg {
       position: absolute; inset: 0;
       background-image: url('assets/img/satellite-scanner.jpg');
       background-size: cover; background-position: center;
     }
+    /* Scrim per leggibilità: scuro in alto (sotto la nav), trasparente al
+       centro, più scuro in basso dove vivono titolo e CTA. */
     .hsc-bg::after {
       content:''; position: absolute; inset: 0;
       background:
-        linear-gradient(180deg, rgba(var(--c-dark-rgb),0.35) 0%, transparent 30%, rgba(var(--c-dark-rgb),0.55) 100%),
-        radial-gradient(ellipse at 50% 100%, rgba(var(--c-dark-rgb),0.4), transparent 70%);
+        linear-gradient(180deg, rgba(var(--c-dark-rgb),0.45) 0%, transparent 32%, rgba(var(--c-dark-rgb),0.78) 100%),
+        radial-gradient(ellipse at 50% 100%, rgba(var(--c-dark-rgb),0.45), transparent 72%);
       pointer-events: none;
     }
     /* Vignette ai bordi per fondere la foto col bg del sito */
-    .hsc-pin::before {
+    .hsc-hero-section::before {
       content:''; position: absolute; inset: 0; pointer-events:none; z-index:2;
       background:
         radial-gradient(ellipse 90% 80% at center, transparent 50%, rgba(var(--c-dark-rgb),0.5) 100%);
     }
 
-    /* Hero overlay — il titolo "Coltiviamo..." sopra la foto satellite */
+    /* Contenuto hero — titolo "Coltiviamo..." + CTA, ancorato nel terzo
+       superiore. padding-top max(88px,13vh): 13vh dà il posizionamento alto,
+       il floor 88px garantisce che resti sotto la navbar (~80px) anche su
+       finestre desktop basse. */
     .hsc-hero {
-      position: absolute;
-      top: 88px; left: 40px; right: 40px;
+      position: relative;
       z-index: 8;
-      pointer-events: auto;
-      max-width: 1200px;
-      padding: 18px 24px 28px;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: max(88px, 13vh) 40px 6vh;
       isolation: isolate;
-    }
-    /* Card-gradient leggermente più scuro dietro alle scritte per leggibilità.
-       Sfumato per fondersi con la foto, con vignette inferiore più marcata. */
-    .hsc-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg,
-        rgba(var(--c-dark-rgb),0.10) 0%,
-        rgba(var(--c-dark-rgb),0.55) 60%,
-        rgba(var(--c-dark-rgb),0.85) 100%);
-      border-radius: 16px;
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-      z-index: -1;
-      pointer-events: none;
     }
     .hsc-hero .hsc-h1 {
       font-family: var(--font-display);
-      font-size: clamp(40px, 7.5vw, 112px);
-      line-height: 0.92; letter-spacing: -0.04em;
+      font-size: clamp(45px, 8.3vw, 126px);
+      line-height: 0.98; letter-spacing: -0.04em;
       color: var(--c-onDark);
       margin: 0;
-      max-width: 1200px;
-      text-shadow: 0 2px 22px rgba(0,0,0,0.45);
+      max-width: 1240px;
+      text-shadow: 0 2px 26px rgba(0,0,0,0.55);
     }
     .hsc-hero .hsc-h1 em {
       font-style: italic; color: var(--c-accent); font-weight: 300;
     }
+    /* Paragrafo sopra, bottoni impilati e centrati sotto, ben staccati (gap). */
     .hsc-hero-cta {
-      display: grid; grid-template-columns: 1fr auto auto;
-      gap: 28px; align-items: flex-end;
-      margin-top: 32px; padding-top: 24px;
+      display: flex; flex-direction: column;
+      gap: 34px;
+      margin-top: 60px; padding-top: 34px;
       border-top: 1px solid rgba(var(--c-accent-rgb),0.15);
-      max-width: 920px;
+      max-width: 600px;
     }
     .hsc-hero-cta p {
-      font-size: 16px; line-height: 1.55;
-      color: rgba(var(--c-onDark-rgb),0.86); margin: 0;
-      max-width: 480px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+      font-size: 18px; line-height: 1.6;
+      color: rgba(var(--c-onDark-rgb),0.90); margin: 0;
+      max-width: 100%;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.55);
     }
-    .hsc-hero-cta-btns { display: contents; }
-    .hsc-scan-tag {
-      position: absolute;
-      top: -42px; right: 0;
-      display: inline-flex; gap: 10px; align-items: center;
-      padding: 6px 12px;
-      background: rgba(var(--c-dark-rgb),0.6);
-      border: 1px solid rgba(var(--c-accent-rgb),0.25);
-      border-radius: 999px; backdrop-filter: blur(10px);
+    /* Bottoni uno sopra l'altro, centrati, stessa larghezza */
+    .hsc-hero-cta-btns {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 14px; width: 100%;
     }
-    .hsc-scan-lbl {
-      font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--c-accent);
+    .hsc-hero-cta-btns .v3-btn {
+      width: min(340px, 100%); justify-content: center;
+      padding: 16px 30px; font-size: 16.5px;
     }
-    .hsc-scan-pct {
-      font-family: var(--font-display); font-weight: 300;
-      font-size: 20px; line-height: 1;
-      color: var(--c-onDark); letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums;
-    }
-    .hsc-scan-pct small {
-      font-family: var(--font-mono); font-size: 10.5px;
-      color: var(--c-accent); margin-left: 2px;
-    }
-    /* Desktop only: il chip SCAN·LIVE va DENTRO l'hero in alto a destra
-       (prima top:-42px lo metteva sopra l'hero, ma su desktop la navbar
-       fissa lo copriva). Mobile resta intoccato col suo override. */
-    @media (min-width: 721px) {
-      .hsc-scan-tag { top: 14px; right: 18px; }
-    }
-
-    /* Scan line verticale (si muove orizzontalmente con --scan-x).
-       Top:30% = appena sotto il satellite nella foto bg.
-       Bottom:0 = arriva fino in fondo, dietro le caption STEP.
-       Niente cielo sopra al satellite, scannerizza solo campo + caption. */
-    .hsc-line {
-      position: absolute; top: 30%; bottom: 0;
-      left: var(--scan-x, 0%);
-      width: 2px; transform: translateX(-1px);
-      pointer-events: none; z-index: 4;
-      background: linear-gradient(180deg,
-        rgba(var(--c-accent-rgb),0.85) 0%,
-        var(--c-accent) 40%,
-        rgba(var(--c-accent-rgb),0.55) 80%,
-        rgba(var(--c-accent-rgb),0.30) 100%);
-      box-shadow: 0 0 14px rgba(var(--c-accent-rgb),0.6),
-                  0 0 38px rgba(var(--c-accent-rgb),0.3);
-    }
-    .hsc-line::before {
-      content:''; position: absolute; top: 0; bottom: 0;
-      left: -28px; right: -28px;
-      background: linear-gradient(90deg,
-        transparent 0%, rgba(var(--c-accent-rgb),0.10) 50%, transparent 100%);
-    }
-
-    /* POI sul campo */
-    .hsc-poi-layer { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
-    .hsc-poi {
-      position: absolute; transform: translate(-50%,-50%);
-      width: 14px; height: 14px;
-    }
-    .hsc-poi .dot {
-      position: absolute; inset: 0; border-radius: 50%;
-      background: var(--c-accent);
-      opacity: var(--poi-active, 0);
-      transform: scale(var(--poi-scale, 0.6));
-      transition: opacity .25s, transform .25s;
-    }
-    .hsc-poi .ring {
-      position: absolute; inset: -6px;
-      border: 1px solid rgba(var(--c-accent-rgb),0.55);
-      border-radius: 50%;
-      opacity: var(--poi-active, 0);
-      animation: scn-poi-ring 1.6s ease-out infinite;
-    }
-
-    /* Chip metrica (clampati DENTRO il box dell'immagine) */
-    .hsc-chip {
-      position: absolute; transform: translate(-50%,-50%);
-      padding: 8px 12px;
-      background: rgba(var(--c-dark-rgb),0.85);
-      border: 1px solid rgba(var(--c-accent-rgb),0.40);
-      border-radius: 10px;
-      font-family: var(--font-ui);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.45);
-      min-width: 130px; max-width: 38vw;
-      opacity: var(--chip-opacity, 0);
-      z-index: 6;
-    }
-    .hsc-chip-name {
-      font-family: var(--font-mono); font-size: 9px;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(var(--c-accent-rgb),0.85); margin-bottom: 3px;
-    }
-    .hsc-chip-row { display: flex; align-items: baseline; gap: 8px; }
-    .hsc-chip-sym {
-      font-family: var(--font-display); font-style: italic;
-      font-weight: 300; font-size: 22px; color: var(--c-accent);
-      line-height: 1; letter-spacing: -0.02em;
-    }
-    .hsc-chip-val {
-      font-family: var(--font-mono); font-size: 13px;
-      color: var(--c-onDark); font-variant-numeric: tabular-nums;
-    }
-    .hsc-chip-unit {
-      font-family: var(--font-mono); font-size: 10px;
-      color: rgba(var(--c-onDark-rgb),0.55);
-    }
-    /* Hero text Home rimane sempre VISIBILE — chip dell'animazione vanno
-       sotto, mai sopra al titolo "Coltiviamo il...". */
-    .hsc-hero { z-index: 20 !important; }
-    .hsc-chip { z-index: 6 !important; }
-    .hsc-poi-layer { z-index: 5 !important; }
     /* Precisione: i chip restano sopra al field (no overlap con hero del sito) */
     .sat-chip { z-index: 14 !important; }
     .sat-poi-layer { z-index: 13 !important; }
 
-    /* Caption */
-    .hsc-caption {
-      position: absolute; bottom: 60px; left: 50%;
-      transform: translateX(-50%);
-      max-width: min(640px, 92vw); width: 100%;
-      text-align: center; padding: 0 24px;
-      z-index: 8;
-    }
-    .hsc-cap-frame { position: relative; min-height: 92px; }
-    .hsc-cap-frame > div { position: absolute; inset: 0; opacity: 0;
-      transition: opacity 0.6s ease; }
-    .hsc-cap-frame > div.on { opacity: 1; }
-    .hsc-step {
-      font-family: var(--font-mono); font-size: 11px;
-      letter-spacing: 0.18em; color: var(--c-accent); margin-bottom: 10px;
-    }
-    .hsc-ttl {
-      font-family: var(--font-display); font-style: italic;
-      font-weight: 300; font-size: clamp(22px, 3vw, 34px);
-      color: var(--c-onDark); margin: 0 0 8px;
-      letter-spacing: -0.02em; line-height: 1.1;
-    }
-    .hsc-caption p {
-      font-size: 13px; line-height: 1.5;
-      color: var(--c-onDark-muted); max-width: 540px; margin: 0 auto;
-    }
-
-    /* Progress rail */
-    .hsc-rail {
-      position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
-      width: min(360px, 60vw); height: 2px;
-      background: rgba(var(--c-accent-rgb),0.16);
-      border-radius: 999px; overflow: hidden; z-index: 8;
-    }
-    .hsc-rail span {
-      display: block; height: 100%;
-      background: linear-gradient(90deg, transparent, var(--c-accent));
+    /* La navbar diventa compatta sotto i 900px (~66px): allineo il margine
+       negativo così la foto resta full-bleed sotto la nav su tablet/telefono. */
+    @media (max-width: 900px) {
+      /* padding-top = altezza nav: il testo centrato non finisce mai sotto la
+         navbar nemmeno sui telefoni piccoli/bassi (l'immagine, in absolute,
+         resta comunque a tutto schermo). */
+      .hsc-hero-section { margin-top: -66px; padding-top: 66px; }
+      /* Raise modesto su tablet/telefono: il reserve nav (66px) tiene il
+         titolo sotto la nav, +4vh lo alza appena nel terzo superiore. */
+      .hsc-hero { padding-top: 4vh; }
     }
 
     @media (max-width: 720px) {
-      .hsc-stage { height: 200vh; }
-      /* Riadatto la foto satellite per mostrare il sat in alto a sinistra
-         (su mobile portrait il cover ritaglia ai lati). */
+      /* Riadatto la foto satellite per mostrare il sat (su mobile portrait
+         il cover ritaglia ai lati). */
       .hsc-bg { background-position: 30% 30%; }
-      /* Più aria sopra al titolo per non farlo coprire dalla nav durante il pin */
-      .hsc-hero { top: 110px; left: 18px; right: 18px; padding: 14px 18px 20px; }
-      .hsc-hero::before { border-radius: 12px; }
-      .hsc-hero .hsc-h1 { font-size: clamp(32px, 9vw, 48px); line-height: 0.96; }
-      .hsc-hero-cta {
-        grid-template-columns: 1fr; gap: 16px;
-        margin-top: 18px; padding-top: 14px;
-      }
-      .hsc-hero-cta p { font-size: 13px; max-width: 100%; }
-      .hsc-hero-cta-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+      .hsc-hero { padding: 4vh 18px 0; }
+      .hsc-hero .hsc-h1 { font-size: clamp(33px, 9.4vw, 52px); line-height: 1.06; }
+      .hsc-hero-cta { gap: 26px; margin-top: 40px; padding-top: 24px; max-width: 100%; }
+      .hsc-hero-cta p { font-size: 16px; max-width: 100%; }
+      .hsc-hero-cta-btns { display: flex; flex-direction: column; align-items: center; gap: 12px; }
       .hsc-hero-cta-btns .v3-btn {
-        flex: 1 1 auto; justify-content: center;
-        min-width: 120px; padding: 10px 14px; font-size: 12.5px;
+        width: min(320px, 100%); justify-content: center;
+        padding: 15px 24px; font-size: 15.5px;
       }
-      .hsc-scan-tag { top: -36px; padding: 5px 10px; gap: 8px; }
-      .hsc-scan-lbl { font-size: 10px; }
-      .hsc-scan-pct { font-size: 16px; }
-      .hsc-scan-pct small { font-size: 9.5px; }
-      .hsc-chip { min-width: 78px; padding: 4px 7px; }
-      .hsc-chip-name { font-size: 8px; letter-spacing: .14em; }
-      .hsc-chip-sym { font-size: 14px; }
-      .hsc-chip-val { font-size: 10px; }
-      .hsc-chip-unit { font-size: 9px; }
-      .hsc-caption { bottom: 50px; padding: 0 14px; }
-      .hsc-cap-frame { min-height: 78px; }
-      .hsc-step { font-size: 9.5px; margin-bottom: 6px; }
-      .hsc-ttl { font-size: 16px; line-height: 1.15; margin-bottom: 4px; }
-      .hsc-caption p { font-size: 11px; max-width: 100%; line-height: 1.45; }
-      .hsc-rail { bottom: 18px; width: min(220px, 70vw); }
     }
-    .v3-mobile .hsc-stage { height: 200vh; }
+    .v3-mobile .hsc-hero-section { margin-top: -66px; padding-top: 66px; }
     .v3-mobile .hsc-bg { background-position: 30% 30%; }
-    .v3-mobile .hsc-hero { top: 110px; left: 18px; right: 18px; padding: 14px 18px 20px; }
-    .v3-mobile .hsc-hero::before { border-radius: 12px; }
-    .v3-mobile .hsc-hero .hsc-h1 { font-size: clamp(32px, 9vw, 48px); line-height: 0.96; }
-    .v3-mobile .hsc-hero-cta { grid-template-columns: 1fr; gap: 16px;
-      margin-top: 18px; padding-top: 14px; }
-    .v3-mobile .hsc-hero-cta p { font-size: 13px; max-width: 100%; }
-    .v3-mobile .hsc-hero-cta-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+    .v3-mobile .hsc-hero { padding: 4vh 18px 0; }
+    .v3-mobile .hsc-hero .hsc-h1 { font-size: clamp(33px, 9.4vw, 52px); line-height: 1.06; }
+    .v3-mobile .hsc-hero-cta { gap: 26px; margin-top: 40px; padding-top: 24px; max-width: 100%; }
+    .v3-mobile .hsc-hero-cta p { font-size: 16px; max-width: 100%; }
+    .v3-mobile .hsc-hero-cta-btns { display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .v3-mobile .hsc-hero-cta-btns .v3-btn {
-      flex: 1 1 auto; justify-content: center;
-      min-width: 120px; padding: 10px 14px; font-size: 12.5px;
+      width: min(320px, 100%); justify-content: center;
+      padding: 15px 24px; font-size: 15.5px;
     }
-    .v3-mobile .hsc-scan-tag { top: -36px; padding: 5px 10px; gap: 8px; }
-    .v3-mobile .hsc-scan-lbl { font-size: 10px; }
-    .v3-mobile .hsc-scan-pct { font-size: 16px; }
-    .v3-mobile .hsc-scan-pct small { font-size: 9.5px; }
-    .v3-mobile .hsc-chip { min-width: 78px; padding: 4px 7px; }
-    .v3-mobile .hsc-chip-name { font-size: 8px; }
-    .v3-mobile .hsc-chip-sym { font-size: 14px; }
-    .v3-mobile .hsc-chip-val { font-size: 10px; }
-    .v3-mobile .hsc-chip-unit { font-size: 9px; }
-    .v3-mobile .hsc-caption { bottom: 50px; padding: 0 14px; }
-    .v3-mobile .hsc-cap-frame { min-height: 78px; }
-    .v3-mobile .hsc-step { font-size: 9.5px; }
-    .v3-mobile .hsc-ttl { font-size: 16px; line-height: 1.15; }
-    .v3-mobile .hsc-caption p { font-size: 11px; max-width: 100%; }
-    .v3-mobile .hsc-rail { bottom: 18px; width: min(220px, 70vw); }
-    /* === END HOME SATELLITE SCANNER === */
+    /* === END HOME HERO === */
     /* ─── END PORTED BLOCKS ─── */
 `}</style>
 );
