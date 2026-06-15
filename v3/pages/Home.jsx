@@ -150,7 +150,7 @@ const PageHome = () => (
       </h1>
       <div className="hsc-hero-cta v3-fadeUp" style={{animationDelay:'.7s'}}>
         <p>
-          Studio agronomico che integra <em style={{color:'var(--c-accent)',fontStyle:'italic'}}>analisi di laboratorio</em>, satelliti e IoT per portare l'agricoltura sarda nel futuro.
+          Studio agronomico che integra <em style={{color:'var(--c-onDark)',fontStyle:'italic',fontWeight:500}}>analisi di laboratorio</em>, satelliti e IoT per portare l'agricoltura sarda nel futuro.
         </p>
         <div className="hsc-hero-cta-btns">
           <a href="/servizi" className="v3-btn v3-btn-light">Esplora i servizi →</a>

@@ -2635,7 +2635,7 @@ const V3GlobalStyle = () => (
       max-width: 600px;
     }
     .hsc-hero-cta p {
-      font-size: 18px; line-height: 1.6;
+      font-size: 21px; line-height: 1.6;
       color: rgba(var(--c-onDark-rgb),0.90); margin: 0;
       max-width: 100%;
       text-shadow: 0 2px 14px rgba(0,0,0,0.55);
@@ -2672,7 +2672,7 @@ const V3GlobalStyle = () => (
       .hsc-hero { padding: 4vh 18px 0; }
       .hsc-hero .hsc-h1 { font-size: clamp(33px, 9.4vw, 52px); line-height: 1.06; }
       .hsc-hero-cta { gap: 26px; margin-top: 40px; padding-top: 24px; max-width: 100%; }
-      .hsc-hero-cta p { font-size: 16px; max-width: 100%; }
+      .hsc-hero-cta p { font-size: 17.5px; max-width: 100%; }
       .hsc-hero-cta-btns { display: flex; flex-direction: column; align-items: center; gap: 12px; }
       .hsc-hero-cta-btns .v3-btn {
         width: min(320px, 100%); justify-content: center;
@@ -2684,7 +2684,7 @@ const V3GlobalStyle = () => (
     .v3-mobile .hsc-hero { padding: 4vh 18px 0; }
     .v3-mobile .hsc-hero .hsc-h1 { font-size: clamp(33px, 9.4vw, 52px); line-height: 1.06; }
     .v3-mobile .hsc-hero-cta { gap: 26px; margin-top: 40px; padding-top: 24px; max-width: 100%; }
-    .v3-mobile .hsc-hero-cta p { font-size: 16px; max-width: 100%; }
+    .v3-mobile .hsc-hero-cta p { font-size: 17.5px; max-width: 100%; }
     .v3-mobile .hsc-hero-cta-btns { display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .v3-mobile .hsc-hero-cta-btns .v3-btn {
       width: min(320px, 100%); justify-content: center;
