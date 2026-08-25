@@ -628,6 +628,10 @@ const V3GlobalStyle = () => (
       .v3-hero-content { padding: 48px 16px 24px; }
       .v3-section { padding: 48px 14px !important; }
       .v3-stats-row { grid-template-columns: 1fr !important; }
+      /* Striscia numerica dentro .v3-block (Consulenza: 387 / 36 / 1,5 / 500):
+         resta 2x2 anche sotto 480px invece di impilarsi in una colonna.
+         Le .v3-stats-row di Marketing/Ricerca (card di testo) restano a 1 col. */
+      .v3-block .v3-stats-row { grid-template-columns: 1fr 1fr !important; }
     }
 
     /* === SCROLL MOSAIC: tech + natura === */
