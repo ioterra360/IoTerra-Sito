@@ -36,7 +36,7 @@ const PagePrivacy = () => {
               Questa Privacy Policy descrive le modalità di raccolta, uso e divulgazione delle informazioni quando utilizzi i servizi di IoTerra e i tuoi diritti in materia di privacy.
             </p>
             <p style={{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--c-accent)',marginTop:18}}>
-              ● Ultimo aggiornamento: 13 febbraio 2025
+              ● Ultimo aggiornamento: 25 agosto 2026
             </p>
           </Reveal>
         </div>
@@ -53,7 +53,7 @@ const PagePrivacy = () => {
               <H3>Definizioni</H3>
               <UL>
                 <LI><Strong>Account</Strong> · account creato per accedere al servizio.</LI>
-                <LI><Strong>Società</Strong> · IoTerra (di seguito "noi" o "nostro").</LI>
+                <LI><Strong>Titolare del trattamento</Strong> · Angelo Casula, Dottore Agronomo iscritto all'Ordine dei Dottori Agronomi e dei Dottori Forestali della Provincia di Sassari, n. 1083, titolare dello Studio Agronomico IoTerra, P.IVA 03034130900 (di seguito "IoTerra", "noi" o "nostro").</LI>
                 <LI><Strong>Cookie</Strong> · piccoli file salvati sul dispositivo durante la navigazione.</LI>
                 <LI><Strong>Paese</Strong> · Italia.</LI>
                 <LI><Strong>Dispositivo</Strong> · qualsiasi device che acceda al servizio (computer, smartphone, tablet).</LI>
@@ -88,7 +88,7 @@ const PagePrivacy = () => {
               <P>Puoi rifiutare i cookie modificando le impostazioni del tuo browser. Tuttavia, in tal caso potresti non riuscire a usare alcune funzionalità del sito.</P>
 
               <H3>Uso dei tuoi dati personali</H3>
-              <P>La Società può utilizzare i dati personali per:</P>
+              <P>IoTerra può utilizzare i dati personali per:</P>
               <UL>
                 <LI><Strong>Fornire e mantenere il servizio</Strong>, monitorandone l'utilizzo.</LI>
                 <LI><Strong>Gestire il tuo account</Strong>, permettendoti l'accesso a diverse funzionalità.</LI>
@@ -107,7 +107,7 @@ const PagePrivacy = () => {
               <P>Conserveremo i tuoi dati personali solo per il tempo necessario alle finalità indicate. I dati di utilizzo sono in genere conservati per un periodo più breve, salvo obblighi legali o necessità di sicurezza.</P>
 
               <H3>Trasferimento dei dati</H3>
-              <P>I dati possono essere trattati presso le sedi operative della Società o presso altri luoghi dove le parti coinvolte sono ubicate. Adottiamo tutte le misure ragionevolmente necessarie per garantire un trattamento sicuro e conforme alla presente Policy.</P>
+              <P>I dati possono essere trattati presso la sede di IoTerra o presso altri luoghi dove le parti coinvolte sono ubicate. Adottiamo tutte le misure ragionevolmente necessarie per garantire un trattamento sicuro e conforme alla presente Policy.</P>
 
               <H3>Cancellazione dei dati</H3>
               <P>Hai il diritto di cancellare o richiedere la cancellazione dei dati personali raccolti. Puoi aggiornare, modificare o cancellare i tuoi dati in qualsiasi momento contattandoci. Potremmo dover conservare alcune informazioni se richiesto da obblighi legali.</P>
@@ -134,6 +134,7 @@ const PagePrivacy = () => {
               <H3>Contatti</H3>
               <P>Per qualsiasi domanda relativa alla presente Privacy Policy puoi contattarci:</P>
               <UL>
+                <LI>Titolare del trattamento · Angelo Casula, Dottore Agronomo, Studio Agronomico IoTerra</LI>
                 <LI>Email · <a href="mailto:ioterraservizi@gmail.com" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>ioterraservizi@gmail.com</a></LI>
                 <LI>Telefono · <a href="tel:+393665393733" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>+39 366 539 3733</a></LI>
               </UL>
@@ -159,7 +160,7 @@ const PageTermini = () => {
               Termini e Condizioni di Servizio di IoTerra. L'accettazione di un preventivo emesso da IoTerra costituisce a tutti gli effetti una presa di incarico professionale e comporta l'accettazione integrale dei presenti Termini.
             </p>
             <p style={{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--c-accent)',marginTop:18}}>
-              ● Ultimo aggiornamento: 20 settembre 2025
+              ● Ultimo aggiornamento: 25 agosto 2026
             </p>
           </Reveal>
         </div>
@@ -192,6 +193,7 @@ const PageTermini = () => {
               <H3>Contatti</H3>
               <P>Per qualsiasi domanda relativa ai presenti Termini puoi contattarci:</P>
               <UL>
+                <LI>Titolare dello studio · Angelo Casula, Dottore Agronomo iscritto all'Ordine dei Dottori Agronomi e dei Dottori Forestali della Provincia di Sassari, n. 1083</LI>
                 <LI>Email · <a href="mailto:ioterraservizi@gmail.com" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>ioterraservizi@gmail.com</a></LI>
                 <LI>Telefono · <a href="tel:+393665393733" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>+39 366 539 3733</a></LI>
                 <LI>Sede legale · Sardegna · IT</LI>

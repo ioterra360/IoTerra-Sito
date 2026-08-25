@@ -148,6 +148,9 @@ const Footer = () => (
         <p style={{fontSize:13,lineHeight:1.6,color:'var(--c-onDark-muted)',margin:0,maxWidth:420}}>
           Studio agronomico con sede in Sardegna. Integriamo analisi di laboratorio, sensori IoT, satelliti e ricerca scientifica per portare l'agricoltura sarda nel futuro: dal singolo campione al campo intero.
         </p>
+        <p style={{fontSize:13,lineHeight:1.6,color:'var(--c-onDark-muted)',margin:0,maxWidth:420}}>
+          <span style={{color:'var(--c-onDark)'}}>Angelo Casula, Dottore Agronomo</span>, iscritto all'Ordine dei Dottori Agronomi e dei Dottori Forestali della Provincia di Sassari, n. 1083.
+        </p>
       </div>
       <div>
         <h4>Servizi</h4>
@@ -176,7 +179,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="v3-footer-bot">
-      <span>© IoTerra · P.IVA 03034130900</span>
+      <span>© IoTerra · <span style={{whiteSpace:'nowrap'}}>Angelo Casula, Dottore Agronomo</span> · <span style={{whiteSpace:'nowrap'}}>P.IVA 03034130900</span></span>
       <span>
         <a href="/privacy">Privacy</a> · <a href="/termini">Termini</a>
       </span>
