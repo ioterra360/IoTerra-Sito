@@ -2,29 +2,31 @@
 // (componenti React puri, no librerie esterne)
 
 // ============================================================
-// 1) SCRAMBLE TEXT — le parole si scambiano con una dissolvenza morbida
+// 1) SCRAMBLE TEXT — le parole si sostituiscono lettera per lettera
 // ============================================================
-// Niente caratteri casuali: la parola in uscita sfuma verso l'alto con un
-// micro blur, quella in entrata risale da sotto. Il contenitore anima la
-// propria larghezza passando prima dalla larghezza maggiore fra le due
-// parole, cosi' il testo che segue (", analizzando") scivola senza mai
-// essere coperto dalla parola in dissolvenza. Le larghezze si misurano su
-// uno sizer nascosto: rimisurato quando il webfont e' pronto e a ogni
+// Sostituzione progressiva da sinistra a destra: ogni posizione passa dalla
+// lettera della parola uscente a quella della parola entrante. Nessun
+// carattere casuale (il pool 'AGRO.TECH...' con i glifi matematici e' stato
+// tolto: non esistono in Fraunces, arrivavano dal font di fallback con
+// metriche diverse e sembravano ingranditi). L'avanzamento e' su easing
+// morbido, quindi parte e finisce piano invece di raffica costante.
+// La larghezza del contenitore resta sulla maggiore fra le due parole per
+// tutta la sostituzione e poi si assesta: ", analizzando" scivola una volta
+// sola e la parola in transizione non ci finisce mai sopra. Larghezze
+// misurate su uno sizer nascosto, rimisurate su document.fonts.ready e sul
 // resize, perche' il font-size dell'h1 e' in vw.
-const ScrambleWord = ({ words, intervalMs = 3400, fadeMs = 520 }) => {
+const ScrambleWord = ({ words, intervalMs = 3200, sweepMs = 900 }) => {
   const [idx, setIdx] = React.useState(0);
-  const [phase, setPhase] = React.useState('in');   // 'in' | 'out' | 'pre'
+  const [display, setDisplay] = React.useState(words[0]);
   const [width, setWidth] = React.useState(null);
-  const [reduced, setReduced] = React.useState(false);
-  const sizerRef = React.useRef(null);
-  const widthsRef = React.useRef([]);
   const idxRef = React.useRef(0);
   const wordsRef = React.useRef(words);
+  const widthsRef = React.useRef([]);
+  const sizerRef = React.useRef(null);
   idxRef.current = idx;
   wordsRef.current = words;
   const key = words.join('|');
 
-  // Larghezza di ogni parola, per far scivolare il testo che segue.
   React.useLayoutEffect(() => {
     const measure = () => {
       const el = sizerRef.current;
@@ -40,38 +42,43 @@ const ScrambleWord = ({ words, intervalMs = 3400, fadeMs = 520 }) => {
   }, [key]);
 
   React.useEffect(() => {
-    const mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-    setReduced(!!(mq && mq.matches));
     if (words.length < 2) return;
+    const mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    const reduce = !!(mq && mq.matches);
     const timers = [];
+    let raf = null;
     const push = (fn, ms) => timers.push(setTimeout(fn, ms));
+    const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
     const cycle = () => {
       const cur = idxRef.current;
       const next = (cur + 1) % wordsRef.current.length;
+      const source = wordsRef.current[cur], target = wordsRef.current[next];
       const wCur = widthsRef.current[cur], wNext = widthsRef.current[next];
-      // Il box non si stringe mai mentre la parola vecchia e' ancora leggibile.
-      if (wCur && wNext) setWidth(Math.max(wCur, wNext));
-      setPhase('out');
-      push(() => {
-        setIdx(next);
-        setPhase('pre');
+      const chiudi = () => {
+        setIdx(next); setDisplay(target);
         if (wNext) setWidth(wNext);
-        push(() => setPhase('in'), 30);
         push(cycle, intervalMs);
-      }, fadeMs);
+      };
+      if (reduce) { chiudi(); return; }
+      if (wCur && wNext) setWidth(Math.max(wCur, wNext));
+      const maxLen = Math.max(source.length, target.length);
+      const start = performance.now();
+      const step = (t) => {
+        const p = Math.min((t - start) / sweepMs, 1);
+        const cut = ease(p) * maxLen;
+        let out = '';
+        for (let i = 0; i < maxLen; i++) out += (i < cut ? (target[i] || '') : (source[i] || ''));
+        setDisplay(out);
+        if (p < 1) raf = requestAnimationFrame(step);
+        else chiudi();
+      };
+      raf = requestAnimationFrame(step);
     };
-    push(cycle, intervalMs);
-    return () => timers.forEach(clearTimeout);
-  }, [key, intervalMs, fadeMs]);
 
-  const at = {
-    in:  { opacity: 1, filter: 'blur(0em)',    transform: 'translateY(0)' },
-    out: { opacity: 0, filter: 'blur(0.05em)', transform: 'translateY(-0.09em)' },
-    pre: { opacity: 0, filter: 'blur(0.05em)', transform: 'translateY(0.09em)' },
-  }[phase];
-  // Con prefers-reduced-motion resta solo la dissolvenza: niente blur ne' scorrimento.
-  const anim = reduced ? { opacity: at.opacity } : at;
-  const ease = 'cubic-bezier(.4,0,.2,1)';
+    push(cycle, intervalMs);
+    return () => { timers.forEach(clearTimeout); if (raf) cancelAnimationFrame(raf); };
+  }, [key, intervalMs, sweepMs]);
 
   return (
     <em style={{
@@ -80,16 +87,9 @@ const ScrambleWord = ({ words, intervalMs = 3400, fadeMs = 520 }) => {
       position: 'relative',
       whiteSpace: 'pre',
       width: width != null ? Math.round(width) + 'px' : undefined,
-      transition: `width ${fadeMs}ms ${ease}`,
+      transition: 'width 320ms cubic-bezier(.4,0,.2,1)',
     }}>
-      <span style={{
-        display: 'inline-block',
-        willChange: 'opacity, transform, filter',
-        transition: phase === 'pre'
-          ? 'none'
-          : `opacity ${fadeMs}ms ${ease}, transform ${fadeMs}ms ${ease}, filter ${fadeMs}ms ${ease}`,
-        ...anim,
-      }}>{words[idx]}</span>
+      {display}
       <span ref={sizerRef} aria-hidden="true" style={{
         position: 'absolute', left: 0, top: 0,
         visibility: 'hidden', pointerEvents: 'none', whiteSpace: 'pre',
