@@ -80,7 +80,7 @@ const ScrollMosaic = () => (
       <div className="v3-tag" style={{marginBottom:20}}><Icon name="sliders" size={12}/> COSA FACCIAMO</div>
       <h2 className="v3-h2">Tecnologia<br/>al servizio della <em>terra.</em></h2>
       <p style={{fontSize:19,lineHeight:1.7,color:'var(--c-onDark-muted)',marginTop:24,maxWidth:640,marginLeft:'auto',marginRight:'auto'}}>
-        Lab, droni, satelliti e stazioni meteo: gli strumenti con cui seguiamo le aziende agricole sarde, dal singolo campione al campo intero.
+        Lab, droni, satelliti e stazioni meteo: gli strumenti con cui seguiamo le aziende agricole, dal singolo campione al campo intero.
       </p>
     </Reveal>
     <div className="v3-mosaic-grid">
@@ -150,7 +150,7 @@ const PageHome = () => (
       </h1>
       <div className="hsc-hero-cta v3-fadeUp" style={{animationDelay:'.7s'}}>
         <p>
-          Studio agronomico che integra <em style={{color:'var(--c-onDark)',fontStyle:'italic',fontWeight:500}}>analisi di laboratorio</em>, satelliti e IoT per portare l'agricoltura sarda nel futuro.
+          Studio agronomico che integra <em style={{color:'var(--c-onDark)',fontStyle:'italic',fontWeight:500}}>analisi di laboratorio</em>, satelliti e IoT al servizio delle aziende agricole di tutta Italia.
         </p>
         <div className="hsc-hero-cta-btns">
           <a href="/servizi" className="v3-btn v3-btn-light">Esplora i servizi →</a>
@@ -168,7 +168,7 @@ const PageHome = () => (
         </Reveal>
         <Reveal delay={150}>
           <p style={{fontSize:18,lineHeight:1.7,color:'var(--c-onDark-muted)',margin:0}}>
-            IoTerra è uno studio agronomico con sede in Sardegna che offre consulenza tecnica e soluzioni innovative per il settore agricolo. Integriamo <em style={{color:'var(--c-accent)',fontStyle:'italic'}}>tecnologia avanzata</em>, ricerca scientifica e competenze agronomiche maturate sul campo.
+            IoTerra è uno studio agronomico che offre consulenza tecnica e soluzioni innovative per il settore agricolo. Integriamo <em style={{color:'var(--c-accent)',fontStyle:'italic'}}>tecnologia avanzata</em>, ricerca scientifica e competenze agronomiche maturate sul campo.
           </p>
           <a href="/contatti" className="v3-btn v3-btn-ghost" style={{marginTop:32}}>Parla con noi →</a>
         </Reveal>

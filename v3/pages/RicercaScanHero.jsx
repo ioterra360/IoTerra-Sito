@@ -63,7 +63,7 @@ const PlantScanHero = () => {
     { id:'fusto',   x:50, y:34, side:'l', chipY:34,
       sym:'Ø',    name:'FUSTO',          val:'4.2',  unit:'mm' },
     { id:'foglia2', x:40, y:52, side:'r', chipY:52,
-      sym:'LAI',  name:'INDICE FOGLIARE', val:'3.4',  unit:'m²/m²' },
+      sym:'LAI',  name:'INDICE FOGLIARE', val:'3.4',  unit:'' },
     { id:'vasetto', x:50, y:74, side:'l', chipY:74,
       sym:'EC',   name:'NUTRIENTI',      val:'1.6',  unit:'mS/cm' },
     { id:'radici',  x:50, y:90, side:'r', chipY:90,
@@ -72,7 +72,7 @@ const PlantScanHero = () => {
 
   // Caption a 4 step
   const captions = [
-    { tag:'STEP 01 · IPOTESI',    t:'Dalla domanda all\'ipotesi.', d:'Una domanda concreta dell\'azienda — una cultivar, un protocollo, un input — diventa un\'ipotesi misurabile.' },
+    { tag:'STEP 01 · IPOTESI',    t:'Dalla domanda all\'ipotesi.', d:'Una domanda concreta dell\'azienda (una cultivar, un protocollo, un input) diventa un\'ipotesi misurabile.' },
     { tag:'STEP 02 · PROTOCOLLO', t:'Disegno sperimentale.', d:'Configurazioni a confronto, repliche, controllo, randomizzazione: il rigore del metodo sul campo o in laboratorio.' },
     { tag:'STEP 03 · MISURE',     t:'Rilievi nel tempo.', d:'Morfometria, resa, qualità, indici di stress, dati IoT: parametri raccolti con calendario regolare.' },
     { tag:'STEP 04 · REPORT',     t:'Risultati e raccomandazioni.', d:'Analisi statistica dei dati e report. Dalla parcella alla raccomandazione: un protocollo replicabile.' },

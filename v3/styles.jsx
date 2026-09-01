@@ -113,7 +113,6 @@ const V3GlobalStyle = () => (
       border-radius: 999px;
       letter-spacing: 0.1em; text-transform: uppercase;
     }
-    .v3-tag::before { content: ''; width: 6px; height: 6px; background: var(--c-accent); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
     .v3-tag-light {
       background: rgba(11,97,78,0.08);
       border-color: rgba(11,97,78,0.15);

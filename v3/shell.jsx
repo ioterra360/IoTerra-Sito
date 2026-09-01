@@ -146,7 +146,7 @@ const Footer = () => (
           Coltiviamo il futuro<br/>analizzando il presente.
         </p>
         <p style={{fontSize:13,lineHeight:1.6,color:'var(--c-onDark-muted)',margin:0,maxWidth:420}}>
-          Studio agronomico con sede in Sardegna. Integriamo analisi di laboratorio, sensori IoT, satelliti e ricerca scientifica per portare l'agricoltura sarda nel futuro: dal singolo campione al campo intero.
+          Studio agronomico con sede in Sardegna. Integriamo analisi di laboratorio, sensori IoT, satelliti e ricerca scientifica al servizio delle aziende agricole: dal singolo campione al campo intero.
         </p>
         <p style={{fontSize:13,lineHeight:1.6,color:'var(--c-onDark-muted)',margin:0,maxWidth:420}}>
           <span style={{color:'var(--c-onDark)'}}>Angelo Casula, Dottore Agronomo</span>, iscritto all'Ordine dei Dottori Agronomi e dei Dottori Forestali della Provincia di Sassari, n. 1083.

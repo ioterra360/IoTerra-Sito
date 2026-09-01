@@ -180,7 +180,7 @@ const SoilBlastHero = () => {
 
   const captions = [
     { tag:'STEP 01 · CAMPIONAMENTO', t:'Si parte dal campo.', d:'Campioni di suolo prelevati in punti strategici della parcella, georeferenziati con GPS.' },
-    { tag:'STEP 02 · LABORATORIO',   t:'Il suolo si analizza.', d:'Granulometria, sostanza organica, macro/micro elementi, pH, conducibilità — analizzati separatamente.' },
+    { tag:'STEP 02 · LABORATORIO',   t:'Il suolo si analizza.', d:'Granulometria, sostanza organica, macro/micro elementi, pH, conducibilità e tanto altro.' },
     { tag:'STEP 03 · DATI',          t:'Ogni elemento, un valore.', d:'I parametri diventano numeri confrontabili, mappabili nello spazio e nel tempo.' },
     { tag:'STEP 04 · DECISIONE',     t:'Strategia agronomica su misura.', d:'Piano di concimazione e gestione idrica costruito sui dati reali del tuo terreno.' },
   ];

@@ -2,44 +2,102 @@
 // (componenti React puri, no librerie esterne)
 
 // ============================================================
-// 1) SCRAMBLE TEXT — testo che cicla con effetto "decrypt"
+// 1) SCRAMBLE TEXT — le parole si scambiano con una dissolvenza morbida
 // ============================================================
-const ScrambleWord = ({ words, intervalMs = 2800, scrambleMs = 600 }) => {
+// Niente caratteri casuali: la parola in uscita sfuma verso l'alto con un
+// micro blur, quella in entrata risale da sotto. Il contenitore anima la
+// propria larghezza passando prima dalla larghezza maggiore fra le due
+// parole, cosi' il testo che segue (", analizzando") scivola senza mai
+// essere coperto dalla parola in dissolvenza. Le larghezze si misurano su
+// uno sizer nascosto: rimisurato quando il webfont e' pronto e a ogni
+// resize, perche' il font-size dell'h1 e' in vw.
+const ScrambleWord = ({ words, intervalMs = 3400, fadeMs = 520 }) => {
   const [idx, setIdx] = React.useState(0);
-  const [display, setDisplay] = React.useState(words[0]);
-  const charsRef = React.useRef('AGRO•TECH·LAB·DATA·IOT·SAT·∇∂∑');
+  const [phase, setPhase] = React.useState('in');   // 'in' | 'out' | 'pre'
+  const [width, setWidth] = React.useState(null);
+  const [reduced, setReduced] = React.useState(false);
+  const sizerRef = React.useRef(null);
+  const widthsRef = React.useRef([]);
+  const idxRef = React.useRef(0);
+  const wordsRef = React.useRef(words);
+  idxRef.current = idx;
+  wordsRef.current = words;
+  const key = words.join('|');
+
+  // Larghezza di ogni parola, per far scivolare il testo che segue.
+  React.useLayoutEffect(() => {
+    const measure = () => {
+      const el = sizerRef.current;
+      if (!el) return;
+      widthsRef.current = Array.prototype.map.call(el.children, c => c.getBoundingClientRect().width);
+      const w = widthsRef.current[idxRef.current];
+      if (w) setWidth(w);
+    };
+    measure();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [key]);
 
   React.useEffect(() => {
-    let raf, scrambleTimer;
-    const tick = () => {
-      const next = (idx + 1) % words.length;
-      const target = words[next];
-      const startLen = display.length;
-      const targetLen = target.length;
-      const maxLen = Math.max(startLen, targetLen);
-      const start = performance.now();
-
-      const step = (t) => {
-        const p = Math.min((t - start) / scrambleMs, 1);
-        let out = '';
-        for (let i = 0; i < maxLen; i++) {
-          if (i < p * maxLen) {
-            out += target[i] || '';
-          } else {
-            out += charsRef.current[Math.floor(Math.random() * charsRef.current.length)];
-          }
-        }
-        setDisplay(out);
-        if (p < 1) raf = requestAnimationFrame(step);
-        else { setIdx(next); setDisplay(target); }
-      };
-      raf = requestAnimationFrame(step);
+    const mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    setReduced(!!(mq && mq.matches));
+    if (words.length < 2) return;
+    const timers = [];
+    const push = (fn, ms) => timers.push(setTimeout(fn, ms));
+    const cycle = () => {
+      const cur = idxRef.current;
+      const next = (cur + 1) % wordsRef.current.length;
+      const wCur = widthsRef.current[cur], wNext = widthsRef.current[next];
+      // Il box non si stringe mai mentre la parola vecchia e' ancora leggibile.
+      if (wCur && wNext) setWidth(Math.max(wCur, wNext));
+      setPhase('out');
+      push(() => {
+        setIdx(next);
+        setPhase('pre');
+        if (wNext) setWidth(wNext);
+        push(() => setPhase('in'), 30);
+        push(cycle, intervalMs);
+      }, fadeMs);
     };
-    scrambleTimer = setTimeout(tick, intervalMs);
-    return () => { clearTimeout(scrambleTimer); cancelAnimationFrame(raf); };
-  }, [idx]);
+    push(cycle, intervalMs);
+    return () => timers.forEach(clearTimeout);
+  }, [key, intervalMs, fadeMs]);
 
-  return <em style={{fontStyle:'italic'}}>{display}</em>;
+  const at = {
+    in:  { opacity: 1, filter: 'blur(0em)',    transform: 'translateY(0)' },
+    out: { opacity: 0, filter: 'blur(0.05em)', transform: 'translateY(-0.09em)' },
+    pre: { opacity: 0, filter: 'blur(0.05em)', transform: 'translateY(0.09em)' },
+  }[phase];
+  // Con prefers-reduced-motion resta solo la dissolvenza: niente blur ne' scorrimento.
+  const anim = reduced ? { opacity: at.opacity } : at;
+  const ease = 'cubic-bezier(.4,0,.2,1)';
+
+  return (
+    <em style={{
+      fontStyle: 'italic',
+      display: 'inline-block',
+      position: 'relative',
+      whiteSpace: 'pre',
+      width: width != null ? Math.round(width) + 'px' : undefined,
+      transition: `width ${fadeMs}ms ${ease}`,
+    }}>
+      <span style={{
+        display: 'inline-block',
+        willChange: 'opacity, transform, filter',
+        transition: phase === 'pre'
+          ? 'none'
+          : `opacity ${fadeMs}ms ${ease}, transform ${fadeMs}ms ${ease}, filter ${fadeMs}ms ${ease}`,
+        ...anim,
+      }}>{words[idx]}</span>
+      <span ref={sizerRef} aria-hidden="true" style={{
+        position: 'absolute', left: 0, top: 0,
+        visibility: 'hidden', pointerEvents: 'none', whiteSpace: 'pre',
+      }}>
+        {words.map((w, i) => <span key={i} style={{display:'inline-block'}}>{w}</span>)}
+      </span>
+    </em>
+  );
 };
 
 // ============================================================
