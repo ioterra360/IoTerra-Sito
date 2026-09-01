@@ -2,102 +2,44 @@
 // (componenti React puri, no librerie esterne)
 
 // ============================================================
-// 1) SCRAMBLE TEXT — le parole si sostituiscono lettera per lettera
+// 1) SCRAMBLE TEXT — testo che cicla con effetto "decrypt"
 // ============================================================
-// Sostituzione progressiva da sinistra a destra: ogni posizione passa dalla
-// lettera della parola uscente a quella della parola entrante. Nessun
-// carattere casuale (il pool 'AGRO.TECH...' con i glifi matematici e' stato
-// tolto: non esistono in Fraunces, arrivavano dal font di fallback con
-// metriche diverse e sembravano ingranditi). L'avanzamento e' su easing
-// morbido, quindi parte e finisce piano invece di raffica costante.
-// La larghezza del contenitore resta sulla maggiore fra le due parole per
-// tutta la sostituzione e poi si assesta: ", analizzando" scivola una volta
-// sola e la parola in transizione non ci finisce mai sopra. Larghezze
-// misurate su uno sizer nascosto, rimisurate su document.fonts.ready e sul
-// resize, perche' il font-size dell'h1 e' in vw.
-const ScrambleWord = ({ words, intervalMs = 3200, sweepMs = 900 }) => {
+const ScrambleWord = ({ words, intervalMs = 2800, scrambleMs = 600 }) => {
   const [idx, setIdx] = React.useState(0);
   const [display, setDisplay] = React.useState(words[0]);
-  const [width, setWidth] = React.useState(null);
-  const idxRef = React.useRef(0);
-  const wordsRef = React.useRef(words);
-  const widthsRef = React.useRef([]);
-  const sizerRef = React.useRef(null);
-  idxRef.current = idx;
-  wordsRef.current = words;
-  const key = words.join('|');
-
-  React.useLayoutEffect(() => {
-    const measure = () => {
-      const el = sizerRef.current;
-      if (!el) return;
-      widthsRef.current = Array.prototype.map.call(el.children, c => c.getBoundingClientRect().width);
-      const w = widthsRef.current[idxRef.current];
-      if (w) setWidth(w);
-    };
-    measure();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
-  }, [key]);
+  const charsRef = React.useRef('AGRO•TECH·LAB·DATA·IOT·SAT·∇∂∑');
 
   React.useEffect(() => {
-    if (words.length < 2) return;
-    const mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-    const reduce = !!(mq && mq.matches);
-    const timers = [];
-    let raf = null;
-    const push = (fn, ms) => timers.push(setTimeout(fn, ms));
-    const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
-    const cycle = () => {
-      const cur = idxRef.current;
-      const next = (cur + 1) % wordsRef.current.length;
-      const source = wordsRef.current[cur], target = wordsRef.current[next];
-      const wCur = widthsRef.current[cur], wNext = widthsRef.current[next];
-      const chiudi = () => {
-        setIdx(next); setDisplay(target);
-        if (wNext) setWidth(wNext);
-        push(cycle, intervalMs);
-      };
-      if (reduce) { chiudi(); return; }
-      if (wCur && wNext) setWidth(Math.max(wCur, wNext));
-      const maxLen = Math.max(source.length, target.length);
+    let raf, scrambleTimer;
+    const tick = () => {
+      const next = (idx + 1) % words.length;
+      const target = words[next];
+      const startLen = display.length;
+      const targetLen = target.length;
+      const maxLen = Math.max(startLen, targetLen);
       const start = performance.now();
+
       const step = (t) => {
-        const p = Math.min((t - start) / sweepMs, 1);
-        const cut = ease(p) * maxLen;
+        const p = Math.min((t - start) / scrambleMs, 1);
         let out = '';
-        for (let i = 0; i < maxLen; i++) out += (i < cut ? (target[i] || '') : (source[i] || ''));
+        for (let i = 0; i < maxLen; i++) {
+          if (i < p * maxLen) {
+            out += target[i] || '';
+          } else {
+            out += charsRef.current[Math.floor(Math.random() * charsRef.current.length)];
+          }
+        }
         setDisplay(out);
         if (p < 1) raf = requestAnimationFrame(step);
-        else chiudi();
+        else { setIdx(next); setDisplay(target); }
       };
       raf = requestAnimationFrame(step);
     };
+    scrambleTimer = setTimeout(tick, intervalMs);
+    return () => { clearTimeout(scrambleTimer); cancelAnimationFrame(raf); };
+  }, [idx]);
 
-    push(cycle, intervalMs);
-    return () => { timers.forEach(clearTimeout); if (raf) cancelAnimationFrame(raf); };
-  }, [key, intervalMs, sweepMs]);
-
-  return (
-    <em style={{
-      fontStyle: 'italic',
-      display: 'inline-block',
-      position: 'relative',
-      whiteSpace: 'pre',
-      width: width != null ? Math.round(width) + 'px' : undefined,
-      transition: 'width 320ms cubic-bezier(.4,0,.2,1)',
-    }}>
-      {display}
-      <span ref={sizerRef} aria-hidden="true" style={{
-        position: 'absolute', left: 0, top: 0,
-        visibility: 'hidden', pointerEvents: 'none', whiteSpace: 'pre',
-      }}>
-        {words.map((w, i) => <span key={i} style={{display:'inline-block'}}>{w}</span>)}
-      </span>
-    </em>
-  );
+  return <em style={{fontStyle:'italic'}}>{display}</em>;
 };
 
 // ============================================================
