@@ -125,7 +125,7 @@ const Nav = ({ route }) => {
             <a href="/contatti" onClick={()=>setOpen(false)} className="v3-btn v3-btn-accent" style={{justifyContent:'center',padding:'16px'}}>Richiedi preventivo →</a>
             <div className="v3-mm-social">
               <a href="https://www.instagram.com/ioterra_360/" target="_blank" rel="noopener"><Icon name="instagram" size={14}/>Instagram</a>
-              <a href="mailto:ioterraservizi@gmail.com"><Icon name="mail" size={14}/>Email</a>
+              <a href="mailto:ioterraservizi@ioterra.it"><Icon name="mail" size={14}/>Email</a>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@ const Footer = () => (
         <ul>
           <li><a href="/contatti">Contatti</a></li>
           <li><a href="tel:+393665393733">+39 366 539 3733</a></li>
-          <li><a href="mailto:ioterraservizi@gmail.com">ioterraservizi@gmail.com</a></li>
+          <li><a href="mailto:ioterraservizi@ioterra.it">ioterraservizi@ioterra.it</a></li>
         </ul>
       </div>
       <div>

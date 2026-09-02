@@ -115,6 +115,6 @@ JSX → JS con `esbuild`/`vite` (vedere note nel design system).
 ## Contatti
 
 - 📞 +39 366 539 3733
-- ✉️ ioterraservizi@gmail.com
+- ✉️ ioterraservizi@ioterra.it
 - 🆔 P.IVA 03034130900
 - 📷 [@ioterra_360](https://www.instagram.com/ioterra_360/)

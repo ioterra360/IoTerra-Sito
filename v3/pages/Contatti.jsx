@@ -15,9 +15,12 @@ const ContactForm = () => {
     if (vals._gotcha) return; // honeypot: bot riempie il campo nascosto, blocchiamo silenziosamente
     setStatus('sending');
     try {
-      // Hash alias FormSubmit (anti-scraping): l'email reale ioterraservizi@gmail.com
-      // resta nascosta dal JavaScript pubblico. L'attivazione del form e' legata
-      // all'email, ma l'endpoint usa il token che FormSubmit ha generato.
+      // Hash alias FormSubmit (anti-scraping): la casella di destinazione resta
+      // nascosta dal JavaScript pubblico. Il token qui sotto e' stato generato e
+      // attivato per la casella storica ioterraservizi@gmail.com: i messaggi del
+      // modulo arrivano li', mentre l'indirizzo pubblicato sul sito e'
+      // ioterraservizi@ioterra.it. Per recapitarli direttamente su @ioterra.it
+      // serve un nuovo token FormSubmit generato con quell'indirizzo.
       const res = await fetch('https://formsubmit.co/ajax/2b62c89ef0aa543029e6f7ca69a9f3e6', {
         method: 'POST',
         headers: {'Content-Type':'application/json', 'Accept':'application/json'},
@@ -45,9 +48,9 @@ const ContactForm = () => {
     } catch (e2) {
       setStatus('idle');
       if (e2 && e2.message === 'ACTIVATION_PENDING') {
-        setErr('Il modulo è in fase di attivazione. Riprova tra qualche minuto, oppure scrivici direttamente a ioterraservizi@gmail.com.');
+        setErr('Il modulo è in fase di attivazione. Riprova tra qualche minuto, oppure scrivici direttamente a ioterraservizi@ioterra.it.');
       } else {
-        setErr('Invio non riuscito. Riprova o scrivici direttamente a ioterraservizi@gmail.com.');
+        setErr('Invio non riuscito. Riprova o scrivici direttamente a ioterraservizi@ioterra.it.');
       }
     }
   };
@@ -98,7 +101,7 @@ const ContactForm = () => {
       {status === 'sent' && <div style={{padding:'12px 16px',background:'rgba(60,180,120,0.14)',border:'1px solid rgba(90,220,150,0.45)',borderRadius:8,color:'#b6f3cf',fontSize:14,marginBottom:14,lineHeight:1.5}}>Messaggio inviato. Ti risponderemo a breve all'email che hai indicato.</div>}
       <button type="submit" disabled={status==='sending'} className="v3-btn v3-btn-accent" style={{width:'100%',justifyContent:'center',padding:'16px',opacity:status==='sending'?0.6:1,cursor:status==='sending'?'wait':'pointer'}}>{status==='sending' ? 'Invio in corso…' : 'Invia messaggio →'}</button>
       <div style={{fontSize:11,color:'var(--c-onDark-muted)',marginTop:14,textAlign:'center',lineHeight:1.5}}>
-        Il messaggio arriva direttamente su <a href="mailto:ioterraservizi@gmail.com" style={{color:'var(--c-accent)'}}>ioterraservizi@gmail.com</a>. Ti risponderemo entro 24h lavorative.
+        Il messaggio arriva direttamente su <a href="mailto:ioterraservizi@ioterra.it" style={{color:'var(--c-accent)'}}>ioterraservizi@ioterra.it</a>. Ti risponderemo entro 24h lavorative.
       </div>
     </form>
   );
@@ -123,7 +126,7 @@ const PageContatti = () => (
         <Reveal style={{display:'grid',gap:12}}>
           {[
             {h:'Telefono',v:'+39 366 539 3733',href:'tel:+393665393733',i:'phone'},
-            {h:'Email',v:'ioterraservizi@gmail.com',href:'mailto:ioterraservizi@gmail.com',i:'mail'},
+            {h:'Email',v:'ioterraservizi@ioterra.it',href:'mailto:ioterraservizi@ioterra.it',i:'mail'},
             {h:'Instagram',v:'@ioterra_360',href:'https://www.instagram.com/ioterra_360/',i:'instagram'},
             {h:'Google',v:'IoTerra · Servizi Agronomici',href:'https://www.google.com/search?sca_esv=5cb444661cf9bcf8&rlz=1CAXCFT_enIT1190IT1190&kgmid=/g/11zj8lslh2&q=IoTerra+-+Servizi+Agronomici&shndl=30&shem=bdslc,damc,lcuae,uaasie,shrtsdl&source=sh/x/loc/uni/m1/1&kgs=5e10c14b78610770',i:'google'},
           ].map(c => {

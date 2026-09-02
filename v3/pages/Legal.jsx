@@ -135,7 +135,7 @@ const PagePrivacy = () => {
               <P>Per qualsiasi domanda relativa alla presente Privacy Policy puoi contattarci:</P>
               <UL>
                 <LI>Titolare del trattamento · Angelo Casula, Dottore Agronomo, Studio Agronomico IoTerra</LI>
-                <LI>Email · <a href="mailto:ioterraservizi@gmail.com" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>ioterraservizi@gmail.com</a></LI>
+                <LI>Email · <a href="mailto:ioterraservizi@ioterra.it" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>ioterraservizi@ioterra.it</a></LI>
                 <LI>Telefono · <a href="tel:+393665393733" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>+39 366 539 3733</a></LI>
               </UL>
             </div>
@@ -194,7 +194,7 @@ const PageTermini = () => {
               <P>Per qualsiasi domanda relativa ai presenti Termini puoi contattarci:</P>
               <UL>
                 <LI>Titolare dello studio · Angelo Casula, Dottore Agronomo iscritto all'Ordine dei Dottori Agronomi e dei Dottori Forestali della Provincia di Sassari, n. 1083</LI>
-                <LI>Email · <a href="mailto:ioterraservizi@gmail.com" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>ioterraservizi@gmail.com</a></LI>
+                <LI>Email · <a href="mailto:ioterraservizi@ioterra.it" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>ioterraservizi@ioterra.it</a></LI>
                 <LI>Telefono · <a href="tel:+393665393733" style={{color:'var(--c-accent)',textDecoration:'none',borderBottom:'1px solid rgba(var(--c-accent-rgb),0.4)'}}>+39 366 539 3733</a></LI>
                 <LI>Sede legale · Sardegna · IT</LI>
                 <LI>P.IVA · 03034130900</LI>
